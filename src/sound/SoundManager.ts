@@ -1,3 +1,6 @@
+import bellUrl      from '../assets/media/bell.mp3'
+import celebrateUrl from '../assets/media/celebrate.mp3'
+
 const STORAGE_KEY = 'aion:muted'
 
 class SoundManager {
@@ -25,11 +28,11 @@ class SoundManager {
   async preload() {
     const ctx = this.getCtx()
     await Promise.all([
-      fetch('/sounds/bell.mp3').then(r => r.arrayBuffer())
+      fetch(bellUrl).then(r => r.arrayBuffer())
         .then(b => ctx.decodeAudioData(b))
         .then(b => { this.buffer = b })
         .catch(e => console.warn('[SoundManager] bell.mp3:', e)),
-      fetch('/sounds/celebrate.mp3').then(r => r.arrayBuffer())
+      fetch(celebrateUrl).then(r => r.arrayBuffer())
         .then(b => ctx.decodeAudioData(b))
         .then(b => { this.celebrateBuffer = b })
         .catch(e => console.warn('[SoundManager] celebrate.mp3:', e)),

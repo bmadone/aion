@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useLayoutEffect, useCallback } from 'react'
 
 const ITEM_H  = 44   // px per item
 const VISIBLE = 3    // items shown at once
@@ -28,15 +28,20 @@ export function WheelPicker({
     return i < 0 ? 0 : i
   }
 
-  // scroll to value (instant on mount, smooth on external change)
+  // Set scroll position before paint on mount (no flicker)
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el || initialized.current) return
+    el.scrollTop = idxOf(value) * ITEM_H
+    initialized.current = true
+  }) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Smooth scroll when value changes externally (e.g. preset selection)
   useEffect(() => {
     const el = ref.current
-    if (!el) return
+    if (!el || !initialized.current) return
     const target = idxOf(value) * ITEM_H
-    if (!initialized.current) {
-      el.scrollTop = target
-      initialized.current = true
-    } else if (Math.abs(el.scrollTop - target) > 4) {
+    if (Math.abs(el.scrollTop - target) > 4) {
       el.scrollTo({ top: target, behavior: 'smooth' })
     }
   }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
