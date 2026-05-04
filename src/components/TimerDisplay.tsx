@@ -30,27 +30,6 @@ function getPhaseDuration(phase: Phase, config: WorkoutConfig): number {
   return 0
 }
 
-function getNextUp(state: TimerState, config: WorkoutConfig): string {
-  const { phase, currentRound, totalRounds, currentInterval, totalIntervals } = state
-  const { workDuration, restDuration, restBetweenRounds } = config
-  const lastInterval = currentInterval >= totalIntervals
-  const lastRound    = currentRound >= totalRounds
-
-  if (phase === 'countdown') return `Work — ${formatTime(workDuration)}`
-  if (phase === 'work') {
-    if (restDuration > 0) return `Rest — ${formatTime(restDuration)}`
-    if (!lastInterval) return `Work — ${formatTime(workDuration)}`
-    if (!lastRound) return restBetweenRounds > 0 ? `Block rest — ${formatTime(restBetweenRounds)}` : `Work — ${formatTime(workDuration)}`
-    return 'Complete!'
-  }
-  if (phase === 'rest') {
-    if (!lastInterval) return `Work — ${formatTime(workDuration)}`
-    if (!lastRound) return restBetweenRounds > 0 ? `Block rest — ${formatTime(restBetweenRounds)}` : `Work — ${formatTime(workDuration)}`
-    return 'Complete!'
-  }
-  if (phase === 'rest-between-rounds') return `Work — ${formatTime(workDuration)}`
-  return ''
-}
 
 export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps): JSX.Element {
   const [state, setState] = useState<TimerState>({
@@ -117,7 +96,6 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
   else if (isComplete)  bgClass += ' timer-display--complete'
 
   const phaseLabel = isBlockRest ? 'BLOCK REST' : phase.toUpperCase()
-  const nextUp     = getNextUp(state, config)
 
   return (
     <div
@@ -166,11 +144,6 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
             {/* Phase label separate from aria-label to avoid duplication */}
             <div className="phase-label" aria-hidden="true">{phaseLabel}</div>
 
-            {nextUp && (
-              <div className="timer-next-up" aria-label={`Next: ${nextUp}`} aria-hidden="true">
-                Next: {nextUp}
-              </div>
-            )}
 
             <div className="timer-controls">
               <button className="btn-secondary" onClick={handleStop} ref={stopBtnRef} aria-label="Stop workout">
