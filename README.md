@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Aion — Interval Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Greek: *aion* (αἰών) — cyclical, eternal time.
 
-Currently, two official plugins are available:
+<!-- demo gif -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A free interval timer that gets out of the way. No ads, no sign-up, no bloat — just open it and train.
 
-## React Compiler
+## Why
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Every interval timer app I tried was either buried in ads, required an account, or had an interface that took longer to configure than the workout itself. I wanted something that opens instantly, looks good from across the room, and works at the gym without Wi-Fi.
 
-## Expanding the ESLint configuration
+Aion is that app.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## What it does
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Configure a workout — work duration, rest, intervals per round, rounds, rest between rounds — hit Start, and get out of the way. The screen turns **red** when you work and **green** when you rest. A big countdown tells you how much time is left. Audio cues mean you don't have to watch the screen at all.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Built-in presets cover the most common formats:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Preset | Work | Rest | Intervals | Rounds |
+|--------|------|------|-----------|--------|
+| Tabata | 20s | 10s | 8 | 1 |
+| EMOM | 60s | — | 10 | 1 |
+| AMRAP | 20 min | — | 1 | 1 |
+| Custom | anything | anything | anything | anything |
+
+Your last settings are remembered, so reopening the app picks up where you left off.
+
+## Other details
+
+- Installs to your home screen as a PWA and works fully offline
+- Dark and light mode, follows your system preference
+- Confetti when you finish (earned it)
+
+## Development
+
+```bash
+npm install
+npm run dev
+npm run test
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Built with Vite + React + TypeScript. Deployed to Vercel.

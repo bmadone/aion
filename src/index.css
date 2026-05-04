@@ -163,13 +163,14 @@ html[data-theme="light"] .navbar-brand {
 
 .main-content::before {
   content: '';
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 56px; /* below navbar */
   left: 0;
   right: 0;
-  height: 50%;
+  height: 50vh;
   background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-glow) 0%, transparent 100%);
   pointer-events: none;
+  z-index: 0;
 }
 
 .main-content > * { position: relative; z-index: 1; }
