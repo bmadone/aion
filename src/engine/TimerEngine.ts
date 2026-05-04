@@ -30,14 +30,14 @@ export class TimerEngine {
     }
   }
 
-  start() {
+  start(): void {
     this.stopped = false
     this.paused = false
     this.enterPhase('countdown', COUNTDOWN_SECONDS, 0, 0)
     this.scheduleLoop()
   }
 
-  pause() {
+  pause(): void {
     if (this.state.phase === 'complete' || this.stopped || this.paused) return
     this.paused = true
     this.remainingOnPause = this.phaseEndTime - performance.now()
@@ -47,19 +47,19 @@ export class TimerEngine {
     }
   }
 
-  resume() {
+  resume(): void {
     if (!this.paused || this.stopped) return
     this.paused = false
     this.phaseEndTime = performance.now() + this.remainingOnPause
     this.scheduleLoop()
   }
 
-  skip() {
+  skip(): void {
     if (this.stopped) return
     this.advance()
   }
 
-  stop() {
+  stop(): void {
     this.stopped = true
     this.paused = false
     if (this.rafId !== null) {
@@ -72,12 +72,12 @@ export class TimerEngine {
     return { ...this.state }
   }
 
-  private scheduleLoop() {
+  private scheduleLoop(): void {
     if (this.rafId !== null) cancelAnimationFrame(this.rafId)
     this.rafId = requestAnimationFrame(this.tick)
   }
 
-  private tick = (timestamp: number) => {
+  private tick = (timestamp: number): void => {
     if (this.stopped || this.paused) return
 
     const remaining = this.phaseEndTime - timestamp
@@ -92,10 +92,10 @@ export class TimerEngine {
     this.state = { ...this.state, timeRemaining: remaining / 1000 }
     this.callbacks.onTick({ ...this.state })
 
-    if (!this.stopped) this.rafId = requestAnimationFrame(this.tick)
+    this.rafId = requestAnimationFrame(this.tick)
   }
 
-  private advance() {
+  private advance(): void {
     if (this.stopped) return
 
     const { phase, currentRound, currentInterval } = this.state
@@ -126,7 +126,7 @@ export class TimerEngine {
     }
   }
 
-  private finishInterval() {
+  private finishInterval(): void {
     const { currentRound, currentInterval } = this.state
     const { workDuration, intervals, rounds, restBetweenRounds } = this.config
 
@@ -149,7 +149,7 @@ export class TimerEngine {
     }
   }
 
-  private enterPhase(phase: Phase, durationSeconds: number, round: number, interval: number) {
+  private enterPhase(phase: Phase, durationSeconds: number, round: number, interval: number): void {
     const now = performance.now()
     this.phaseEndTime = now + durationSeconds * 1000
 

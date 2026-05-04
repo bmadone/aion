@@ -10,12 +10,12 @@ const DEFAULTS = {
   colors: ['FFE400', 'FFBD00', 'E89400', 'FFCA6C', 'FDFFB8'],
 }
 
-function shoot() {
-  confetti({ ...DEFAULTS, particleCount: 40, scalar: 1.2, shapes: ['star'] })
-  confetti({ ...DEFAULTS, particleCount: 10, scalar: 0.75, shapes: ['circle'] })
+function shoot(): void {
+  void confetti({ ...DEFAULTS, particleCount: 40, scalar: 1.2, shapes: ['star'] })
+  void confetti({ ...DEFAULTS, particleCount: 10, scalar: 0.75, shapes: ['circle'] })
 }
 
-export function useConfetti(active: boolean) {
+export function useConfetti(active: boolean): void {
   useEffect(() => {
     if (!active) return
     shoot()

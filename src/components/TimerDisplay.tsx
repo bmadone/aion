@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, type JSX } from 'react'
 import type { Phase, TimerState, WorkoutConfig } from '../types'
 import { TimerEngine } from '../engine/TimerEngine'
 import { soundManager } from '../sound/SoundManager'
@@ -52,7 +52,7 @@ function getNextUp(state: TimerState, config: WorkoutConfig): string {
   return ''
 }
 
-export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps) {
+export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps): JSX.Element {
   const [state, setState] = useState<TimerState>({
     phase: 'idle',
     currentRound: 0,

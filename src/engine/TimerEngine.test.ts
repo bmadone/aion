@@ -12,7 +12,7 @@ function amrapConfig(): WorkoutConfig {
   return { workDuration: 60, restDuration: 0, intervals: 1, rounds: 1, restBetweenRounds: 0 }
 }
 
-function createEngine(config: WorkoutConfig) {
+function createEngine(config: WorkoutConfig): { engine: TimerEngine; ticks: TimerState[]; phases: Phase[] } {
   const ticks: TimerState[] = []
   const phases: Phase[] = []
   const engine = new TimerEngine(config, {
@@ -22,7 +22,7 @@ function createEngine(config: WorkoutConfig) {
   return { engine, ticks, phases }
 }
 
-function advance(ms: number) {
+function advance(ms: number): void {
   vi.advanceTimersByTime(ms)
 }
 
@@ -30,7 +30,7 @@ describe('TimerEngine', () => {
   beforeEach(() => {
     vi.useFakeTimers()
     vi.spyOn(globalThis, 'requestAnimationFrame').mockImplementation((cb) => {
-      return setTimeout(() => cb(performance.now()), 16) as unknown as number
+      return setTimeout(() => { cb(performance.now()) }, 16)
     })
     vi.spyOn(globalThis, 'cancelAnimationFrame').mockImplementation((id) => {
       clearTimeout(id)
@@ -56,19 +56,19 @@ describe('TimerEngine', () => {
     expect(phases).toContain('work')
 
     // Round 1, Interval 1
-    let workTick = ticks.find(t => t.phase === 'work' && t.currentRound === 1 && t.currentInterval === 1)
+    const workTick = ticks.find(t => t.phase === 'work' && t.currentRound === 1 && t.currentInterval === 1)
     expect(workTick).toBeDefined()
 
     advance(20100) // work → rest (round 1, interval 1)
     expect(phases).toContain('rest')
 
     advance(10100) // rest → work (round 1, interval 2)
-    let w2 = ticks.filter(t => t.phase === 'work' && t.currentRound === 1 && t.currentInterval === 2)
+    const w2 = ticks.filter(t => t.phase === 'work' && t.currentRound === 1 && t.currentInterval === 2)
     expect(w2.length).toBeGreaterThan(0)
 
     advance(20100) // work → rest (round 1, interval 2)
     advance(10100) // rest → work (round 2, interval 1) — no restBetweenRounds
-    let r2 = ticks.filter(t => t.phase === 'work' && t.currentRound === 2 && t.currentInterval === 1)
+    const r2 = ticks.filter(t => t.phase === 'work' && t.currentRound === 2 && t.currentInterval === 1)
     expect(r2.length).toBeGreaterThan(0)
 
     advance(20100) // work → rest (round 2, interval 1)
@@ -96,7 +96,7 @@ describe('TimerEngine', () => {
     expect(rbrTick?.timeRemaining).toBeCloseTo(30, 0)
 
     advance(30100) // rest-between-rounds → round 2
-    let r2 = ticks.filter(t => t.phase === 'work' && t.currentRound === 2 && t.currentInterval === 1)
+    const r2 = ticks.filter(t => t.phase === 'work' && t.currentRound === 2 && t.currentInterval === 1)
     expect(r2.length).toBeGreaterThan(0)
     advance(10100)
     advance(10100)
@@ -125,12 +125,15 @@ describe('TimerEngine', () => {
     advance(5000) // halfway through 20s work
 
     engine.pause()
-    const atPause = { ...ticks[ticks.length - 1] }
+    const atPauseTick = ticks[ticks.length - 1]
+    if (!atPauseTick) throw new Error('Expected tick at pause')
+    const atPause = { ...atPauseTick }
     advance(30000)
     engine.resume()
     advance(16)
 
     const afterResume = ticks[ticks.length - 1]
+    if (!afterResume) throw new Error('Expected tick after resume')
     expect(afterResume.timeRemaining).toBeCloseTo(atPause.timeRemaining, 0)
   })
 

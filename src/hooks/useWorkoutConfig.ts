@@ -14,12 +14,12 @@ export const DEFAULT_CONFIG: WorkoutConfig = {
 export function loadConfig(): WorkoutConfig {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw)
+    if (raw !== null) return JSON.parse(raw) as WorkoutConfig
   } catch { /* ignore */ }
   return DEFAULT_CONFIG
 }
 
-export function useWorkoutConfig() {
+export function useWorkoutConfig(): { preset: Preset; config: WorkoutConfig; updateConfig: (patch: Partial<WorkoutConfig>) => void; selectPreset: (p: Preset, presetConfig: WorkoutConfig | null) => void } {
   const [preset, setPreset] = useState<Preset>('custom')
   const [config, setConfig] = useState<WorkoutConfig>(loadConfig)
   const customRef = useRef<WorkoutConfig>(config)
@@ -28,7 +28,7 @@ export function useWorkoutConfig() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(config)) } catch { /* ignore */ }
   }, [config])
 
-  function updateConfig(patch: Partial<WorkoutConfig>) {
+  function updateConfig(patch: Partial<WorkoutConfig>): void {
     setPreset('custom')
     setConfig(c => {
       const next = { ...c, ...patch }
@@ -37,7 +37,7 @@ export function useWorkoutConfig() {
     })
   }
 
-  function selectPreset(p: Preset, presetConfig: WorkoutConfig | null) {
+  function selectPreset(p: Preset, presetConfig: WorkoutConfig | null): void {
     setPreset(p)
     setConfig(presetConfig ?? customRef.current)
   }

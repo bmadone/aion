@@ -10,15 +10,15 @@ function getInitialTheme(): Theme {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
-export function useTheme() {
+export function useTheme(): { theme: Theme; toggle: () => void } {
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme
+    document.documentElement.dataset['theme'] = theme
     localStorage.setItem(STORAGE_KEY, theme)
   }, [theme])
 
-  const toggle = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'))
+  const toggle = (): void => { setTheme(t => (t === 'dark' ? 'light' : 'dark')) }
 
   return { theme, toggle }
 }

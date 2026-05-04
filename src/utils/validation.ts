@@ -18,6 +18,6 @@ export function validateConfig(c: WorkoutConfig): ConfigErrors {
   return errors
 }
 
-export function isValid(errors: ConfigErrors) {
+export function isValid(errors: ConfigErrors): boolean {
   return Object.keys(errors).length === 0
 }

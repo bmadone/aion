@@ -1,8 +1,10 @@
+import type { JSX } from 'react'
+
 interface CountdownOverlayProps {
   count: number
 }
 
-export function CountdownOverlay({ count }: CountdownOverlayProps) {
+export function CountdownOverlay({ count }: CountdownOverlayProps): JSX.Element {
   const display = count <= 0 ? 'GO!' : String(Math.ceil(count))
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type JSX } from 'react'
 import type { WorkoutConfig } from '../types'
 import { PresetSelector } from './PresetSelector'
 import { DurationPicker } from './DurationPicker'
@@ -11,14 +11,14 @@ interface Props {
   startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
-export function WorkoutFormMobile({ onStart, startBtnRef }: Props) {
+export function WorkoutFormMobile({ onStart, startBtnRef }: Props): JSX.Element {
   const { preset, config, updateConfig, selectPreset } = useWorkoutConfig()
   const [submitted, setSubmitted] = useState(false)
 
   const errors = validateConfig(config)
   const valid  = isValid(errors)
 
-  function handleSubmit(e: React.SyntheticEvent) {
+  function handleSubmit(e: React.SyntheticEvent): void {
     e.preventDefault()
     setSubmitted(true)
     if (!valid) return

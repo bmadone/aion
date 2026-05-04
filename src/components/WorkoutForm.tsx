@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import type { WorkoutConfig } from '../types'
 import { WorkoutFormDesktop } from './WorkoutFormDesktop'
 import { WorkoutFormMobile } from './WorkoutFormMobile'
@@ -11,7 +12,7 @@ interface WorkoutFormProps {
   startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
-export function WorkoutForm({ onStart, startBtnRef }: WorkoutFormProps) {
+export function WorkoutForm({ onStart, startBtnRef }: WorkoutFormProps): JSX.Element {
   const desktop = useDesktop()
   return desktop
     ? <WorkoutFormDesktop onStart={onStart} startBtnRef={startBtnRef} />

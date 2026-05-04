@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, type JSX } from 'react'
 import type { WorkoutConfig } from './types'
 import { useTheme } from './hooks/useTheme'
 import { soundManager } from './sound/SoundManager'
@@ -9,7 +9,7 @@ import { ErrorBoundary } from './components/ErrorBoundary'
 
 type View = 'form' | 'timer'
 
-export default function App() {
+export default function App(): JSX.Element {
   const { theme, toggle: toggleTheme } = useTheme()
   const [muted, setMuted]   = useState(() => soundManager.muted)
   const [view, setView]     = useState<View>('form')
@@ -24,7 +24,7 @@ export default function App() {
   }, [muted])
 
   const handleStart = useCallback((cfg: WorkoutConfig) => {
-    soundManager.preload()
+    void soundManager.preload()
     setConfig(cfg)
     setView('timer')
   }, [])

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type JSX } from 'react'
 import type { WorkoutConfig } from '../types'
 import { PresetSelector } from './PresetSelector'
 import { useWorkoutConfig } from '../hooks/useWorkoutConfig'
@@ -9,7 +9,7 @@ interface Props {
   startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
-export function WorkoutFormDesktop({ onStart, startBtnRef }: Props) {
+export function WorkoutFormDesktop({ onStart, startBtnRef }: Props): JSX.Element {
   const { preset, config, updateConfig, selectPreset } = useWorkoutConfig()
   const [touched, setTouched] = useState<Partial<Record<keyof ConfigErrors, boolean>>>({})
   const [submitted, setSubmitted] = useState(false)
@@ -17,15 +17,15 @@ export function WorkoutFormDesktop({ onStart, startBtnRef }: Props) {
   const errors  = validateConfig(config)
   const valid   = isValid(errors)
 
-  function touch(field: keyof ConfigErrors) {
+  function touch(field: keyof ConfigErrors): void {
     setTouched(t => ({ ...t, [field]: true }))
   }
 
-  function err(field: keyof ConfigErrors) {
-    return (touched[field] || submitted) ? errors[field] : undefined
+  function err(field: keyof ConfigErrors): string | undefined {
+    return (touched[field] === true || submitted) ? errors[field] : undefined
   }
 
-  function handleSubmit(e: React.SyntheticEvent) {
+  function handleSubmit(e: React.SyntheticEvent): void {
     e.preventDefault()
     setSubmitted(true)
     if (!valid) return
@@ -68,13 +68,13 @@ export function WorkoutFormDesktop({ onStart, startBtnRef }: Props) {
 }
 
 interface FieldProps {
-  id: string; label: string; value: number; error?: string
+  id: string; label: string; value: number; error?: string | undefined
   min?: number; step?: number; onChange: (v: number) => void
 }
 
-function DesktopField({ id, label, value, error, min, step, onChange }: FieldProps) {
+function DesktopField({ id, label, value, error, min, step, onChange }: FieldProps): JSX.Element {
   return (
-    <div className={`field${error ? ' field--error' : ''}`}>
+    <div className={`field${error !== undefined ? ' field--error' : ''}`}>
       <label htmlFor={id}>{label}</label>
       <div className="field-right">
         <input
@@ -84,11 +84,11 @@ function DesktopField({ id, label, value, error, min, step, onChange }: FieldPro
           min={min}
           step={step}
           value={value}
-          aria-invalid={!!error}
-          aria-describedby={error ? `${id}-err` : undefined}
+          aria-invalid={error !== undefined}
+          aria-describedby={error !== undefined ? `${id}-err` : undefined}
           onChange={e => onChange(Number(e.target.value))}
         />
-        {error && <span id={`${id}-err`} className="field-error" role="alert">{error}</span>}
+        {error !== undefined && <span id={`${id}-err`} className="field-error" role="alert">{error}</span>}
       </div>
     </div>
   )

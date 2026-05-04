@@ -2,7 +2,6 @@ import bellUrl      from '../assets/media/bell.mp3'
 import celebrateUrl from '../assets/media/celebrate.mp3'
 
 const STORAGE_KEY = 'aion:muted'
-const DEV = import.meta.env.DEV
 
 class SoundManager {
   private buffer: AudioBuffer | null = null
@@ -14,33 +13,33 @@ class SoundManager {
     this._muted = localStorage.getItem(STORAGE_KEY) === 'true'
   }
 
-  get muted() { return this._muted }
+  get muted(): boolean { return this._muted }
 
-  setMuted(v: boolean) {
+  setMuted(v: boolean): void {
     this._muted = v
     localStorage.setItem(STORAGE_KEY, String(v))
   }
 
   private getCtx(): AudioContext {
-    if (!this.ctx) this.ctx = new AudioContext()
+    this.ctx ??= new AudioContext()
     return this.ctx
   }
 
-  async preload() {
+  async preload(): Promise<void> {
     const ctx = this.getCtx()
     await Promise.all([
       fetch(bellUrl).then(r => r.arrayBuffer())
         .then(b => ctx.decodeAudioData(b))
         .then(b => { this.buffer = b })
-        .catch(e => { if (DEV) console.warn('[SoundManager] bell:', e) }),
+        .catch(() => { /* audio unavailable — silently ignore */ }),
       fetch(celebrateUrl).then(r => r.arrayBuffer())
         .then(b => ctx.decodeAudioData(b))
         .then(b => { this.celebrateBuffer = b })
-        .catch(e => { if (DEV) console.warn('[SoundManager] celebrate:', e) }),
+        .catch(() => { /* audio unavailable — silently ignore */ }),
     ])
   }
 
-  private ring(volume = 1, playbackRate = 1, times = 1, interval = 0.22) {
+  private ring(volume = 1, playbackRate = 1, times = 1, interval = 0.22): void {
     if (this._muted || !this.buffer) return
     const ctx = this.getCtx()
     for (let i = 0; i < times; i++) {
@@ -55,10 +54,10 @@ class SoundManager {
     }
   }
 
-  playWork()  { this.ring(1.0, 1.0,  3, 0.22) }
-  playRest()  { this.ring(0.7, 0.85, 1) }
+  playWork(): void  { this.ring(1.0, 1.0,  3, 0.22) }
+  playRest(): void  { this.ring(0.7, 0.85, 1) }
 
-  playComplete() {
+  playComplete(): void {
     if (this._muted || !this.celebrateBuffer) return
     const ctx  = this.getCtx()
     const src  = ctx.createBufferSource()

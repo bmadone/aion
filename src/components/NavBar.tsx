@@ -1,3 +1,5 @@
+import type { JSX } from 'react'
+
 interface NavBarProps {
   theme: 'dark' | 'light'
   onThemeToggle: () => void
@@ -5,7 +7,7 @@ interface NavBarProps {
   onMuteToggle: () => void
 }
 
-export function NavBar({ theme, onThemeToggle, muted, onMuteToggle }: NavBarProps) {
+export function NavBar({ theme, onThemeToggle, muted, onMuteToggle }: NavBarProps): JSX.Element {
   return (
     <nav className="navbar" role="navigation" aria-label="App navigation">
       <span className="navbar-brand">Aion</span>

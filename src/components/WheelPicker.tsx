@@ -23,7 +23,7 @@ export const WheelPicker = memo(function WheelPicker({
   const timer      = useRef<ReturnType<typeof setTimeout> | null>(null)
   const initialized = useRef(false)
 
-  const idxOf = (v: number) => {
+  const idxOf = (v: number): number => {
     const i = values.indexOf(v)
     return i < 0 ? 0 : i
   }
@@ -47,14 +47,14 @@ export const WheelPicker = memo(function WheelPicker({
   }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleScroll = useCallback(() => {
-    if (timer.current) clearTimeout(timer.current)
+    if (timer.current !== null) clearTimeout(timer.current)
     timer.current = setTimeout(() => {
       const el = ref.current
       if (!el) return
       const i = Math.round(el.scrollTop / ITEM_H)
       const clamped = Math.max(0, Math.min(values.length - 1, i))
       const picked = values[clamped]
-      if (picked !== value) onChange(picked)
+      if (picked !== undefined && picked !== value) onChange(picked)
     }, 60)
   }, [values, value, onChange])
 
@@ -63,10 +63,12 @@ export const WheelPicker = memo(function WheelPicker({
     const idx = idxOf(value)
     if (e.key === 'ArrowUp') {
       e.preventDefault()
-      if (idx > 0) onChange(values[idx - 1])
+      const prev = values[idx - 1]
+      if (idx > 0 && prev !== undefined) onChange(prev)
     } else if (e.key === 'ArrowDown') {
       e.preventDefault()
-      if (idx < values.length - 1) onChange(values[idx + 1])
+      const next = values[idx + 1]
+      if (idx < values.length - 1 && next !== undefined) onChange(next)
     }
   }, [values, value, onChange]) // eslint-disable-line react-hooks/exhaustive-deps
 
