@@ -743,12 +743,19 @@ html[data-theme="light"] .timer-controls .btn-secondary {
 
 .btn-pause {
   min-width: 116px;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  font-weight: 700;
+}
+
+html[data-theme="light"] .btn-pause {
   background: var(--text) !important;
   color: var(--bg) !important;
   border-color: transparent !important;
 }
 
-.btn-pause:hover { opacity: 0.88 !important; }
+.btn-pause:hover { background: rgba(255, 255, 255, 0.22) !important; }
 
 /* ─── Error screen ─── */
 .error-screen {
