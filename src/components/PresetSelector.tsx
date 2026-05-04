@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { Preset, WorkoutConfig } from '../types'
 import { PRESETS } from '../types'
 
@@ -7,13 +8,13 @@ interface PresetSelectorProps {
 }
 
 const PRESET_LABELS: Record<Preset, string> = {
-  tabata: 'Tabata',
-  amrap: 'AMRAP',
-  emom: 'EMOM',
   custom: 'Custom',
+  tabata: 'Tabata',
+  amrap:  'AMRAP',
+  emom:   'EMOM',
 }
 
-export function PresetSelector({ selected, onSelect }: PresetSelectorProps) {
+export const PresetSelector = memo(function PresetSelector({ selected, onSelect }: PresetSelectorProps) {
   return (
     <div className="preset-selector" role="group" aria-label="Workout presets">
       {(Object.keys(PRESETS) as Preset[]).map(preset => (
@@ -29,4 +30,4 @@ export function PresetSelector({ selected, onSelect }: PresetSelectorProps) {
       ))}
     </div>
   )
-}
+})

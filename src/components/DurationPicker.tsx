@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { WheelPicker } from './WheelPicker'
 
 const MINS = Array.from({ length: 60 }, (_, i) => i)
@@ -8,7 +9,7 @@ interface DurationPickerProps {
   onChange: (seconds: number) => void
 }
 
-export function DurationPicker({ value, onChange }: DurationPickerProps) {
+export const DurationPicker = memo(function DurationPicker({ value, onChange }: DurationPickerProps) {
   const mins = Math.min(59, Math.floor(value / 60))
   const secs = value % 60
 
@@ -29,4 +30,4 @@ export function DurationPicker({ value, onChange }: DurationPickerProps) {
       />
     </div>
   )
-}
+})

@@ -1,10 +1,6 @@
 import { useEffect } from 'react'
 import confetti from 'canvas-confetti'
 
-interface ConfettiEffectProps {
-  active: boolean
-}
-
 const DEFAULTS = {
   spread: 360,
   ticks: 50,
@@ -19,7 +15,7 @@ function shoot() {
   confetti({ ...DEFAULTS, particleCount: 10, scalar: 0.75, shapes: ['circle'] })
 }
 
-export function ConfettiEffect({ active }: ConfettiEffectProps) {
+export function useConfetti(active: boolean) {
   useEffect(() => {
     if (!active) return
     shoot()
@@ -27,6 +23,4 @@ export function ConfettiEffect({ active }: ConfettiEffectProps) {
     const t2 = setTimeout(shoot, 200)
     return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [active])
-
-  return null
 }

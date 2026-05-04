@@ -3,13 +3,8 @@ import { WorkoutFormDesktop } from './WorkoutFormDesktop'
 import { WorkoutFormMobile } from './WorkoutFormMobile'
 import { useDesktop } from '../hooks/useDesktop'
 
-export const DEFAULT_CONFIG: WorkoutConfig = {
-  workDuration: 30,
-  restDuration: 30,
-  intervals: 5,
-  rounds: 4,
-  restBetweenRounds: 120,
-}
+// Re-export for consumers that need the default
+export { DEFAULT_CONFIG } from '../hooks/useWorkoutConfig'
 
 interface WorkoutFormProps {
   onStart: (config: WorkoutConfig) => void

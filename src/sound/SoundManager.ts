@@ -2,6 +2,7 @@ import bellUrl      from '../assets/media/bell.mp3'
 import celebrateUrl from '../assets/media/celebrate.mp3'
 
 const STORAGE_KEY = 'aion:muted'
+const DEV = import.meta.env.DEV
 
 class SoundManager {
   private buffer: AudioBuffer | null = null
@@ -31,11 +32,11 @@ class SoundManager {
       fetch(bellUrl).then(r => r.arrayBuffer())
         .then(b => ctx.decodeAudioData(b))
         .then(b => { this.buffer = b })
-        .catch(e => console.warn('[SoundManager] bell.mp3:', e)),
+        .catch(e => { if (DEV) console.warn('[SoundManager] bell:', e) }),
       fetch(celebrateUrl).then(r => r.arrayBuffer())
         .then(b => ctx.decodeAudioData(b))
         .then(b => { this.celebrateBuffer = b })
-        .catch(e => console.warn('[SoundManager] celebrate.mp3:', e)),
+        .catch(e => { if (DEV) console.warn('[SoundManager] celebrate:', e) }),
     ])
   }
 
@@ -55,7 +56,7 @@ class SoundManager {
   }
 
   playWork()  { this.ring(1.0, 1.0,  3, 0.22) }
-  playRest()  { this.ring(0.7, 0.85, 1)        }
+  playRest()  { this.ring(0.7, 0.85, 1) }
 
   playComplete() {
     if (this._muted || !this.celebrateBuffer) return

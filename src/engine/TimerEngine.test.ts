@@ -209,4 +209,38 @@ describe('TimerEngine', () => {
     const r2i1 = ticks.find(t => t.phase === 'work' && t.currentRound === 2 && t.currentInterval === 1)
     expect(r2i1).toBeDefined()
   })
+
+  it('multiple skips in succession work correctly', () => {
+    const { engine, phases } = createEngine(basicConfig())
+    engine.start()
+    advance(100)
+
+    engine.skip() // countdown → work
+    advance(16)
+    engine.skip() // work → rest
+    advance(16)
+    engine.skip() // rest → work (interval 2)
+    advance(16)
+
+    const workCount = phases.filter(p => p === 'work').length
+    expect(workCount).toBe(2)
+  })
+
+  it('pause during rest-between-rounds does not advance', () => {
+    const config: WorkoutConfig = { workDuration: 10, restDuration: 0, intervals: 1, rounds: 2, restBetweenRounds: 30 }
+    const { engine, ticks } = createEngine(config)
+    engine.start()
+    advance(3100) // countdown
+    advance(10100) // work → rest-between-rounds
+
+    engine.pause()
+    const before = ticks.length
+    advance(20000)
+    expect(ticks.length).toBe(before)
+
+    engine.resume()
+    advance(30100) // complete the remaining rest-between-rounds
+    const inWork = ticks.some(t => t.phase === 'work' && t.currentRound === 2)
+    expect(inWork).toBe(true)
+  })
 })

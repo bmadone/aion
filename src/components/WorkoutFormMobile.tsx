@@ -1,19 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
-import type { Preset, WorkoutConfig } from '../types'
+import { useState } from 'react'
+import type { WorkoutConfig } from '../types'
 import { PresetSelector } from './PresetSelector'
 import { DurationPicker } from './DurationPicker'
 import { Stepper } from './Stepper'
-import { DEFAULT_CONFIG } from './WorkoutForm'
-
-const STORAGE_KEY = 'aion:lastWorkout'
-
-function loadConfig(): WorkoutConfig {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw)
-  } catch { /* ignore */ }
-  return DEFAULT_CONFIG
-}
+import { useWorkoutConfig } from '../hooks/useWorkoutConfig'
+import { validateConfig, isValid } from '../utils/validation'
 
 interface Props {
   onStart: (config: WorkoutConfig) => void
@@ -21,71 +12,59 @@ interface Props {
 }
 
 export function WorkoutFormMobile({ onStart, startBtnRef }: Props) {
-  const [preset, setPreset] = useState<Preset>('custom')
-  const [config, setConfig] = useState<WorkoutConfig>(loadConfig)
-  const [error, setError] = useState('')
-  const customRef = useRef<WorkoutConfig>(config)
+  const { preset, config, updateConfig, selectPreset } = useWorkoutConfig()
+  const [submitted, setSubmitted] = useState(false)
 
-  useEffect(() => {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(config)) } catch { /* ignore */ }
-  }, [config])
-
-  function update(patch: Partial<WorkoutConfig>) {
-    setPreset('custom')
-    setConfig(c => {
-      const next = { ...c, ...patch }
-      customRef.current = next
-      return next
-    })
-    setError('')
-  }
-
-  function handlePreset(p: Preset, presetConfig: WorkoutConfig | null) {
-    setPreset(p)
-    setError('')
-    setConfig(presetConfig ?? customRef.current)
-  }
+  const errors = validateConfig(config)
+  const valid  = isValid(errors)
 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault()
-    if (config.workDuration < 1) { setError('Work must be at least 1 second'); return }
+    setSubmitted(true)
+    if (!valid) return
     onStart(config)
   }
 
   return (
     <form className="workout-form" onSubmit={handleSubmit} noValidate>
-      <PresetSelector selected={preset} onSelect={handlePreset} />
+      <PresetSelector selected={preset} onSelect={selectPreset} />
 
       <div className="form-card">
         <div className="picker-row">
           <span className="picker-label">Work</span>
-          <DurationPicker value={config.workDuration} onChange={v => update({ workDuration: v })} />
+          <DurationPicker value={config.workDuration} onChange={v => updateConfig({ workDuration: v })} />
         </div>
         <div className="picker-row picker-row--sep">
           <span className="picker-label">Rest</span>
-          <DurationPicker value={config.restDuration} onChange={v => update({ restDuration: v })} />
+          <DurationPicker value={config.restDuration} onChange={v => updateConfig({ restDuration: v })} />
         </div>
       </div>
 
       <div className="form-card">
         <div className="stepper-row">
           <span className="stepper-label">Intervals / round</span>
-          <Stepper value={config.intervals} min={1} max={30} onChange={v => update({ intervals: v })} aria-label="Intervals per round" />
+          <Stepper value={config.intervals} min={1} max={30}
+            onChange={v => updateConfig({ intervals: v })} aria-label="Intervals per round" />
         </div>
         <div className="stepper-row stepper-row--sep">
           <span className="stepper-label">Rounds</span>
-          <Stepper value={config.rounds} min={1} max={20} onChange={v => update({ rounds: v })} aria-label="Number of rounds" />
+          <Stepper value={config.rounds} min={1} max={20}
+            onChange={v => updateConfig({ rounds: v })} aria-label="Number of rounds" />
         </div>
       </div>
 
       <div className="form-card">
         <div className="picker-row">
           <span className="picker-label">Block rest</span>
-          <DurationPicker value={config.restBetweenRounds} onChange={v => update({ restBetweenRounds: v })} />
+          <DurationPicker value={config.restBetweenRounds} onChange={v => updateConfig({ restBetweenRounds: v })} />
         </div>
       </div>
 
-      {error && <p className="form-error" role="alert">{error}</p>}
+      {submitted && !valid && (
+        <p className="form-error" role="alert">
+          {errors.workDuration ?? errors.intervals ?? errors.rounds}
+        </p>
+      )}
 
       <button ref={startBtnRef} type="submit" className="btn-primary" aria-label="Start workout">
         Start

@@ -1,7 +1,7 @@
-import { useRef, useEffect, useLayoutEffect, useCallback } from 'react'
+import { memo, useRef, useLayoutEffect, useEffect, useCallback } from 'react'
 
-const ITEM_H  = 44   // px per item
-const VISIBLE = 3    // items shown at once
+export const ITEM_H  = 44
+const VISIBLE = 3
 const PAD     = Math.floor(VISIBLE / 2) // 1
 
 interface WheelPickerProps {
@@ -12,7 +12,7 @@ interface WheelPickerProps {
   'aria-label'?: string
 }
 
-export function WheelPicker({
+export const WheelPicker = memo(function WheelPicker({
   values,
   value,
   onChange,
@@ -28,15 +28,15 @@ export function WheelPicker({
     return i < 0 ? 0 : i
   }
 
-  // Set scroll position before paint on mount (no flicker)
+  // Set scroll position before paint on mount — prevents flash at position 0
   useLayoutEffect(() => {
     const el = ref.current
-    if (!el || initialized.current) return
+    if (!el) return
     el.scrollTop = idxOf(value) * ITEM_H
     initialized.current = true
-  }) // eslint-disable-line react-hooks/exhaustive-deps
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Smooth scroll when value changes externally (e.g. preset selection)
+  // Smooth scroll when value changes externally (preset selection)
   useEffect(() => {
     const el = ref.current
     if (!el || !initialized.current) return
@@ -58,31 +58,51 @@ export function WheelPicker({
     }, 60)
   }, [values, value, onChange])
 
+  // Arrow key navigation
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    const idx = idxOf(value)
+    if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      if (idx > 0) onChange(values[idx - 1])
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      if (idx < values.length - 1) onChange(values[idx + 1])
+    }
+  }, [values, value, onChange]) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    <div className="wheel-wrap" role="listbox" aria-label={ariaLabel}>
+    <div
+      className="wheel-wrap"
+      role="spinbutton"
+      aria-label={ariaLabel}
+      aria-valuenow={value}
+      aria-valuemin={values[0]}
+      aria-valuemax={values[values.length - 1]}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
       <div className="wheel-highlight" aria-hidden="true" />
       <div
         ref={ref}
         className="wheel-scroll"
         onScroll={handleScroll}
+        aria-hidden="true"
       >
         {Array.from({ length: PAD }, (_, i) => (
-          <div key={`pt${i}`} className="wheel-pad" aria-hidden="true" />
+          <div key={`top-${i}`} className="wheel-pad" />
         ))}
         {values.map((v) => (
           <div
             key={v}
             className={`wheel-item${v === value ? ' wheel-item--sel' : ''}`}
-            role="option"
-            aria-selected={v === value}
           >
             {format ? format(v) : String(v).padStart(2, '0')}
           </div>
         ))}
         {Array.from({ length: PAD }, (_, i) => (
-          <div key={`pb${i}`} className="wheel-pad" aria-hidden="true" />
+          <div key={`bot-${i}`} className="wheel-pad" />
         ))}
       </div>
     </div>
   )
-}
+})

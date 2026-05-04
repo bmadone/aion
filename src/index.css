@@ -1,3 +1,10 @@
+/* ─── @property for smooth intensity animation ─── */
+@property --intensity {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
 /* ─── Tokens ─── */
 html[data-theme="dark"],
 html:not([data-theme]) {
@@ -8,8 +15,8 @@ html:not([data-theme]) {
   --border-2:     rgba(255, 255, 255, 0.14);
 
   --text:         #ffffff;
-  --text-2:       rgba(255, 255, 255, 0.48);
-  --text-3:       rgba(255, 255, 255, 0.24);
+  --text-2:       rgba(255, 255, 255, 0.65);
+  --text-3:       rgba(255, 255, 255, 0.38);
 
   --accent:       #8b5cf6;
   --accent-2:     #a78bfa;
@@ -19,6 +26,14 @@ html:not([data-theme]) {
   --red:    #ef4444;
   --yellow: #eab308;
   --green:  #22c55e;
+
+  /* phase backgrounds as tokens */
+  --bg-work:       #080000;
+  --bg-rest:       #080600;
+  --bg-block-rest: #000d04;
+
+  /* navbar */
+  --navbar-bg: rgba(0, 0, 0, 0.8);
 }
 
 html[data-theme="light"] {
@@ -29,8 +44,8 @@ html[data-theme="light"] {
   --border-2:     rgba(0, 0, 0, 0.14);
 
   --text:         #0a0a0a;
-  --text-2:       rgba(0, 0, 0, 0.48);
-  --text-3:       rgba(0, 0, 0, 0.24);
+  --text-2:       rgba(0, 0, 0, 0.6);
+  --text-3:       rgba(0, 0, 0, 0.35);
 
   --accent:       #7c3aed;
   --accent-2:     #6d28d9;
@@ -40,6 +55,12 @@ html[data-theme="light"] {
   --red:    #dc2626;
   --yellow: #ca8a04;
   --green:  #16a34a;
+
+  --bg-work:       #200000;
+  --bg-rest:       #180e00;
+  --bg-block-rest: #001a06;
+
+  --navbar-bg: rgba(255, 255, 255, 0.85);
 }
 
 /* ─── Reset ─── */
@@ -85,14 +106,10 @@ body::before {
   justify-content: space-between;
   padding: 0 20px;
   height: 56px;
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--navbar-bg);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px) saturate(1.4);
   -webkit-backdrop-filter: blur(12px) saturate(1.4);
-}
-
-html[data-theme="light"] .navbar {
-  background: rgba(255, 255, 255, 0.85);
 }
 
 .navbar-brand {
@@ -117,8 +134,8 @@ html[data-theme="light"] .navbar-brand {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border: none;
   border-radius: 8px;
   background: transparent;
@@ -167,7 +184,7 @@ html[data-theme="light"] .navbar-brand {
 }
 
 .preset-btn {
-  height: 32px;
+  height: 44px;
   padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 9999px;
@@ -265,8 +282,8 @@ html[data-theme="light"] .preset-btn--active {
 }
 
 .stepper-btn {
-  width: 40px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border: none;
   background: var(--surface-2);
   color: var(--text);
@@ -287,7 +304,7 @@ html[data-theme="light"] .preset-btn--active {
 .stepper-btn:disabled { opacity: 0.25; cursor: not-allowed; }
 
 .stepper-val {
-  min-width: 40px;
+  min-width: 44px;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -295,7 +312,7 @@ html[data-theme="light"] .preset-btn--active {
   letter-spacing: -0.02em;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
-  height: 36px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,7 +376,7 @@ html[data-theme="light"] .preset-btn--active {
   font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--text-2);
+  color: var(--text-3);
   user-select: none;
 }
 
@@ -368,6 +385,13 @@ html[data-theme="light"] .preset-btn--active {
 .wheel-item--sel {
   color: var(--text);
   font-weight: 700;
+}
+
+/* keyboard focus ring on the wheel wrapper */
+.wheel-wrap:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
 /* ─── Duration picker layout ─── */
@@ -551,13 +575,13 @@ html[data-theme="light"] .preset-btn--active {
   transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* phase base backgrounds */
-.timer-display--work       { background: #080000; color: #fff; --phase-color: var(--red); }
-.timer-display--rest       { background: #080600; color: #fff; --phase-color: var(--yellow); }
-.timer-display--block-rest { background: #000d04; color: #fff; --phase-color: var(--green); }
+/* phase base backgrounds — use tokens */
+.timer-display--work       { background: var(--bg-work);       color: #fff; --phase-color: var(--red); }
+.timer-display--rest       { background: var(--bg-rest);       color: #fff; --phase-color: var(--yellow); }
+.timer-display--block-rest { background: var(--bg-block-rest); color: #fff; --phase-color: var(--green); }
 .timer-display--complete   { background: var(--bg); }
 
-/* bottom glow — main, animated */
+/* bottom glow — compositor-only animation (opacity + transform = no repaint) */
 .timer-display--work::before,
 .timer-display--rest::before,
 .timer-display--block-rest::before {
@@ -570,6 +594,7 @@ html[data-theme="light"] .preset-btn--active {
   background: radial-gradient(ellipse, var(--phase-color) 0%, transparent 68%);
   pointer-events: none;
   transform-origin: center bottom;
+  will-change: transform, opacity;
 }
 
 .timer-display--work::before       { animation: breathe-work  2.4s ease-in-out infinite; }
@@ -588,6 +613,7 @@ html[data-theme="light"] .preset-btn--active {
   height: 45%;
   background: radial-gradient(ellipse, var(--phase-color) 0%, transparent 70%);
   pointer-events: none;
+  will-change: transform, opacity;
   animation: drift-top 4s ease-in-out infinite;
 }
 
@@ -710,12 +736,36 @@ html[data-theme="light"] .timer-controls .btn-secondary {
 
 .btn-pause {
   min-width: 116px;
-  background: #fff !important;
-  color: #000 !important;
+  background: var(--text) !important;
+  color: var(--bg) !important;
   border-color: transparent !important;
 }
 
 .btn-pause:hover { opacity: 0.88 !important; }
+
+/* ─── Error screen ─── */
+.error-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 100svh;
+  padding: 32px;
+  text-align: center;
+}
+
+.error-screen-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.error-screen-msg {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  max-width: 320px;
+}
 
 /* ─── Countdown overlay ─── */
 .countdown-overlay {
