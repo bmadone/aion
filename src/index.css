@@ -582,41 +582,50 @@ html[data-theme="light"] .preset-btn--active {
 .timer-display--block-rest { background: var(--bg-block-rest); color: #fff; --phase-color: var(--green); }
 .timer-display--complete   { background: var(--bg); }
 
-/* bottom glow — compositor-only animation (opacity + transform = no repaint) */
+/* main glow — transitions position between phases */
 .timer-display--work::before,
 .timer-display--rest::before,
 .timer-display--block-rest::before {
   content: '';
   position: absolute;
-  bottom: -15%;
   left: 50%;
   width: 90%;
   height: 70%;
   background: radial-gradient(ellipse, var(--phase-color) 0%, transparent 68%);
   pointer-events: none;
-  transform-origin: center bottom;
+  transform-origin: center center;
   will-change: transform, opacity;
+  transition: top 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.timer-display--work::before       { animation: breathe-work  2.4s ease-in-out infinite; }
-.timer-display--rest::before       { animation: breathe-rest  3.6s ease-in-out infinite; }
-.timer-display--block-rest::before { animation: breathe-block 3.2s ease-in-out infinite; }
+/* work: glow rises from bottom */
+.timer-display--work::before       { top: 45%;  animation: breathe-work  2.4s ease-in-out infinite; }
+/* rest: glow falls from top */
+.timer-display--rest::before       { top: -15%; animation: breathe-rest  3.6s ease-in-out infinite; }
+/* block-rest: glow from bottom like work */
+.timer-display--block-rest::before { top: 45%;  animation: breathe-block 3.2s ease-in-out infinite; }
 
-/* top secondary glow */
+/* secondary glow — mirrors main: opposite edge */
 .timer-display--work::after,
 .timer-display--rest::after,
 .timer-display--block-rest::after {
   content: '';
   position: absolute;
-  top: -8%;
   left: 50%;
   width: 55%;
   height: 45%;
   background: radial-gradient(ellipse, var(--phase-color) 0%, transparent 70%);
   pointer-events: none;
   will-change: transform, opacity;
-  animation: drift-top 4s ease-in-out infinite;
+  transition: top 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* work: secondary at top */
+.timer-display--work::after       { top: -8%;  animation: drift-top 4s ease-in-out infinite; }
+/* rest: secondary at bottom (mirrors work) */
+.timer-display--rest::after       { top: 63%;  animation: drift-top 4s ease-in-out infinite; }
+/* block-rest: secondary at top */
+.timer-display--block-rest::after { top: -8%;  animation: drift-top 4s ease-in-out infinite; }
 
 /* ─── Timer layout ─── */
 .timer-top {
