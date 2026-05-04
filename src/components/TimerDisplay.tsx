@@ -87,7 +87,6 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
     else        { engine.pause();  setPaused(true)  }
   }, [paused])
 
-  const handleSkip = useCallback(() => { engineRef.current?.skip() }, [])
 
   let bgClass = 'timer-display'
   if (isWork)      bgClass += ' timer-display--work'
@@ -156,9 +155,6 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
                 aria-pressed={paused}
               >
                 {paused ? 'Resume' : 'Pause'}
-              </button>
-              <button className="btn-secondary" onClick={handleSkip} aria-label="Skip to next interval">
-                Skip
               </button>
             </div>
           </div>
