@@ -5,8 +5,40 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="A distraction-free interval timer PWA for athletes." />
-    <title>Aion</title>
+
+    <title>Aion — Free Interval Timer. No Ads, No Tracking.</title>
+    <meta name="description" content="Aion is a free, flexible interval timer for HIIT, Tabata, EMOM, and AMRAP workouts. No ads, no tracking, no bloat. Works offline. Just open and train." />
+
+    <link rel="canonical" href="%VITE_CANONICAL_URL%" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%VITE_CANONICAL_URL%" />
+    <meta property="og:title" content="Aion — Free Interval Timer. No Ads, No Tracking." />
+    <meta property="og:description" content="Flexible interval timer for HIIT, Tabata, EMOM, and AMRAP. No ads, no tracking, no bloat. Works offline. Just train." />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Aion — Free Interval Timer. No Ads, No Tracking." />
+    <meta name="twitter:description" content="Flexible interval timer for HIIT, Tabata, EMOM, and AMRAP. No ads, no tracking, no bloat. Works offline. Just train." />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Aion",
+      "url": "%VITE_CANONICAL_URL%",
+      "description": "Free, flexible interval timer for HIIT, Tabata, EMOM, and AMRAP workouts. No ads, no tracking, no bloat.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
     <script>
       ;(function () {
         var stored = localStorage.getItem('aion:theme')
