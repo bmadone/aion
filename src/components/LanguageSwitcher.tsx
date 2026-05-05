@@ -40,8 +40,8 @@ export function LanguageSwitcher(): JSX.Element {
   const { i18n, t } = useTranslation()
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
-  const containerReference = useRef<HTMLDivElement>(null)
-  const searchReference = useRef<HTMLInputElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const searchRef = useRef<HTMLInputElement>(null)
 
   const currentCode = i18n.language
   const current = LOCALES.find(l => l.code === currentCode) ?? { code: 'en', name: 'English' }
@@ -57,12 +57,12 @@ export function LanguageSwitcher(): JSX.Element {
   }, [i18n])
 
   useEffect(() => {
-    if (open) {searchReference.current?.focus()}
+    if (open) {searchRef.current?.focus()}
   }, [open])
 
   useEffect(() => {
     function onOutsideClick(e: MouseEvent): void {
-      if (containerReference.current && !containerReference.current.contains(e.target as Node)) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setOpen(false)
         setSearch('')
       }
@@ -81,7 +81,7 @@ export function LanguageSwitcher(): JSX.Element {
   }, [open])
 
   return (
-    <div className="lang-switcher" ref={containerReference}>
+    <div className="lang-switcher" ref={containerRef}>
       <button
         className="icon-btn"
         onClick={() => setOpen(o => !o)}
@@ -95,7 +95,7 @@ export function LanguageSwitcher(): JSX.Element {
       {open && (
         <div className="lang-dropdown" role="dialog" aria-label={t('nav.languageSwitcher')}>
           <input
-            ref={searchReference}
+            ref={searchRef}
             className="lang-search"
             type="text"
             value={search}

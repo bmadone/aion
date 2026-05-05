@@ -23,7 +23,7 @@ export function WorkoutFormDesktop({ startBtnRef }: Properties): JSX.Element {
   const setView     = useStore((s) => s.setView)
 
   const [preset, setPreset] = useState<Preset>('custom')
-  const customReference = useRef<WorkoutConfig>(storeConfig)
+  const customRef = useRef<WorkoutConfig>(storeConfig)
 
   const {
     register,
@@ -40,9 +40,9 @@ export function WorkoutFormDesktop({ startBtnRef }: Properties): JSX.Element {
   useEffect(() => { reset(storeConfig) }, [storeConfig, reset])
 
   function handlePresetSelect(p: Preset, presetConfig: WorkoutConfig | null): void {
-    if (p !== 'custom') {customReference.current = getValues()}
+    if (p !== 'custom') {customRef.current = getValues()}
     setPreset(p)
-    reset(p === 'custom' ? customReference.current : (presetConfig ?? customReference.current))
+    reset(p === 'custom' ? customRef.current : (presetConfig ?? customRef.current))
   }
 
   function onSubmit(data: WorkoutConfig): void {

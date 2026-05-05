@@ -44,8 +44,8 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProperties): JSX.Elemen
     timeRemaining: 0,
   })
   const [paused, setPaused] = useState(false)
-  const engineReference  = useRef<TimerEngine | null>(null)
-  const displayReference = useRef<HTMLDivElement | null>(null)
+  const engineRef  = useRef<TimerEngine | null>(null)
+  const displayRef = useRef<HTMLDivElement | null>(null)
 
   const { phase, currentRound, totalRounds, currentInterval, totalIntervals, timeRemaining } = state
 
@@ -86,27 +86,27 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProperties): JSX.Elemen
         }
       },
     })
-    engineReference.current = engine
+    engineRef.current = engine
     engine.start()
     // Move focus to timer so keyboard controls work immediately
-    displayReference.current?.focus()
+    displayRef.current?.focus()
     return () => engine.stop()
   }, [config])
 
   const handleStop = useCallback(() => {
-    engineReference.current?.stop()
+    engineRef.current?.stop()
     setView('form')
   }, [setView])
 
   const handlePauseResume = useCallback(() => {
-    const engine = engineReference.current
+    const engine = engineRef.current
     if (!engine) {return}
     if (paused) { engine.resume(); setPaused(false) }
     else        { engine.pause();  setPaused(true)  }
   }, [paused])
 
   const handleSkip = useCallback(() => {
-    engineReference.current?.skip()
+    engineRef.current?.skip()
   }, [])
 
   useEffect(() => {
@@ -136,7 +136,7 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProperties): JSX.Elemen
 
   return (
     <div
-      ref={displayReference}
+      ref={displayRef}
       className={bgClass}
       role="timer"
       tabIndex={-1}

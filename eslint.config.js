@@ -1,8 +1,10 @@
 import js from '@eslint/js'
 import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import reactPlugin from '@eslint-react/eslint-plugin'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 import unicorn from 'eslint-plugin-unicorn'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
@@ -11,11 +13,22 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
+      // Base JS
       js.configs.recommended,
+
+      // TypeScript — strict type-checked + stylistic
       tseslint.configs.strictTypeChecked,
       tseslint.configs.stylisticTypeChecked,
+
+      // React — type-aware rules, hooks, HMR safety
+      reactPlugin.configs['recommended-type-checked'],
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
+
+      // Accessibility
+      jsxA11y.flatConfigs.recommended,
+
+      // Modern JS patterns
       unicorn.configs.recommended,
     ],
     languageOptions: {
@@ -26,46 +39,32 @@ export default defineConfig([
       },
     },
     rules: {
+      // ── JavaScript ──────────────────────────────────────────────────────
       'no-console': 'error',
-      'no-debugger': 'error',
       'no-alert': 'error',
-      'prefer-const': 'error',
       'no-var': 'error',
+      'prefer-const': 'error',
       eqeqeq: ['error', 'always'],
       'no-implicit-coercion': 'error',
+      curly: ['error', 'all'],
 
-      '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-unsafe-assignment': 'error',
-      '@typescript-eslint/no-unsafe-call': 'error',
-      '@typescript-eslint/no-unsafe-member-access': 'error',
-      '@typescript-eslint/no-unsafe-return': 'error',
-      '@typescript-eslint/no-unsafe-argument': 'error',
+      // ── TypeScript (not in strictTypeChecked / stylisticTypeChecked) ────
       '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
       '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+      '@typescript-eslint/consistent-type-exports': 'error',
       '@typescript-eslint/no-import-type-side-effects': 'error',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
-      '@typescript-eslint/no-non-null-assertion': 'error',
-      '@typescript-eslint/strict-boolean-expressions': 'error',
-      '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
-      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
-      '@typescript-eslint/no-floating-promises': 'error',
-      '@typescript-eslint/await-thenable': 'error',
-      '@typescript-eslint/no-misused-promises': 'error',
-      '@typescript-eslint/prefer-nullish-coalescing': 'error',
-      '@typescript-eslint/prefer-optional-chain': 'error',
-      '@typescript-eslint/switch-exhaustiveness-check': 'error',
       '@typescript-eslint/no-shadow': 'error',
       '@typescript-eslint/promise-function-async': 'error',
       '@typescript-eslint/return-await': ['error', 'in-try-catch'],
-      'no-nested-ternary': 'error',
-      'curly': ['error', 'all'],
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
+      '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
 
-      // Disabled: PascalCase filenames are React convention for components
-      'unicorn/filename-case': 'off',
-      // Disabled: Props/Ref/e are universal React/TS shorthands
-      'unicorn/prevent-abbreviations': 'off',
-      // Disabled: null has valid uses with DOM APIs and React error boundaries
-      'unicorn/no-null': 'off',
+      // ── Unicorn overrides ────────────────────────────────────────────────
+      'unicorn/filename-case': 'off',         // PascalCase is React component convention
+      'unicorn/prevent-abbreviations': 'off', // Props/Ref/e are established React/TS patterns
+      'unicorn/no-null': 'off',               // null is valid with DOM APIs and React error boundaries
     },
   },
 ])
