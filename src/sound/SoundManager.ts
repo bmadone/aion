@@ -25,8 +25,15 @@ class SoundManager {
     return this.ctx
   }
 
-  async preload(): Promise<void> {
+  // Mobile browsers suspend AudioContext until a user gesture; resume before any playback.
+  private async resumeCtx(): Promise<AudioContext> {
     const ctx = this.getCtx()
+    if (ctx.state === 'suspended') await ctx.resume()
+    return ctx
+  }
+
+  async preload(): Promise<void> {
+    const ctx = await this.resumeCtx()
     await Promise.all([
       fetch(bellUrl).then(r => r.arrayBuffer())
         .then(b => ctx.decodeAudioData(b))
@@ -42,6 +49,8 @@ class SoundManager {
   private ring(volume = 1, playbackRate = 1, times = 1, interval = 0.22): void {
     if (this._muted || !this.buffer) return
     const ctx = this.getCtx()
+    // Resume in case context was suspended after preload (can happen on iOS)
+    if (ctx.state === 'suspended') { void ctx.resume() }
     for (let i = 0; i < times; i++) {
       const src  = ctx.createBufferSource()
       const gain = ctx.createGain()
