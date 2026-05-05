@@ -2,7 +2,7 @@ import type { JSX } from 'react'
 import { useTranslation } from 'react-i18next'
 
 interface CountdownOverlayProperties {
-  count: number
+  readonly count: number
 }
 
 export function CountdownOverlay({ count }: CountdownOverlayProperties): JSX.Element {

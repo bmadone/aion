@@ -4,13 +4,13 @@ import type { Phase, TimerState, WorkoutConfig } from '../types'
 import { TimerEngine } from '../engine/TimerEngine'
 import { soundManager } from '../sound/SoundManager'
 import { CountdownOverlay } from './CountdownOverlay'
-import { useConfetti } from '../hooks/useConfetti'
+import { useConfetti } from '../hooks/use-confetti'
 import { useConfig, useStore } from '../store'
 
 const COUNTDOWN_SECONDS = 3
 
 interface TimerDisplayProperties {
-  stopBtnRef: React.RefObject<HTMLButtonElement | null>
+  readonly stopBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
 function formatTime(seconds: number): string {

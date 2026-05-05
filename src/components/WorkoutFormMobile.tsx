@@ -11,7 +11,7 @@ import { Stepper } from './Stepper'
 import type { Preset } from '../types'
 
 interface Properties {
-  startBtnRef: React.RefObject<HTMLButtonElement | null>
+  readonly startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
 export function WorkoutFormMobile({ startBtnRef }: Properties): JSX.Element {

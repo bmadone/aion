@@ -6,6 +6,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import unicorn from 'eslint-plugin-unicorn'
+import sonarjs from 'eslint-plugin-sonarjs'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
@@ -30,6 +31,9 @@ export default defineConfig([
 
       // Modern JS patterns
       unicorn.configs.recommended,
+
+      // Code quality / complexity
+      sonarjs.configs.recommended,
     ],
     languageOptions: {
       globals: globals.browser,
@@ -61,8 +65,12 @@ export default defineConfig([
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
       '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
 
+      // ── SonarJS overrides ────────────────────────────────────────────────
+      'sonarjs/function-return-type': 'off', // redundant with @typescript-eslint/explicit-function-return-type
+
       // ── Unicorn overrides ────────────────────────────────────────────────
-      'unicorn/filename-case': 'off',         // PascalCase is React component convention
+      // PascalCase for components/classes, kebab-case for utilities/hooks
+      'unicorn/filename-case': ['error', { cases: { pascalCase: true, kebabCase: true } }],
       'unicorn/prevent-abbreviations': 'off', // Props/Ref/e are established React/TS patterns
       'unicorn/no-null': 'off',               // null is valid with DOM APIs and React error boundaries
     },

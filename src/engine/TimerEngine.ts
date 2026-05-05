@@ -122,7 +122,6 @@ export class TimerEngine {
 
     if (phase === 'rest-between-rounds') {
       this.enterPhase('work', workDuration, currentRound + 1, 1)
-      return
     }
   }
 

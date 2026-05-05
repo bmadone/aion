@@ -1,7 +1,7 @@
 import type { JSX } from 'react'
 import { WorkoutFormDesktop } from './WorkoutFormDesktop'
 import { WorkoutFormMobile } from './WorkoutFormMobile'
-import { useDesktop } from '../hooks/useDesktop'
+import { useDesktop } from '../hooks/use-desktop'
 
 interface WorkoutFormProperties {
   startBtnRef: React.RefObject<HTMLButtonElement | null>

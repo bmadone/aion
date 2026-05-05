@@ -1,6 +1,6 @@
 import { useRef, useEffect, type JSX } from 'react'
 import { useStore, useView, useTheme } from './store'
-import { useI18nDirection } from './hooks/useI18nDirection'
+import { useI18nDirection } from './hooks/use-i18n-direction'
 import { soundManager } from './sound/SoundManager'
 import { NavBar } from './components/NavBar'
 import { WorkoutForm } from './components/WorkoutForm'

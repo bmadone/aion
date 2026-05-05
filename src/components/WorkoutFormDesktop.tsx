@@ -13,7 +13,7 @@ import { Card, CardContent } from './ui/card'
 import type { Preset } from '../types'
 
 interface Properties {
-  startBtnRef: React.RefObject<HTMLButtonElement | null>
+  readonly startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
 export function WorkoutFormDesktop({ startBtnRef }: Properties): JSX.Element {
@@ -111,11 +111,11 @@ export function WorkoutFormDesktop({ startBtnRef }: Properties): JSX.Element {
 type Registration = ReturnType<ReturnType<typeof useForm<WorkoutConfig>>['register']>
 
 interface FieldProperties {
-  id: string
-  label: string
-  error?: string | undefined
-  registration: Registration
-  sep?: boolean | undefined
+  readonly id: string
+  readonly label: string
+  readonly error?: string | undefined
+  readonly registration: Registration
+  readonly sep?: boolean | undefined
 }
 
 function DesktopField({ id, label, error, registration, sep: separator = false }: FieldProperties): JSX.Element {
