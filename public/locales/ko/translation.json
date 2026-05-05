@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "앱 내비게이션",
+    "muteSounds": "소리 끄기",
+    "unmuteSounds": "소리 켜기",
+    "switchToDark": "다크 모드로 전환",
+    "switchToLight": "라이트 모드로 전환",
+    "languageSwitcher": "언어 변경"
+  },
+  "form": {
+    "workLabel": "운동 (초)",
+    "restLabel": "휴식 (초)",
+    "intervalsLabel": "인터벌 / 라운드",
+    "roundsLabel": "라운드",
+    "blockRestLabel": "블록 휴식 (초)",
+    "startButton": "시작",
+    "startButtonAria": "운동 시작",
+    "presetsGroup": "운동 프리셋",
+    "decreaseButton": "감소",
+    "increaseButton": "증가",
+    "minutes": "분",
+    "seconds": "초",
+    "workLabelShort": "운동",
+    "restLabelShort": "휴식",
+    "blockRestLabelShort": "블록 휴식",
+    "intervalsPerRound": "라운드당 인터벌",
+    "numberOfRounds": "라운드 수"
+  },
+  "presets": {
+    "custom": "사용자 정의",
+    "tabata": "타바타",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "운동 타이머",
+    "go": "시작!",
+    "goAria": "시작",
+    "startingIn": "{{count}}초 후 시작",
+    "getReady": "준비하세요",
+    "blockRestPhase": "블록 휴식",
+    "workPhase": "운동",
+    "restPhase": "휴식",
+    "completePhase": "완료",
+    "completeMessage": "운동 완료!",
+    "doneButton": "완료",
+    "returnToForm": "폼으로 돌아가기",
+    "stopButton": "운동 중단",
+    "stopText": "중단",
+    "pauseButton": "운동 일시정지",
+    "pauseText": "일시정지",
+    "resumeButton": "운동 재개",
+    "resumeText": "재개",
+    "roundIndicator": "라운드 {{current}} / {{total}}",
+    "intervalIndicator": "인터벌 {{current}} / {{total}}",
+    "timeRemaining": "{{time}} 남음"
+  },
+  "errors": {
+    "title": "오류가 발생했습니다",
+    "tryAgain": "다시 시도",
+    "workDurationMin": "≥ 1초여야 함",
+    "restDurationMin": "≥ 0이어야 함",
+    "intervalsMin": "≥ 1이어야 함",
+    "roundsMin": "≥ 1이어야 함",
+    "restBetweenRoundsMin": "≥ 0이어야 함"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "تنقل التطبيق",
+    "muteSounds": "كتم الأصوات",
+    "unmuteSounds": "تشغيل الأصوات",
+    "switchToDark": "التبديل إلى الوضع المظلم",
+    "switchToLight": "التبديل إلى الوضع الفاتح",
+    "languageSwitcher": "تغيير اللغة"
+  },
+  "form": {
+    "workLabel": "تمرين (ثانية)",
+    "restLabel": "راحة (ثانية)",
+    "intervalsLabel": "فترات / جولة",
+    "roundsLabel": "جولات",
+    "blockRestLabel": "راحة الكتلة (ثانية)",
+    "startButton": "ابدأ",
+    "startButtonAria": "ابدأ التمرين",
+    "presetsGroup": "إعدادات التمرين المسبقة",
+    "decreaseButton": "تقليل",
+    "increaseButton": "زيادة",
+    "minutes": "دقائق",
+    "seconds": "ثواني",
+    "workLabelShort": "تمرين",
+    "restLabelShort": "راحة",
+    "blockRestLabelShort": "راحة الكتلة",
+    "intervalsPerRound": "الفترات لكل جولة",
+    "numberOfRounds": "عدد الجولات"
+  },
+  "presets": {
+    "custom": "مخصص",
+    "tabata": "تاباتا",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "مؤقت التمرين",
+    "go": "انطلق!",
+    "goAria": "انطلق",
+    "startingIn": "يبدأ في {{count}}",
+    "getReady": "استعد",
+    "blockRestPhase": "راحة الكتلة",
+    "workPhase": "تمرين",
+    "restPhase": "راحة",
+    "completePhase": "مكتمل",
+    "completeMessage": "اكتمل التمرين!",
+    "doneButton": "تم",
+    "returnToForm": "العودة إلى النموذج",
+    "stopButton": "إيقاف التمرين",
+    "stopText": "إيقاف",
+    "pauseButton": "إيقاف مؤقت للتمرين",
+    "pauseText": "إيقاف مؤقت",
+    "resumeButton": "استئناف التمرين",
+    "resumeText": "استئناف",
+    "roundIndicator": "الجولة {{current}} من {{total}}",
+    "intervalIndicator": "الفترة {{current}} من {{total}}",
+    "timeRemaining": "{{time}} متبقية"
+  },
+  "errors": {
+    "title": "حدث خطأ ما",
+    "tryAgain": "حاول مرة أخرى",
+    "workDurationMin": "يجب أن يكون ≥ 1 ثانية",
+    "restDurationMin": "يجب أن يكون ≥ 0",
+    "intervalsMin": "يجب أن يكون ≥ 1",
+    "roundsMin": "يجب أن يكون ≥ 1",
+    "restBetweenRoundsMin": "يجب أن يكون ≥ 0"
+  }
+}

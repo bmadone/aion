@@ -1,21 +1,24 @@
 import type { JSX } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useStore, useTheme, useMuted } from '../store'
+import { LanguageSwitcher } from './LanguageSwitcher'
 
-interface NavBarProps {
-  theme: 'dark' | 'light'
-  onThemeToggle: () => void
-  muted: boolean
-  onMuteToggle: () => void
-}
+export function NavBar(): JSX.Element {
+  const { t } = useTranslation()
+  const theme       = useTheme()
+  const muted       = useMuted()
+  const toggleTheme = useStore((s) => s.toggleTheme)
+  const toggleMuted = useStore((s) => s.toggleMuted)
 
-export function NavBar({ theme, onThemeToggle, muted, onMuteToggle }: NavBarProps): JSX.Element {
   return (
-    <nav className="navbar" role="navigation" aria-label="App navigation">
+    <nav className="navbar" role="navigation" aria-label={t('nav.ariaLabel')}>
       <span className="navbar-brand">Aion</span>
       <div className="navbar-controls">
+        <LanguageSwitcher />
         <button
           className="icon-btn"
-          onClick={onMuteToggle}
-          aria-label={muted ? 'Unmute sounds' : 'Mute sounds'}
+          onClick={toggleMuted}
+          aria-label={muted ? t('nav.unmuteSounds') : t('nav.muteSounds')}
           aria-pressed={muted}
         >
           {muted ? (
@@ -36,8 +39,8 @@ export function NavBar({ theme, onThemeToggle, muted, onMuteToggle }: NavBarProp
         </button>
         <button
           className="icon-btn"
-          onClick={onThemeToggle}
-          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? t('nav.switchToLight') : t('nav.switchToDark')}
         >
           {theme === 'dark' ? (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

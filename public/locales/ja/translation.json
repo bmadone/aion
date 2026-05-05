@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "アプリナビゲーション",
+    "muteSounds": "音をミュート",
+    "unmuteSounds": "音をオン",
+    "switchToDark": "ダークモードに切り替え",
+    "switchToLight": "ライトモードに切り替え",
+    "languageSwitcher": "言語を変更"
+  },
+  "form": {
+    "workLabel": "運動 (秒)",
+    "restLabel": "休憩 (秒)",
+    "intervalsLabel": "インターバル / ラウンド",
+    "roundsLabel": "ラウンド",
+    "blockRestLabel": "ブロック休憩 (秒)",
+    "startButton": "スタート",
+    "startButtonAria": "トレーニング開始",
+    "presetsGroup": "トレーニングプリセット",
+    "decreaseButton": "減らす",
+    "increaseButton": "増やす",
+    "minutes": "分",
+    "seconds": "秒",
+    "workLabelShort": "運動",
+    "restLabelShort": "休憩",
+    "blockRestLabelShort": "ブロック休憩",
+    "intervalsPerRound": "ラウンドあたりのインターバル",
+    "numberOfRounds": "ラウンド数"
+  },
+  "presets": {
+    "custom": "カスタム",
+    "tabata": "タバタ",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "トレーニングタイマー",
+    "go": "GO!",
+    "goAria": "スタート",
+    "startingIn": "{{count}}秒後に開始",
+    "getReady": "準備して",
+    "blockRestPhase": "ブロック休憩",
+    "workPhase": "運動",
+    "restPhase": "休憩",
+    "completePhase": "完了",
+    "completeMessage": "トレーニング完了！",
+    "doneButton": "完了",
+    "returnToForm": "フォームに戻る",
+    "stopButton": "トレーニング停止",
+    "stopText": "停止",
+    "pauseButton": "トレーニング一時停止",
+    "pauseText": "一時停止",
+    "resumeButton": "トレーニング再開",
+    "resumeText": "再開",
+    "roundIndicator": "ラウンド {{current}} / {{total}}",
+    "intervalIndicator": "インターバル {{current}} / {{total}}",
+    "timeRemaining": "残り {{time}}"
+  },
+  "errors": {
+    "title": "エラーが発生しました",
+    "tryAgain": "もう一度試す",
+    "workDurationMin": "≥ 1秒必要",
+    "restDurationMin": "≥ 0必要",
+    "intervalsMin": "≥ 1必要",
+    "roundsMin": "≥ 1必要",
+    "restBetweenRoundsMin": "≥ 0必要"
+  }
+}

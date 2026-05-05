@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Appnavigation",
+    "muteSounds": "Stäng av ljud",
+    "unmuteSounds": "Aktivera ljud",
+    "switchToDark": "Byt till mörkt läge",
+    "switchToLight": "Byt till ljust läge",
+    "languageSwitcher": "Byt språk"
+  },
+  "form": {
+    "workLabel": "Arbete (s)",
+    "restLabel": "Vila (s)",
+    "intervalsLabel": "Intervaller / omgång",
+    "roundsLabel": "Omgångar",
+    "blockRestLabel": "Blockvila (s)",
+    "startButton": "Starta",
+    "startButtonAria": "Starta träning",
+    "presetsGroup": "Träningsförinställningar",
+    "decreaseButton": "Minska",
+    "increaseButton": "Öka",
+    "minutes": "Minuter",
+    "seconds": "Sekunder",
+    "workLabelShort": "Arbete",
+    "restLabelShort": "Vila",
+    "blockRestLabelShort": "Blockvila",
+    "intervalsPerRound": "Intervaller per omgång",
+    "numberOfRounds": "Antal omgångar"
+  },
+  "presets": {
+    "custom": "Anpassad",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Träningsklocka",
+    "go": "KÖR!",
+    "goAria": "Kör",
+    "startingIn": "Startar om {{count}}",
+    "getReady": "Gör dig redo",
+    "blockRestPhase": "BLOCKVILA",
+    "workPhase": "ARBETE",
+    "restPhase": "VILA",
+    "completePhase": "KLAR",
+    "completeMessage": "Träning klar!",
+    "doneButton": "Klar",
+    "returnToForm": "Tillbaka till formulär",
+    "stopButton": "Stoppa träning",
+    "stopText": "Stopp",
+    "pauseButton": "Pausa träning",
+    "pauseText": "Pausa",
+    "resumeButton": "Återuppta träning",
+    "resumeText": "Återuppta",
+    "roundIndicator": "Omgång {{current}} av {{total}}",
+    "intervalIndicator": "Intervall {{current}} av {{total}}",
+    "timeRemaining": "{{time}} kvar"
+  },
+  "errors": {
+    "title": "Något gick fel",
+    "tryAgain": "Försök igen",
+    "workDurationMin": "Måste vara ≥ 1s",
+    "restDurationMin": "Måste vara ≥ 0",
+    "intervalsMin": "Måste vara ≥ 1",
+    "roundsMin": "Måste vara ≥ 1",
+    "restBetweenRoundsMin": "Måste vara ≥ 0"
+  }
+}

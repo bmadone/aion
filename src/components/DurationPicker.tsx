@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { WheelPicker } from './WheelPicker'
 
 const MINS = Array.from({ length: 60 }, (_, i) => i)
@@ -10,6 +11,7 @@ interface DurationPickerProps {
 }
 
 export const DurationPicker = memo(function DurationPicker({ value, onChange }: DurationPickerProps) {
+  const { t } = useTranslation()
   const mins = Math.min(59, Math.floor(value / 60))
   const secs = value % 60
 
@@ -19,14 +21,14 @@ export const DurationPicker = memo(function DurationPicker({ value, onChange }: 
         values={MINS}
         value={mins}
         onChange={(m) => onChange(m * 60 + secs)}
-        aria-label="Minutes"
+        aria-label={t('form.minutes')}
       />
       <span className="duration-colon" aria-hidden="true">:</span>
       <WheelPicker
         values={SECS}
         value={secs}
         onChange={(s) => onChange(mins * 60 + s)}
-        aria-label="Seconds"
+        aria-label={t('form.seconds')}
       />
     </div>
   )

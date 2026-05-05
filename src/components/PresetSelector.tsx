@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { Preset, WorkoutConfig } from '../types'
 import { PRESETS } from '../types'
 
@@ -7,16 +8,18 @@ interface PresetSelectorProps {
   onSelect: (preset: Preset, config: WorkoutConfig | null) => void
 }
 
-const PRESET_LABELS: Record<Preset, string> = {
-  custom: 'Custom',
-  tabata: 'Tabata',
-  amrap:  'AMRAP',
-  emom:   'EMOM',
-}
-
 export const PresetSelector = memo(function PresetSelector({ selected, onSelect }: PresetSelectorProps) {
+  const { t } = useTranslation()
+
+  const PRESET_LABELS: Record<Preset, string> = {
+    custom: t('presets.custom'),
+    tabata: t('presets.tabata'),
+    amrap:  t('presets.amrap'),
+    emom:   t('presets.emom'),
+  }
+
   return (
-    <div className="preset-selector" role="group" aria-label="Workout presets">
+    <div className="preset-selector" role="group" aria-label={t('form.presetsGroup')}>
       {(Object.keys(PRESETS) as Preset[]).map(preset => (
         <button
           key={preset}

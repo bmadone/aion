@@ -1,5 +1,6 @@
 // @ts-expect-error — no type declarations for variable font CSS import
 import '@fontsource-variable/space-grotesk'
+import './i18n'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { SpeedInsights } from '@vercel/speed-insights/react'

@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Alkalmazás navigáció",
+    "muteSounds": "Hangok némítása",
+    "unmuteSounds": "Hangok bekapcsolása",
+    "switchToDark": "Váltás sötét módra",
+    "switchToLight": "Váltás világos módra",
+    "languageSwitcher": "Nyelv módosítása"
+  },
+  "form": {
+    "workLabel": "Munka (s)",
+    "restLabel": "Pihenő (s)",
+    "intervalsLabel": "Intervallumok / kör",
+    "roundsLabel": "Körök",
+    "blockRestLabel": "Blokkpihenő (s)",
+    "startButton": "Indítás",
+    "startButtonAria": "Edzés indítása",
+    "presetsGroup": "Edzés előre beállítások",
+    "decreaseButton": "Csökkentés",
+    "increaseButton": "Növelés",
+    "minutes": "Percek",
+    "seconds": "Másodpercek",
+    "workLabelShort": "Munka",
+    "restLabelShort": "Pihenő",
+    "blockRestLabelShort": "Blokkpihenő",
+    "intervalsPerRound": "Intervallumok körenként",
+    "numberOfRounds": "Körök száma"
+  },
+  "presets": {
+    "custom": "Egyéni",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Edzés időzítő",
+    "go": "RAJT!",
+    "goAria": "Rajt",
+    "startingIn": "Indul {{count}} mp múlva",
+    "getReady": "Készülj fel",
+    "blockRestPhase": "BLOKKPIHENŐ",
+    "workPhase": "MUNKA",
+    "restPhase": "PIHENŐ",
+    "completePhase": "BEFEJEZETT",
+    "completeMessage": "Edzés befejezve!",
+    "doneButton": "Kész",
+    "returnToForm": "Vissza az űrlapra",
+    "stopButton": "Edzés leállítása",
+    "stopText": "Leállítás",
+    "pauseButton": "Edzés szüneteltetése",
+    "pauseText": "Szünet",
+    "resumeButton": "Edzés folytatása",
+    "resumeText": "Folytatás",
+    "roundIndicator": "{{current}}. kör / {{total}}",
+    "intervalIndicator": "{{current}}. intervallum / {{total}}",
+    "timeRemaining": "{{time}} van hátra"
+  },
+  "errors": {
+    "title": "Valami hiba történt",
+    "tryAgain": "Próbáld újra",
+    "workDurationMin": "Legalább ≥ 1s kell",
+    "restDurationMin": "Legalább ≥ 0 kell",
+    "intervalsMin": "Legalább ≥ 1 kell",
+    "roundsMin": "Legalább ≥ 1 kell",
+    "restBetweenRoundsMin": "Legalább ≥ 0 kell"
+  }
+}

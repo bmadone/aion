@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "App-navigatie",
+    "muteSounds": "Geluiden dempen",
+    "unmuteSounds": "Geluiden activeren",
+    "switchToDark": "Overschakelen naar donkere modus",
+    "switchToLight": "Overschakelen naar lichte modus",
+    "languageSwitcher": "Taal wijzigen"
+  },
+  "form": {
+    "workLabel": "Werk (s)",
+    "restLabel": "Rust (s)",
+    "intervalsLabel": "Intervallen / ronde",
+    "roundsLabel": "Rondes",
+    "blockRestLabel": "Blokrust (s)",
+    "startButton": "Starten",
+    "startButtonAria": "Training starten",
+    "presetsGroup": "Trainingsvoorinstellingen",
+    "decreaseButton": "Verminderen",
+    "increaseButton": "Verhogen",
+    "minutes": "Minuten",
+    "seconds": "Seconden",
+    "workLabelShort": "Werk",
+    "restLabelShort": "Rust",
+    "blockRestLabelShort": "Blokrust",
+    "intervalsPerRound": "Intervallen per ronde",
+    "numberOfRounds": "Aantal rondes"
+  },
+  "presets": {
+    "custom": "Aangepast",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Trainingstimer",
+    "go": "GA!",
+    "goAria": "Ga",
+    "startingIn": "Start over {{count}}",
+    "getReady": "Maak je klaar",
+    "blockRestPhase": "BLOKRUST",
+    "workPhase": "WERK",
+    "restPhase": "RUST",
+    "completePhase": "VOLTOOID",
+    "completeMessage": "Training voltooid!",
+    "doneButton": "Klaar",
+    "returnToForm": "Terug naar formulier",
+    "stopButton": "Training stoppen",
+    "stopText": "Stoppen",
+    "pauseButton": "Training pauzeren",
+    "pauseText": "Pauzeren",
+    "resumeButton": "Training hervatten",
+    "resumeText": "Hervatten",
+    "roundIndicator": "Ronde {{current}} van {{total}}",
+    "intervalIndicator": "Interval {{current}} van {{total}}",
+    "timeRemaining": "{{time}} resterend"
+  },
+  "errors": {
+    "title": "Er is iets misgegaan",
+    "tryAgain": "Opnieuw proberen",
+    "workDurationMin": "Moet ≥ 1s zijn",
+    "restDurationMin": "Moet ≥ 0 zijn",
+    "intervalsMin": "Moet ≥ 1 zijn",
+    "roundsMin": "Moet ≥ 1 zijn",
+    "restBetweenRoundsMin": "Moet ≥ 0 zijn"
+  }
+}

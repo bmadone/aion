@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "App navigation",
+    "muteSounds": "Mute sounds",
+    "unmuteSounds": "Unmute sounds",
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode",
+    "languageSwitcher": "Change language"
+  },
+  "form": {
+    "workLabel": "Work (s)",
+    "restLabel": "Rest (s)",
+    "intervalsLabel": "Intervals / round",
+    "roundsLabel": "Rounds",
+    "blockRestLabel": "Block rest (s)",
+    "startButton": "Start",
+    "startButtonAria": "Start workout",
+    "presetsGroup": "Workout presets",
+    "decreaseButton": "Decrease",
+    "increaseButton": "Increase",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "workLabelShort": "Work",
+    "restLabelShort": "Rest",
+    "blockRestLabelShort": "Block rest",
+    "intervalsPerRound": "Intervals per round",
+    "numberOfRounds": "Number of rounds"
+  },
+  "presets": {
+    "custom": "Custom",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Workout timer",
+    "go": "GO!",
+    "goAria": "Go",
+    "startingIn": "Starting in {{count}}",
+    "getReady": "Get ready",
+    "blockRestPhase": "BLOCK REST",
+    "workPhase": "WORK",
+    "restPhase": "REST",
+    "completePhase": "COMPLETE",
+    "completeMessage": "Workout Complete!",
+    "doneButton": "Done",
+    "returnToForm": "Return to form",
+    "stopButton": "Stop workout",
+    "stopText": "Stop",
+    "pauseButton": "Pause workout",
+    "pauseText": "Pause",
+    "resumeButton": "Resume workout",
+    "resumeText": "Resume",
+    "roundIndicator": "Round {{current}} of {{total}}",
+    "intervalIndicator": "Interval {{current}} of {{total}}",
+    "timeRemaining": "{{time}} remaining"
+  },
+  "errors": {
+    "title": "Something went wrong",
+    "tryAgain": "Try again",
+    "workDurationMin": "Must be ≥ 1s",
+    "restDurationMin": "Must be ≥ 0",
+    "intervalsMin": "Must be ≥ 1",
+    "roundsMin": "Must be ≥ 1",
+    "restBetweenRoundsMin": "Must be ≥ 0"
+  }
+}

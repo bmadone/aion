@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Sovelluksen navigointi",
+    "muteSounds": "Mykistä äänet",
+    "unmuteSounds": "Ota äänet käyttöön",
+    "switchToDark": "Vaihda tummaan tilaan",
+    "switchToLight": "Vaihda vaaleaan tilaan",
+    "languageSwitcher": "Vaihda kieltä"
+  },
+  "form": {
+    "workLabel": "Työ (s)",
+    "restLabel": "Lepo (s)",
+    "intervalsLabel": "Intervallit / kierros",
+    "roundsLabel": "Kierrokset",
+    "blockRestLabel": "Blokkilepo (s)",
+    "startButton": "Aloita",
+    "startButtonAria": "Aloita harjoitus",
+    "presetsGroup": "Harjoitusasetukset",
+    "decreaseButton": "Vähennä",
+    "increaseButton": "Lisää",
+    "minutes": "Minuutit",
+    "seconds": "Sekunnit",
+    "workLabelShort": "Työ",
+    "restLabelShort": "Lepo",
+    "blockRestLabelShort": "Blokkilepo",
+    "intervalsPerRound": "Intervallit per kierros",
+    "numberOfRounds": "Kierrosten määrä"
+  },
+  "presets": {
+    "custom": "Mukautettu",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Harjoitusajastin",
+    "go": "NYT!",
+    "goAria": "Nyt",
+    "startingIn": "Alkaa {{count}}:n kuluttua",
+    "getReady": "Valmistaudu",
+    "blockRestPhase": "BLOKKILEPO",
+    "workPhase": "TYÖ",
+    "restPhase": "LEPO",
+    "completePhase": "VALMIS",
+    "completeMessage": "Harjoitus valmis!",
+    "doneButton": "Valmis",
+    "returnToForm": "Palaa lomakkeelle",
+    "stopButton": "Lopeta harjoitus",
+    "stopText": "Lopeta",
+    "pauseButton": "Keskeytä harjoitus",
+    "pauseText": "Keskeytä",
+    "resumeButton": "Jatka harjoitusta",
+    "resumeText": "Jatka",
+    "roundIndicator": "Kierros {{current}} / {{total}}",
+    "intervalIndicator": "Intervalli {{current}} / {{total}}",
+    "timeRemaining": "{{time}} jäljellä"
+  },
+  "errors": {
+    "title": "Jotain meni pieleen",
+    "tryAgain": "Yritä uudelleen",
+    "workDurationMin": "Täytyy olla ≥ 1s",
+    "restDurationMin": "Täytyy olla ≥ 0",
+    "intervalsMin": "Täytyy olla ≥ 1",
+    "roundsMin": "Täytyy olla ≥ 1",
+    "restBetweenRoundsMin": "Täytyy olla ≥ 0"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Nawigacja aplikacji",
+    "muteSounds": "Wycisz dźwięki",
+    "unmuteSounds": "Włącz dźwięki",
+    "switchToDark": "Przełącz na tryb ciemny",
+    "switchToLight": "Przełącz na tryb jasny",
+    "languageSwitcher": "Zmień język"
+  },
+  "form": {
+    "workLabel": "Praca (s)",
+    "restLabel": "Odpoczynek (s)",
+    "intervalsLabel": "Interwały / seria",
+    "roundsLabel": "Serie",
+    "blockRestLabel": "Odpoczynek między blokami (s)",
+    "startButton": "Start",
+    "startButtonAria": "Rozpocznij trening",
+    "presetsGroup": "Ustawienia treningowe",
+    "decreaseButton": "Zmniejsz",
+    "increaseButton": "Zwiększ",
+    "minutes": "Minuty",
+    "seconds": "Sekundy",
+    "workLabelShort": "Praca",
+    "restLabelShort": "Odpoczynek",
+    "blockRestLabelShort": "Odpoczynek blokowy",
+    "intervalsPerRound": "Interwały na serię",
+    "numberOfRounds": "Liczba serii"
+  },
+  "presets": {
+    "custom": "Własny",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Timer treningowy",
+    "go": "TERAZ!",
+    "goAria": "Teraz",
+    "startingIn": "Start za {{count}}",
+    "getReady": "Gotuj się",
+    "blockRestPhase": "ODPOCZYNEK BLOKOWY",
+    "workPhase": "PRACA",
+    "restPhase": "ODPOCZYNEK",
+    "completePhase": "UKOŃCZONO",
+    "completeMessage": "Trening ukończony!",
+    "doneButton": "Gotowe",
+    "returnToForm": "Wróć do formularza",
+    "stopButton": "Zatrzymaj trening",
+    "stopText": "Zatrzymaj",
+    "pauseButton": "Wstrzymaj trening",
+    "pauseText": "Wstrzymaj",
+    "resumeButton": "Wznów trening",
+    "resumeText": "Wznów",
+    "roundIndicator": "Seria {{current}} z {{total}}",
+    "intervalIndicator": "Interwał {{current}} z {{total}}",
+    "timeRemaining": "{{time}} pozostało"
+  },
+  "errors": {
+    "title": "Coś poszło nie tak",
+    "tryAgain": "Spróbuj ponownie",
+    "workDurationMin": "Musi być ≥ 1s",
+    "restDurationMin": "Musi być ≥ 0",
+    "intervalsMin": "Musi być ≥ 1",
+    "roundsMin": "Musi być ≥ 1",
+    "restBetweenRoundsMin": "Musi być ≥ 0"
+  }
+}

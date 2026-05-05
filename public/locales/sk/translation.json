@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Navigácia aplikácie",
+    "muteSounds": "Stlmiť zvuky",
+    "unmuteSounds": "Zapnúť zvuky",
+    "switchToDark": "Prepnúť na tmavý režim",
+    "switchToLight": "Prepnúť na svetlý režim",
+    "languageSwitcher": "Zmeniť jazyk"
+  },
+  "form": {
+    "workLabel": "Práca (s)",
+    "restLabel": "Odpočinok (s)",
+    "intervalsLabel": "Intervaly / séria",
+    "roundsLabel": "Série",
+    "blockRestLabel": "Odpočinok medzi blokmi (s)",
+    "startButton": "Spustiť",
+    "startButtonAria": "Spustiť tréning",
+    "presetsGroup": "Predvolené nastavenia tréningu",
+    "decreaseButton": "Znížiť",
+    "increaseButton": "Zvýšiť",
+    "minutes": "Minúty",
+    "seconds": "Sekundy",
+    "workLabelShort": "Práca",
+    "restLabelShort": "Odpočinok",
+    "blockRestLabelShort": "Blokový odpočinok",
+    "intervalsPerRound": "Intervaly na sériu",
+    "numberOfRounds": "Počet sérií"
+  },
+  "presets": {
+    "custom": "Vlastné",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Tréningový časovač",
+    "go": "TERAZ!",
+    "goAria": "Teraz",
+    "startingIn": "Štart za {{count}}",
+    "getReady": "Priprav sa",
+    "blockRestPhase": "BLOKOVÝ ODPOČINOK",
+    "workPhase": "PRÁCA",
+    "restPhase": "ODPOČINOK",
+    "completePhase": "DOKONČENÉ",
+    "completeMessage": "Tréning dokončený!",
+    "doneButton": "Hotovo",
+    "returnToForm": "Späť na formulár",
+    "stopButton": "Zastaviť tréning",
+    "stopText": "Zastaviť",
+    "pauseButton": "Pozastaviť tréning",
+    "pauseText": "Pozastaviť",
+    "resumeButton": "Obnoviť tréning",
+    "resumeText": "Obnoviť",
+    "roundIndicator": "Séria {{current}} z {{total}}",
+    "intervalIndicator": "Interval {{current}} z {{total}}",
+    "timeRemaining": "{{time}} zostáva"
+  },
+  "errors": {
+    "title": "Niečo sa pokazilo",
+    "tryAgain": "Skúsiť znova",
+    "workDurationMin": "Musí byť ≥ 1s",
+    "restDurationMin": "Musí byť ≥ 0",
+    "intervalsMin": "Musí byť ≥ 1",
+    "roundsMin": "Musí byť ≥ 1",
+    "restBetweenRoundsMin": "Musí byť ≥ 0"
+  }
+}

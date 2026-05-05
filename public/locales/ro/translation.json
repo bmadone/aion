@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Navigarea aplicației",
+    "muteSounds": "Dezactivare sunete",
+    "unmuteSounds": "Activare sunete",
+    "switchToDark": "Comutare la modul întunecat",
+    "switchToLight": "Comutare la modul luminos",
+    "languageSwitcher": "Schimbă limba"
+  },
+  "form": {
+    "workLabel": "Lucru (s)",
+    "restLabel": "Odihnă (s)",
+    "intervalsLabel": "Intervale / rundă",
+    "roundsLabel": "Runde",
+    "blockRestLabel": "Odihnă bloc (s)",
+    "startButton": "Start",
+    "startButtonAria": "Pornire antrenament",
+    "presetsGroup": "Presetări antrenament",
+    "decreaseButton": "Scădere",
+    "increaseButton": "Creștere",
+    "minutes": "Minute",
+    "seconds": "Secunde",
+    "workLabelShort": "Lucru",
+    "restLabelShort": "Odihnă",
+    "blockRestLabelShort": "Odihnă bloc",
+    "intervalsPerRound": "Intervale pe rundă",
+    "numberOfRounds": "Număr de runde"
+  },
+  "presets": {
+    "custom": "Personalizat",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Cronometru antrenament",
+    "go": "START!",
+    "goAria": "Start",
+    "startingIn": "Pornire în {{count}}",
+    "getReady": "Pregătește-te",
+    "blockRestPhase": "ODIHNĂ BLOC",
+    "workPhase": "LUCRU",
+    "restPhase": "ODIHNĂ",
+    "completePhase": "TERMINAT",
+    "completeMessage": "Antrenament terminat!",
+    "doneButton": "Gata",
+    "returnToForm": "Înapoi la formular",
+    "stopButton": "Oprire antrenament",
+    "stopText": "Oprire",
+    "pauseButton": "Pauză antrenament",
+    "pauseText": "Pauză",
+    "resumeButton": "Reluare antrenament",
+    "resumeText": "Reluare",
+    "roundIndicator": "Runda {{current}} din {{total}}",
+    "intervalIndicator": "Intervalul {{current}} din {{total}}",
+    "timeRemaining": "{{time}} rămase"
+  },
+  "errors": {
+    "title": "Ceva a mers prost",
+    "tryAgain": "Încearcă din nou",
+    "workDurationMin": "Trebuie să fie ≥ 1s",
+    "restDurationMin": "Trebuie să fie ≥ 0",
+    "intervalsMin": "Trebuie să fie ≥ 1",
+    "roundsMin": "Trebuie să fie ≥ 1",
+    "restBetweenRoundsMin": "Trebuie să fie ≥ 0"
+  }
+}

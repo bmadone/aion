@@ -1,58 +1,47 @@
-import { useState, useRef, useCallback, useEffect, type JSX } from 'react'
-import type { WorkoutConfig } from './types'
-import { useTheme } from './hooks/useTheme'
+import { useRef, useEffect, type JSX } from 'react'
+import { useStore, useView, useTheme } from './store'
+import { useI18nDirection } from './hooks/useI18nDirection'
 import { soundManager } from './sound/SoundManager'
 import { NavBar } from './components/NavBar'
 import { WorkoutForm } from './components/WorkoutForm'
 import { TimerDisplay } from './components/TimerDisplay'
 import { ErrorBoundary } from './components/ErrorBoundary'
 
-type View = 'form' | 'timer'
-
 export default function App(): JSX.Element {
-  const { theme, toggle: toggleTheme } = useTheme()
-  const [muted, setMuted]   = useState(() => soundManager.muted)
-  const [view, setView]     = useState<View>('form')
-  const [config, setConfig] = useState<WorkoutConfig | null>(null)
+  const view  = useView()
+  const theme = useTheme()
+  useI18nDirection()
   const startBtnRef = useRef<HTMLButtonElement>(null)
   const stopBtnRef  = useRef<HTMLButtonElement>(null)
 
-  const handleMuteToggle = useCallback(() => {
-    const next = !muted
-    soundManager.setMuted(next)
-    setMuted(next)
-  }, [muted])
+  // Sync theme to DOM
+  useEffect(() => {
+    document.documentElement.dataset['theme'] = theme
+  }, [theme])
 
-  const handleStart = useCallback((cfg: WorkoutConfig) => {
-    void soundManager.preload()
-    setConfig(cfg)
-    setView('timer')
+  // Sync muted flag to SoundManager
+  useEffect(() => {
+    return useStore.subscribe(
+      (s) => s.muted,
+      (muted) => { soundManager.setMuted(muted) }
+    )
   }, [])
 
-  const handleStop = useCallback(() => {
-    setView('form')
-  }, [])
-
-  // Return focus to Start button after timer ends — runs when view flips back to form
+  // Return focus to Start button when navigating back to the form
   useEffect(() => {
     if (view === 'form') startBtnRef.current?.focus()
   }, [view])
 
   return (
     <ErrorBoundary>
-      <NavBar
-        theme={theme}
-        onThemeToggle={toggleTheme}
-        muted={muted}
-        onMuteToggle={handleMuteToggle}
-      />
+      <NavBar />
       <main className="main-content">
         {view === 'form' && (
-          <WorkoutForm onStart={handleStart} startBtnRef={startBtnRef} />
+          <WorkoutForm startBtnRef={startBtnRef} />
         )}
-        {view === 'timer' && config && (
+        {view === 'timer' && (
           <ErrorBoundary>
-            <TimerDisplay config={config} onStop={handleStop} stopBtnRef={stopBtnRef} />
+            <TimerDisplay stopBtnRef={stopBtnRef} />
           </ErrorBoundary>
         )}
       </main>

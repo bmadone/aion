@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "App-navigasjon",
+    "muteSounds": "Demp lyder",
+    "unmuteSounds": "Aktiver lyder",
+    "switchToDark": "Bytt til mørk modus",
+    "switchToLight": "Bytt til lys modus",
+    "languageSwitcher": "Endre språk"
+  },
+  "form": {
+    "workLabel": "Arbeid (s)",
+    "restLabel": "Hvile (s)",
+    "intervalsLabel": "Intervaller / runde",
+    "roundsLabel": "Runder",
+    "blockRestLabel": "Blokkhvile (s)",
+    "startButton": "Start",
+    "startButtonAria": "Start trening",
+    "presetsGroup": "Treningsinnstillinger",
+    "decreaseButton": "Reduser",
+    "increaseButton": "Øk",
+    "minutes": "Minutter",
+    "seconds": "Sekunder",
+    "workLabelShort": "Arbeid",
+    "restLabelShort": "Hvile",
+    "blockRestLabelShort": "Blokkhvile",
+    "intervalsPerRound": "Intervaller per runde",
+    "numberOfRounds": "Antall runder"
+  },
+  "presets": {
+    "custom": "Egendefinert",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Treningsur",
+    "go": "GÅ!",
+    "goAria": "Gå",
+    "startingIn": "Starter om {{count}}",
+    "getReady": "Gjør deg klar",
+    "blockRestPhase": "BLOKKHVILE",
+    "workPhase": "ARBEID",
+    "restPhase": "HVILE",
+    "completePhase": "FULLFØRT",
+    "completeMessage": "Trening fullført!",
+    "doneButton": "Ferdig",
+    "returnToForm": "Tilbake til skjema",
+    "stopButton": "Stopp trening",
+    "stopText": "Stopp",
+    "pauseButton": "Sett trening på pause",
+    "pauseText": "Pause",
+    "resumeButton": "Fortsett trening",
+    "resumeText": "Fortsett",
+    "roundIndicator": "Runde {{current}} av {{total}}",
+    "intervalIndicator": "Intervall {{current}} av {{total}}",
+    "timeRemaining": "{{time}} igjen"
+  },
+  "errors": {
+    "title": "Noe gikk galt",
+    "tryAgain": "Prøv igjen",
+    "workDurationMin": "Må være ≥ 1s",
+    "restDurationMin": "Må være ≥ 0",
+    "intervalsMin": "Må være ≥ 1",
+    "roundsMin": "Må være ≥ 1",
+    "restBetweenRoundsMin": "Må være ≥ 0"
+  }
+}

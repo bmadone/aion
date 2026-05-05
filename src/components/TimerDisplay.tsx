@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef, useCallback, type JSX } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { Phase, TimerState, WorkoutConfig } from '../types'
 import { TimerEngine } from '../engine/TimerEngine'
 import { soundManager } from '../sound/SoundManager'
 import { CountdownOverlay } from './CountdownOverlay'
 import { useConfetti } from '../hooks/useConfetti'
+import { useConfig, useStore } from '../store'
 
 const COUNTDOWN_SECONDS = 3
 
 interface TimerDisplayProps {
-  config: WorkoutConfig
-  onStop: () => void
   stopBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
@@ -31,7 +31,10 @@ function getPhaseDuration(phase: Phase, config: WorkoutConfig): number {
 }
 
 
-export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps): JSX.Element {
+export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
+  const { t } = useTranslation()
+  const config  = useConfig()
+  const setView = useStore((s) => s.setView)
   const [state, setState] = useState<TimerState>({
     phase: 'idle',
     currentRound: 0,
@@ -74,11 +77,10 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
     return () => engine.stop()
   }, [config])
 
-  // Return focus to Start button when going back to form
   const handleStop = useCallback(() => {
     engineRef.current?.stop()
-    onStop()
-  }, [onStop])
+    setView('form')
+  }, [setView])
 
   const handlePauseResume = useCallback(() => {
     const engine = engineRef.current
@@ -94,7 +96,9 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
   else if (isBlockRest) bgClass += ' timer-display--block-rest'
   else if (isComplete)  bgClass += ' timer-display--complete'
 
-  const phaseLabel = isBlockRest ? 'BLOCK REST' : phase.toUpperCase()
+  const phaseLabel = isBlockRest
+    ? t('timer.blockRestPhase')
+    : t(`timer.${phase}Phase`, { defaultValue: phase.toUpperCase() })
 
   return (
     <div
@@ -102,7 +106,7 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
       className={bgClass}
       role="timer"
       tabIndex={-1}
-      aria-label="Workout timer"
+      aria-label={t('timer.ariaLabel')}
       style={{ '--intensity': intensity } as React.CSSProperties}
     >
       {isCountdown ? (
@@ -110,20 +114,26 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
       ) : isComplete ? (
         <div className="timer-complete">
           <div className="complete-icon" aria-hidden="true">🏆</div>
-          <div className="complete-text">Workout Complete!</div>
-          <button className="btn-primary" onClick={handleStop} aria-label="Return to form">
-            Done
+          <div className="complete-text">{t('timer.completeMessage')}</div>
+          <button className="btn-primary" onClick={handleStop} aria-label={t('timer.returnToForm')}>
+            {t('timer.doneButton')}
           </button>
         </div>
       ) : (
         <>
           <div className="timer-top">
             <div className="timer-header-row">
-              <span aria-label={`Round ${currentRound} of ${totalRounds}`} className="round-indicator">
+              <span
+                aria-label={t('timer.roundIndicator', { current: currentRound, total: totalRounds })}
+                className="round-indicator"
+              >
                 Round {currentRound} / {totalRounds}
               </span>
               {totalIntervals > 1 && (
-                <span aria-label={`Interval ${currentInterval} of ${totalIntervals}`} className="interval-indicator">
+                <span
+                  aria-label={t('timer.intervalIndicator', { current: currentInterval, total: totalIntervals })}
+                  className="interval-indicator"
+                >
                   {currentInterval} / {totalIntervals}
                 </span>
               )}
@@ -134,7 +144,7 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
             className="timer-countdown"
             aria-live="assertive"
             aria-atomic="true"
-            aria-label={`${formatTime(timeRemaining)} remaining`}
+            aria-label={t('timer.timeRemaining', { time: formatTime(timeRemaining) })}
           >
             {formatTime(timeRemaining)}
           </div>
@@ -143,18 +153,17 @@ export function TimerDisplay({ config, onStop, stopBtnRef }: TimerDisplayProps):
             {/* Phase label separate from aria-label to avoid duplication */}
             <div className="phase-label" aria-hidden="true">{phaseLabel}</div>
 
-
             <div className="timer-controls">
-              <button className="btn-secondary" onClick={handleStop} ref={stopBtnRef} aria-label="Stop workout">
-                Stop
+              <button className="btn-secondary" onClick={handleStop} ref={stopBtnRef} aria-label={t('timer.stopButton')}>
+                {t('timer.stopText')}
               </button>
               <button
                 className="btn-primary btn-pause"
                 onClick={handlePauseResume}
-                aria-label={paused ? 'Resume workout' : 'Pause workout'}
+                aria-label={paused ? t('timer.resumeButton') : t('timer.pauseButton')}
                 aria-pressed={paused}
               >
-                {paused ? 'Resume' : 'Pause'}
+                {paused ? t('timer.resumeText') : t('timer.pauseText')}
               </button>
             </div>
           </div>

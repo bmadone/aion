@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "ऐप नेविगेशन",
+    "muteSounds": "आवाज़ बंद करें",
+    "unmuteSounds": "आवाज़ चालू करें",
+    "switchToDark": "डार्क मोड में जाएं",
+    "switchToLight": "लाइट मोड में जाएं",
+    "languageSwitcher": "भाषा बदलें"
+  },
+  "form": {
+    "workLabel": "व्यायाम (सेकंड)",
+    "restLabel": "आराम (सेकंड)",
+    "intervalsLabel": "अंतराल / राउंड",
+    "roundsLabel": "राउंड",
+    "blockRestLabel": "ब्लॉक आराम (सेकंड)",
+    "startButton": "शुरू करें",
+    "startButtonAria": "वर्कआउट शुरू करें",
+    "presetsGroup": "वर्कआउट प्रीसेट",
+    "decreaseButton": "कम करें",
+    "increaseButton": "बढ़ाएं",
+    "minutes": "मिनट",
+    "seconds": "सेकंड",
+    "workLabelShort": "व्यायाम",
+    "restLabelShort": "आराम",
+    "blockRestLabelShort": "ब्लॉक आराम",
+    "intervalsPerRound": "प्रति राउंड अंतराल",
+    "numberOfRounds": "राउंड की संख्या"
+  },
+  "presets": {
+    "custom": "कस्टम",
+    "tabata": "तबाता",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "वर्कआउट टाइमर",
+    "go": "जाओ!",
+    "goAria": "जाओ",
+    "startingIn": "{{count}} सेकंड में शुरू",
+    "getReady": "तैयार हो जाओ",
+    "blockRestPhase": "ब्लॉक आराम",
+    "workPhase": "व्यायाम",
+    "restPhase": "आराम",
+    "completePhase": "पूर्ण",
+    "completeMessage": "वर्कआउट पूरा हो गया!",
+    "doneButton": "हो गया",
+    "returnToForm": "फॉर्म पर वापस जाएं",
+    "stopButton": "वर्कआउट रोकें",
+    "stopText": "रोकें",
+    "pauseButton": "वर्कआउट पॉज़ करें",
+    "pauseText": "पॉज़",
+    "resumeButton": "वर्कआउट जारी रखें",
+    "resumeText": "जारी रखें",
+    "roundIndicator": "राउंड {{current}} / {{total}}",
+    "intervalIndicator": "अंतराल {{current}} / {{total}}",
+    "timeRemaining": "{{time}} शेष"
+  },
+  "errors": {
+    "title": "कुछ गलत हो गया",
+    "tryAgain": "फिर कोशिश करें",
+    "workDurationMin": "≥ 1 सेकंड होना चाहिए",
+    "restDurationMin": "≥ 0 होना चाहिए",
+    "intervalsMin": "≥ 1 होना चाहिए",
+    "roundsMin": "≥ 1 होना चाहिए",
+    "restBetweenRoundsMin": "≥ 0 होना चाहिए"
+  }
+}

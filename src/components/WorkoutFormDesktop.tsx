@@ -1,94 +1,145 @@
-import { useState, type JSX } from 'react'
-import type { WorkoutConfig } from '../types'
+import { useState, useRef, useEffect, type JSX } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslation } from 'react-i18next'
+import { workoutSchema, type WorkoutConfig } from '../schemas/workout'
+import { useStore, useConfig } from '../store'
+import { soundManager } from '../sound/SoundManager'
 import { PresetSelector } from './PresetSelector'
-import { useWorkoutConfig } from '../hooks/useWorkoutConfig'
-import { validateConfig, isValid, type ConfigErrors } from '../utils/validation'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { Button } from './ui/button'
+import { Card, CardContent } from './ui/card'
+import type { Preset } from '../types'
 
 interface Props {
-  onStart: (config: WorkoutConfig) => void
   startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
-export function WorkoutFormDesktop({ onStart, startBtnRef }: Props): JSX.Element {
-  const { preset, config, updateConfig, selectPreset } = useWorkoutConfig()
-  const [touched, setTouched] = useState<Partial<Record<keyof ConfigErrors, boolean>>>({})
-  const [submitted, setSubmitted] = useState(false)
+export function WorkoutFormDesktop({ startBtnRef }: Props): JSX.Element {
+  const { t } = useTranslation()
+  const storeConfig = useConfig()
+  const setConfig   = useStore((s) => s.setConfig)
+  const setView     = useStore((s) => s.setView)
 
-  const errors  = validateConfig(config)
-  const valid   = isValid(errors)
+  const [preset, setPreset] = useState<Preset>('custom')
+  const customRef = useRef<WorkoutConfig>(storeConfig)
 
-  function touch(field: keyof ConfigErrors): void {
-    setTouched(t => ({ ...t, [field]: true }))
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    getValues,
+  } = useForm<WorkoutConfig>({
+    resolver: zodResolver(workoutSchema),
+    defaultValues: storeConfig,
+  })
+
+  // Sync form to store config on initial hydration
+  useEffect(() => { reset(storeConfig) }, [storeConfig, reset])
+
+  function handlePresetSelect(p: Preset, presetConfig: WorkoutConfig | null): void {
+    if (p !== 'custom') customRef.current = getValues()
+    setPreset(p)
+    reset(p === 'custom' ? customRef.current : (presetConfig ?? customRef.current))
   }
 
-  function err(field: keyof ConfigErrors): string | undefined {
-    return (touched[field] === true || submitted) ? errors[field] : undefined
-  }
-
-  function handleSubmit(e: React.SyntheticEvent): void {
-    e.preventDefault()
-    setSubmitted(true)
-    if (!valid) return
-    onStart(config)
+  function onSubmit(data: WorkoutConfig): void {
+    soundManager.preload()
+    setConfig(data)
+    setView('timer')
   }
 
   return (
-    <form className="workout-form" onSubmit={handleSubmit} noValidate>
-      <PresetSelector selected={preset} onSelect={selectPreset} />
+    <form className="workout-form" onSubmit={(e) => { void handleSubmit(onSubmit)(e) }} noValidate>
+      <PresetSelector selected={preset} onSelect={handlePresetSelect} />
 
-      <div className="form-card">
-        <DesktopField id="workDuration" label="Work (s)" value={config.workDuration}
-          error={err('workDuration')} min={1}
-          onChange={v => { updateConfig({ workDuration: v }); touch('workDuration') }} />
-        <DesktopField id="restDuration" label="Rest (s)" value={config.restDuration}
-          error={err('restDuration')} min={0}
-          onChange={v => { updateConfig({ restDuration: v }); touch('restDuration') }} />
-      </div>
+      <Card className="form-card rounded-[14px] border-[var(--border)] bg-[var(--surface)] shadow-none">
+        <CardContent className="p-0">
+          <DesktopField
+            id="workDuration" label={t('form.workLabel')}
+            error={errors.workDuration?.message !== undefined ? t(errors.workDuration.message) : undefined}
+            registration={register('workDuration', { valueAsNumber: true })}
+          />
+          <DesktopField
+            id="restDuration" label={t('form.restLabel')}
+            error={errors.restDuration?.message !== undefined ? t(errors.restDuration.message) : undefined}
+            registration={register('restDuration', { valueAsNumber: true })}
+            sep
+          />
+        </CardContent>
+      </Card>
 
-      <div className="form-card">
-        <DesktopField id="intervals" label="Intervals / round" value={config.intervals}
-          error={err('intervals')} min={1} step={1}
-          onChange={v => { updateConfig({ intervals: v }); touch('intervals') }} />
-        <DesktopField id="rounds" label="Rounds" value={config.rounds}
-          error={err('rounds')} min={1} step={1}
-          onChange={v => { updateConfig({ rounds: v }); touch('rounds') }} />
-      </div>
+      <Card className="form-card rounded-[14px] border-[var(--border)] bg-[var(--surface)] shadow-none">
+        <CardContent className="p-0">
+          <DesktopField
+            id="intervals" label={t('form.intervalsLabel')}
+            error={errors.intervals?.message !== undefined ? t(errors.intervals.message) : undefined}
+            registration={register('intervals', { valueAsNumber: true })}
+          />
+          <DesktopField
+            id="rounds" label={t('form.roundsLabel')}
+            error={errors.rounds?.message !== undefined ? t(errors.rounds.message) : undefined}
+            registration={register('rounds', { valueAsNumber: true })}
+            sep
+          />
+        </CardContent>
+      </Card>
 
-      <div className="form-card">
-        <DesktopField id="restBetweenRounds" label="Block rest (s)" value={config.restBetweenRounds}
-          error={err('restBetweenRounds')} min={0}
-          onChange={v => { updateConfig({ restBetweenRounds: v }); touch('restBetweenRounds') }} />
-      </div>
+      <Card className="form-card rounded-[14px] border-[var(--border)] bg-[var(--surface)] shadow-none">
+        <CardContent className="p-0">
+          <DesktopField
+            id="restBetweenRounds" label={t('form.blockRestLabel')}
+            error={errors.restBetweenRounds?.message !== undefined ? t(errors.restBetweenRounds.message) : undefined}
+            registration={register('restBetweenRounds', { valueAsNumber: true })}
+          />
+        </CardContent>
+      </Card>
 
-      <button ref={startBtnRef} type="submit" className="btn-primary" disabled={submitted && !valid}>
-        Start
-      </button>
+      <Button
+        ref={startBtnRef}
+        type="submit"
+        className="btn-primary h-11 w-full rounded-[10px]"
+      >
+        {t('form.startButton')}
+      </Button>
     </form>
   )
 }
 
+type Registration = ReturnType<ReturnType<typeof useForm<WorkoutConfig>>['register']>
+
 interface FieldProps {
-  id: string; label: string; value: number; error?: string | undefined
-  min?: number; step?: number; onChange: (v: number) => void
+  id: string
+  label: string
+  error?: string | undefined
+  registration: Registration
+  sep?: boolean | undefined
 }
 
-function DesktopField({ id, label, value, error, min, step, onChange }: FieldProps): JSX.Element {
+function DesktopField({ id, label, error, registration, sep = false }: FieldProps): JSX.Element {
   return (
-    <div className={`field${error !== undefined ? ' field--error' : ''}`}>
-      <label htmlFor={id}>{label}</label>
+    <div className={`field${error !== undefined ? ' field--error' : ''}${sep ? ' border-t border-[var(--border)]' : ''}`}>
+      <Label
+        htmlFor={id}
+        className="flex-1 text-[0.9375rem] font-medium text-[var(--text-2)] whitespace-nowrap tracking-[-0.01em]"
+      >
+        {label}
+      </Label>
       <div className="field-right">
-        <input
+        <Input
           id={id}
           type="number"
           inputMode="numeric"
-          min={min}
-          step={step}
-          value={value}
           aria-invalid={error !== undefined}
           aria-describedby={error !== undefined ? `${id}-err` : undefined}
-          onChange={e => onChange(Number(e.target.value))}
+          className="w-24 h-8 px-[10px] py-[6px] border-[var(--border)] bg-[var(--surface)] text-[var(--text)] font-medium text-right text-[0.9375rem] rounded-[7px] focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-[var(--accent)] focus-visible:bg-[var(--accent-glow-2)] [appearance:textfield] [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+          {...registration}
         />
-        {error !== undefined && <span id={`${id}-err`} className="field-error" role="alert">{error}</span>}
+        {error !== undefined && (
+          <span id={`${id}-err`} className="field-error" role="alert">{error}</span>
+        )}
       </div>
     </div>
   )

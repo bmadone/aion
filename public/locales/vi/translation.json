@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Điều hướng ứng dụng",
+    "muteSounds": "Tắt âm thanh",
+    "unmuteSounds": "Bật âm thanh",
+    "switchToDark": "Chuyển sang chế độ tối",
+    "switchToLight": "Chuyển sang chế độ sáng",
+    "languageSwitcher": "Thay đổi ngôn ngữ"
+  },
+  "form": {
+    "workLabel": "Tập luyện (giây)",
+    "restLabel": "Nghỉ ngơi (giây)",
+    "intervalsLabel": "Khoảng cách / vòng",
+    "roundsLabel": "Vòng",
+    "blockRestLabel": "Nghỉ giữa khối (giây)",
+    "startButton": "Bắt đầu",
+    "startButtonAria": "Bắt đầu buổi tập",
+    "presetsGroup": "Cài đặt sẵn bài tập",
+    "decreaseButton": "Giảm",
+    "increaseButton": "Tăng",
+    "minutes": "Phút",
+    "seconds": "Giây",
+    "workLabelShort": "Tập",
+    "restLabelShort": "Nghỉ",
+    "blockRestLabelShort": "Nghỉ khối",
+    "intervalsPerRound": "Khoảng cách mỗi vòng",
+    "numberOfRounds": "Số vòng"
+  },
+  "presets": {
+    "custom": "Tùy chỉnh",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Đồng hồ bấm giờ",
+    "go": "BẮT ĐẦU!",
+    "goAria": "Bắt đầu",
+    "startingIn": "Bắt đầu sau {{count}}",
+    "getReady": "Chuẩn bị",
+    "blockRestPhase": "NGHỈ KHỐI",
+    "workPhase": "TẬP LUYỆN",
+    "restPhase": "NGHỈ NGƠI",
+    "completePhase": "HOÀN THÀNH",
+    "completeMessage": "Buổi tập hoàn thành!",
+    "doneButton": "Xong",
+    "returnToForm": "Quay lại form",
+    "stopButton": "Dừng buổi tập",
+    "stopText": "Dừng",
+    "pauseButton": "Tạm dừng buổi tập",
+    "pauseText": "Tạm dừng",
+    "resumeButton": "Tiếp tục buổi tập",
+    "resumeText": "Tiếp tục",
+    "roundIndicator": "Vòng {{current}} / {{total}}",
+    "intervalIndicator": "Khoảng {{current}} / {{total}}",
+    "timeRemaining": "Còn {{time}}"
+  },
+  "errors": {
+    "title": "Đã xảy ra lỗi",
+    "tryAgain": "Thử lại",
+    "workDurationMin": "Phải ≥ 1 giây",
+    "restDurationMin": "Phải ≥ 0",
+    "intervalsMin": "Phải ≥ 1",
+    "roundsMin": "Phải ≥ 1",
+    "restBetweenRoundsMin": "Phải ≥ 0"
+  }
+}

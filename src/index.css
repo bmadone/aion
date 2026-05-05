@@ -1,3 +1,29 @@
+@import "tailwindcss";
+
+/* ─── Tailwind dark mode: honour our data-theme attribute ─── */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ─── Map Tailwind colour tokens → existing CSS variables (shadcn bridge) ─── */
+@theme inline {
+  --color-background:           var(--bg);
+  --color-foreground:           var(--text);
+  --color-card:                 var(--surface);
+  --color-card-foreground:      var(--text);
+  --color-primary:              var(--text);
+  --color-primary-foreground:   var(--bg);
+  --color-secondary:            var(--surface-2);
+  --color-secondary-foreground: var(--text);
+  --color-muted:                var(--surface);
+  --color-muted-foreground:     var(--text-2);
+  --color-accent:               var(--surface-2);
+  --color-accent-foreground:    var(--text);
+  --color-destructive:          var(--red);
+  --color-border:               var(--border);
+  --color-input:                var(--border);
+  --color-ring:                 var(--accent);
+  --radius: 0.625rem;
+}
+
 /* ─── @property for smooth intensity animation ─── */
 @property --intensity {
   syntax: '<number>';
@@ -833,3 +859,77 @@ html[data-theme="light"] .btn-pause {
 }
 
 .timer-complete .btn-primary { max-width: 200px; width: 200px; }
+
+/* ─── Language Switcher ─── */
+.lang-switcher {
+  position: relative;
+}
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 100;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 220px;
+  overflow: hidden;
+}
+
+.lang-search {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.lang-search::placeholder { color: var(--text-3); }
+
+.lang-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.lang-list li { margin: 0; padding: 0; }
+
+.lang-option {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: var(--text);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.lang-option:hover,
+.lang-option:focus { background: var(--surface-2); outline: none; }
+
+.lang-option--active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─── RTL Support ─── */
+[dir="rtl"] .navbar { flex-direction: row-reverse; }
+[dir="rtl"] .navbar-controls { flex-direction: row-reverse; }
+[dir="rtl"] .lang-dropdown { right: auto; left: 0; }
+[dir="rtl"] .lang-option { text-align: right; }
+[dir="rtl"] .field { flex-direction: row-reverse; }
+[dir="rtl"] .field-right { flex-direction: row-reverse; }
+[dir="rtl"] .stepper-row,
+[dir="rtl"] .picker-row { flex-direction: row-reverse; }
+[dir="rtl"] .preset-selector { flex-direction: row-reverse; }
+[dir="rtl"] .timer-controls { flex-direction: row-reverse; }

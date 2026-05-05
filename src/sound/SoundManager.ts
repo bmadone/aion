@@ -3,6 +3,8 @@ import celebrateUrl from '../assets/media/celebrate.mp3'
 
 const STORAGE_KEY = 'aion:muted'
 
+function noop(): void { /* intentional no-op */ }
+
 class SoundManager {
   private _muted: boolean
   private bell = new Audio(bellUrl)
@@ -23,24 +25,24 @@ class SoundManager {
   preload(): void {
     for (const a of [this.bell, this.celebrate]) {
       a.muted = true
-      void a.play().then(() => { a.pause(); a.currentTime = 0; a.muted = false }).catch(() => { })
+      void a.play().then(() => { a.pause(); a.currentTime = 0; a.muted = false }).catch(noop)
     }
   }
 
-  private play(audio: HTMLAudioElement, times: number, gapMs = 300): void {
+  private play(audio: HTMLAudioElement, times: number, gapMs = 200): void {
     if (this._muted) return
     let i = 0
-    const next = () => {
+    const next = (): void => {
       audio.currentTime = 0
-      void audio.play().catch(() => { })
+      void audio.play().catch(noop)
       if (++i < times) setTimeout(next, gapMs)
     }
     next()
   }
 
-  playWork(): void { this.play(this.bell, 2) }
+  playWork(): void { this.play(this.bell, 1) }
   playRest(): void { this.play(this.bell, 1) }
-  playComplete(): void { }
+  playComplete(): void { noop() }
 }
 
 export const soundManager = new SoundManager()

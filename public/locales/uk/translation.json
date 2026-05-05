@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Навігація додатку",
+    "muteSounds": "Вимкнути звуки",
+    "unmuteSounds": "Увімкнути звуки",
+    "switchToDark": "Переключитися на темний режим",
+    "switchToLight": "Переключитися на світлий режим",
+    "languageSwitcher": "Змінити мову"
+  },
+  "form": {
+    "workLabel": "Робота (с)",
+    "restLabel": "Відпочинок (с)",
+    "intervalsLabel": "Інтервали / серія",
+    "roundsLabel": "Серії",
+    "blockRestLabel": "Блоковий відпочинок (с)",
+    "startButton": "Старт",
+    "startButtonAria": "Почати тренування",
+    "presetsGroup": "Попередні налаштування",
+    "decreaseButton": "Зменшити",
+    "increaseButton": "Збільшити",
+    "minutes": "Хвилини",
+    "seconds": "Секунди",
+    "workLabelShort": "Робота",
+    "restLabelShort": "Відпочинок",
+    "blockRestLabelShort": "Блоковий відпочинок",
+    "intervalsPerRound": "Інтервали на серію",
+    "numberOfRounds": "Кількість серій"
+  },
+  "presets": {
+    "custom": "Власний",
+    "tabata": "Табата",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Таймер тренування",
+    "go": "СТАРТ!",
+    "goAria": "Старт",
+    "startingIn": "Початок через {{count}}",
+    "getReady": "Готуйся",
+    "blockRestPhase": "БЛОКОВИЙ ВІДПОЧИНОК",
+    "workPhase": "РОБОТА",
+    "restPhase": "ВІДПОЧИНОК",
+    "completePhase": "ЗАВЕРШЕНО",
+    "completeMessage": "Тренування завершено!",
+    "doneButton": "Готово",
+    "returnToForm": "Повернутися до форми",
+    "stopButton": "Зупинити тренування",
+    "stopText": "Зупинити",
+    "pauseButton": "Поставити на паузу",
+    "pauseText": "Пауза",
+    "resumeButton": "Продовжити тренування",
+    "resumeText": "Продовжити",
+    "roundIndicator": "Серія {{current}} з {{total}}",
+    "intervalIndicator": "Інтервал {{current}} з {{total}}",
+    "timeRemaining": "Залишилось {{time}}"
+  },
+  "errors": {
+    "title": "Щось пішло не так",
+    "tryAgain": "Спробуйте ще раз",
+    "workDurationMin": "Має бути ≥ 1с",
+    "restDurationMin": "Має бути ≥ 0",
+    "intervalsMin": "Має бути ≥ 1",
+    "roundsMin": "Має бути ≥ 1",
+    "restBetweenRoundsMin": "Має бути ≥ 0"
+  }
+}

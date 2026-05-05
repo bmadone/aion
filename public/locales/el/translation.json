@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Πλοήγηση εφαρμογής",
+    "muteSounds": "Σίγαση ήχων",
+    "unmuteSounds": "Ενεργοποίηση ήχων",
+    "switchToDark": "Εναλλαγή σε σκοτεινή λειτουργία",
+    "switchToLight": "Εναλλαγή σε φωτεινή λειτουργία",
+    "languageSwitcher": "Αλλαγή γλώσσας"
+  },
+  "form": {
+    "workLabel": "Εργασία (δ)",
+    "restLabel": "Ανάπαυση (δ)",
+    "intervalsLabel": "Διαστήματα / γύρος",
+    "roundsLabel": "Γύροι",
+    "blockRestLabel": "Ανάπαυση μπλοκ (δ)",
+    "startButton": "Έναρξη",
+    "startButtonAria": "Έναρξη προπόνησης",
+    "presetsGroup": "Προεπιλογές προπόνησης",
+    "decreaseButton": "Μείωση",
+    "increaseButton": "Αύξηση",
+    "minutes": "Λεπτά",
+    "seconds": "Δευτερόλεπτα",
+    "workLabelShort": "Εργασία",
+    "restLabelShort": "Ανάπαυση",
+    "blockRestLabelShort": "Ανάπαυση μπλοκ",
+    "intervalsPerRound": "Διαστήματα ανά γύρο",
+    "numberOfRounds": "Αριθμός γύρων"
+  },
+  "presets": {
+    "custom": "Προσαρμοσμένο",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Χρονόμετρο προπόνησης",
+    "go": "ΑΡΧΗ!",
+    "goAria": "Αρχή",
+    "startingIn": "Εκκίνηση σε {{count}}",
+    "getReady": "Ετοιμαστείτε",
+    "blockRestPhase": "ΑΝΆΠΑΥΣΗ ΜΠΛΟΚ",
+    "workPhase": "ΕΡΓΑΣΊΑ",
+    "restPhase": "ΑΝΆΠΑΥΣΗ",
+    "completePhase": "ΟΛΟΚΛΗΡΏΘΗΚΕ",
+    "completeMessage": "Η προπόνηση ολοκληρώθηκε!",
+    "doneButton": "Τέλος",
+    "returnToForm": "Επιστροφή στη φόρμα",
+    "stopButton": "Διακοπή προπόνησης",
+    "stopText": "Διακοπή",
+    "pauseButton": "Παύση προπόνησης",
+    "pauseText": "Παύση",
+    "resumeButton": "Συνέχιση προπόνησης",
+    "resumeText": "Συνέχεια",
+    "roundIndicator": "Γύρος {{current}} από {{total}}",
+    "intervalIndicator": "Διάστημα {{current}} από {{total}}",
+    "timeRemaining": "{{time}} απομένουν"
+  },
+  "errors": {
+    "title": "Κάτι πήγε στραβά",
+    "tryAgain": "Δοκιμάστε ξανά",
+    "workDurationMin": "Πρέπει να είναι ≥ 1δ",
+    "restDurationMin": "Πρέπει να είναι ≥ 0",
+    "intervalsMin": "Πρέπει να είναι ≥ 1",
+    "roundsMin": "Πρέπει να είναι ≥ 1",
+    "restBetweenRoundsMin": "Πρέπει να είναι ≥ 0"
+  }
+}

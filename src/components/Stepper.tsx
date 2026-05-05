@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface StepperProps {
   value: number
@@ -15,6 +16,8 @@ export const Stepper = memo(function Stepper({
   onChange,
   'aria-label': ariaLabel,
 }: StepperProps) {
+  const { t } = useTranslation()
+
   return (
     <div className="stepper" role="group" aria-label={ariaLabel}>
       <button
@@ -22,7 +25,7 @@ export const Stepper = memo(function Stepper({
         className="stepper-btn"
         onClick={() => onChange(Math.max(min, value - 1))}
         disabled={value <= min}
-        aria-label="Decrease"
+        aria-label={t('form.decreaseButton')}
       >–</button>
       <span
         className="stepper-val"
@@ -40,7 +43,7 @@ export const Stepper = memo(function Stepper({
         className="stepper-btn"
         onClick={() => onChange(Math.min(max, value + 1))}
         disabled={value >= max}
-        aria-label="Increase"
+        aria-label={t('form.increaseButton')}
       >+</button>
     </div>
   )

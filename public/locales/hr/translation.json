@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Navigacija aplikacije",
+    "muteSounds": "Isključi zvukove",
+    "unmuteSounds": "Uključi zvukove",
+    "switchToDark": "Prebaci na tamni način",
+    "switchToLight": "Prebaci na svijetli način",
+    "languageSwitcher": "Promijeni jezik"
+  },
+  "form": {
+    "workLabel": "Rad (s)",
+    "restLabel": "Odmor (s)",
+    "intervalsLabel": "Intervali / runda",
+    "roundsLabel": "Runde",
+    "blockRestLabel": "Blok odmor (s)",
+    "startButton": "Početak",
+    "startButtonAria": "Započni trening",
+    "presetsGroup": "Unaprijed postavljeni treninzi",
+    "decreaseButton": "Smanji",
+    "increaseButton": "Povećaj",
+    "minutes": "Minute",
+    "seconds": "Sekunde",
+    "workLabelShort": "Rad",
+    "restLabelShort": "Odmor",
+    "blockRestLabelShort": "Blok odmor",
+    "intervalsPerRound": "Intervali po rundi",
+    "numberOfRounds": "Broj rundi"
+  },
+  "presets": {
+    "custom": "Prilagođeno",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Tajmer za trening",
+    "go": "KRENI!",
+    "goAria": "Kreni",
+    "startingIn": "Počinje za {{count}}",
+    "getReady": "Spremi se",
+    "blockRestPhase": "BLOK ODMOR",
+    "workPhase": "RAD",
+    "restPhase": "ODMOR",
+    "completePhase": "ZAVRŠENO",
+    "completeMessage": "Trening završen!",
+    "doneButton": "Gotovo",
+    "returnToForm": "Povratak na obrazac",
+    "stopButton": "Zaustavi trening",
+    "stopText": "Zaustavi",
+    "pauseButton": "Pauziraj trening",
+    "pauseText": "Pauza",
+    "resumeButton": "Nastavi trening",
+    "resumeText": "Nastavi",
+    "roundIndicator": "Runda {{current}} od {{total}}",
+    "intervalIndicator": "Interval {{current}} od {{total}}",
+    "timeRemaining": "{{time}} preostalo"
+  },
+  "errors": {
+    "title": "Nešto je pošlo po krivu",
+    "tryAgain": "Pokušaj ponovo",
+    "workDurationMin": "Mora biti ≥ 1s",
+    "restDurationMin": "Mora biti ≥ 0",
+    "intervalsMin": "Mora biti ≥ 1",
+    "roundsMin": "Mora biti ≥ 1",
+    "restBetweenRoundsMin": "Mora biti ≥ 0"
+  }
+}

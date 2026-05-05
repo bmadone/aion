@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "App-Navigation",
+    "muteSounds": "Ton stumm schalten",
+    "unmuteSounds": "Ton aktivieren",
+    "switchToDark": "Zum dunklen Modus wechseln",
+    "switchToLight": "Zum hellen Modus wechseln",
+    "languageSwitcher": "Sprache ändern"
+  },
+  "form": {
+    "workLabel": "Arbeit (s)",
+    "restLabel": "Pause (s)",
+    "intervalsLabel": "Intervalle / Runde",
+    "roundsLabel": "Runden",
+    "blockRestLabel": "Blockpause (s)",
+    "startButton": "Starten",
+    "startButtonAria": "Training starten",
+    "presetsGroup": "Trainingsvorlagen",
+    "decreaseButton": "Verringern",
+    "increaseButton": "Erhöhen",
+    "minutes": "Minuten",
+    "seconds": "Sekunden",
+    "workLabelShort": "Arbeit",
+    "restLabelShort": "Pause",
+    "blockRestLabelShort": "Blockpause",
+    "intervalsPerRound": "Intervalle pro Runde",
+    "numberOfRounds": "Anzahl der Runden"
+  },
+  "presets": {
+    "custom": "Benutzerdefiniert",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Trainingstimer",
+    "go": "LOS!",
+    "goAria": "Los",
+    "startingIn": "Start in {{count}}",
+    "getReady": "Fertig machen",
+    "blockRestPhase": "BLOCKPAUSE",
+    "workPhase": "ARBEIT",
+    "restPhase": "PAUSE",
+    "completePhase": "FERTIG",
+    "completeMessage": "Training abgeschlossen!",
+    "doneButton": "Fertig",
+    "returnToForm": "Zurück zum Formular",
+    "stopButton": "Training stoppen",
+    "stopText": "Stoppen",
+    "pauseButton": "Training pausieren",
+    "pauseText": "Pausieren",
+    "resumeButton": "Training fortsetzen",
+    "resumeText": "Fortsetzen",
+    "roundIndicator": "Runde {{current}} von {{total}}",
+    "intervalIndicator": "Intervall {{current}} von {{total}}",
+    "timeRemaining": "{{time}} verbleibend"
+  },
+  "errors": {
+    "title": "Etwas ist schiefgelaufen",
+    "tryAgain": "Erneut versuchen",
+    "workDurationMin": "Muss ≥ 1s sein",
+    "restDurationMin": "Muss ≥ 0 sein",
+    "intervalsMin": "Muss ≥ 1 sein",
+    "roundsMin": "Muss ≥ 1 sein",
+    "restBetweenRoundsMin": "Muss ≥ 0 sein"
+  }
+}

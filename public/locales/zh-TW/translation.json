@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "應用程式導覽",
+    "muteSounds": "靜音",
+    "unmuteSounds": "取消靜音",
+    "switchToDark": "切換為深色模式",
+    "switchToLight": "切換為淺色模式",
+    "languageSwitcher": "切換語言"
+  },
+  "form": {
+    "workLabel": "運動 (秒)",
+    "restLabel": "休息 (秒)",
+    "intervalsLabel": "間歇 / 組",
+    "roundsLabel": "組數",
+    "blockRestLabel": "組間休息 (秒)",
+    "startButton": "開始",
+    "startButtonAria": "開始鍛鍊",
+    "presetsGroup": "鍛鍊預設",
+    "decreaseButton": "減少",
+    "increaseButton": "增加",
+    "minutes": "分鐘",
+    "seconds": "秒",
+    "workLabelShort": "運動",
+    "restLabelShort": "休息",
+    "blockRestLabelShort": "組間休息",
+    "intervalsPerRound": "每組間歇數",
+    "numberOfRounds": "組數"
+  },
+  "presets": {
+    "custom": "自訂",
+    "tabata": "塔巴塔",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "鍛鍊計時器",
+    "go": "開始！",
+    "goAria": "開始",
+    "startingIn": "{{count}} 秒後開始",
+    "getReady": "準備好",
+    "blockRestPhase": "組間休息",
+    "workPhase": "運動",
+    "restPhase": "休息",
+    "completePhase": "完成",
+    "completeMessage": "鍛鍊完成！",
+    "doneButton": "完成",
+    "returnToForm": "返回表單",
+    "stopButton": "停止鍛鍊",
+    "stopText": "停止",
+    "pauseButton": "暫停鍛鍊",
+    "pauseText": "暫停",
+    "resumeButton": "繼續鍛鍊",
+    "resumeText": "繼續",
+    "roundIndicator": "第 {{current}} 組 / 共 {{total}} 組",
+    "intervalIndicator": "第 {{current}} 個間歇 / 共 {{total}} 個",
+    "timeRemaining": "剩餘 {{time}}"
+  },
+  "errors": {
+    "title": "發生錯誤",
+    "tryAgain": "重試",
+    "workDurationMin": "必須 ≥ 1秒",
+    "restDurationMin": "必須 ≥ 0",
+    "intervalsMin": "必須 ≥ 1",
+    "roundsMin": "必須 ≥ 1",
+    "restBetweenRoundsMin": "必須 ≥ 0"
+  }
+}

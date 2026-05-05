@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Navigasi aplikasi",
+    "muteSounds": "Matikan suara",
+    "unmuteSounds": "Aktifkan suara",
+    "switchToDark": "Beralih ke mode gelap",
+    "switchToLight": "Beralih ke mode terang",
+    "languageSwitcher": "Ganti bahasa"
+  },
+  "form": {
+    "workLabel": "Latihan (detik)",
+    "restLabel": "Istirahat (detik)",
+    "intervalsLabel": "Interval / putaran",
+    "roundsLabel": "Putaran",
+    "blockRestLabel": "Istirahat blok (detik)",
+    "startButton": "Mulai",
+    "startButtonAria": "Mulai latihan",
+    "presetsGroup": "Preset latihan",
+    "decreaseButton": "Kurangi",
+    "increaseButton": "Tambah",
+    "minutes": "Menit",
+    "seconds": "Detik",
+    "workLabelShort": "Latihan",
+    "restLabelShort": "Istirahat",
+    "blockRestLabelShort": "Istirahat blok",
+    "intervalsPerRound": "Interval per putaran",
+    "numberOfRounds": "Jumlah putaran"
+  },
+  "presets": {
+    "custom": "Kustom",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Penghitung waktu latihan",
+    "go": "MULAI!",
+    "goAria": "Mulai",
+    "startingIn": "Mulai dalam {{count}}",
+    "getReady": "Bersiap",
+    "blockRestPhase": "ISTIRAHAT BLOK",
+    "workPhase": "LATIHAN",
+    "restPhase": "ISTIRAHAT",
+    "completePhase": "SELESAI",
+    "completeMessage": "Latihan selesai!",
+    "doneButton": "Selesai",
+    "returnToForm": "Kembali ke formulir",
+    "stopButton": "Hentikan latihan",
+    "stopText": "Hentikan",
+    "pauseButton": "Jeda latihan",
+    "pauseText": "Jeda",
+    "resumeButton": "Lanjutkan latihan",
+    "resumeText": "Lanjutkan",
+    "roundIndicator": "Putaran {{current}} dari {{total}}",
+    "intervalIndicator": "Interval {{current}} dari {{total}}",
+    "timeRemaining": "{{time}} tersisa"
+  },
+  "errors": {
+    "title": "Terjadi kesalahan",
+    "tryAgain": "Coba lagi",
+    "workDurationMin": "Harus ≥ 1 detik",
+    "restDurationMin": "Harus ≥ 0",
+    "intervalsMin": "Harus ≥ 1",
+    "roundsMin": "Harus ≥ 1",
+    "restBetweenRoundsMin": "Harus ≥ 0"
+  }
+}

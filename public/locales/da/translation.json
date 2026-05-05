@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "App-navigation",
+    "muteSounds": "Slå lyde fra",
+    "unmuteSounds": "Slå lyde til",
+    "switchToDark": "Skift til mørk tilstand",
+    "switchToLight": "Skift til lys tilstand",
+    "languageSwitcher": "Skift sprog"
+  },
+  "form": {
+    "workLabel": "Arbejde (s)",
+    "restLabel": "Hvile (s)",
+    "intervalsLabel": "Intervaller / runde",
+    "roundsLabel": "Runder",
+    "blockRestLabel": "Blokhvile (s)",
+    "startButton": "Start",
+    "startButtonAria": "Start træning",
+    "presetsGroup": "Træningsforudindstillinger",
+    "decreaseButton": "Mindsk",
+    "increaseButton": "Forøg",
+    "minutes": "Minutter",
+    "seconds": "Sekunder",
+    "workLabelShort": "Arbejde",
+    "restLabelShort": "Hvile",
+    "blockRestLabelShort": "Blokhvile",
+    "intervalsPerRound": "Intervaller per runde",
+    "numberOfRounds": "Antal runder"
+  },
+  "presets": {
+    "custom": "Brugerdefineret",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Træningsur",
+    "go": "KØR!",
+    "goAria": "Kør",
+    "startingIn": "Starter om {{count}}",
+    "getReady": "Gør dig klar",
+    "blockRestPhase": "BLOKHVILE",
+    "workPhase": "ARBEJDE",
+    "restPhase": "HVILE",
+    "completePhase": "FÆRDIG",
+    "completeMessage": "Træning fuldført!",
+    "doneButton": "Færdig",
+    "returnToForm": "Tilbage til formularen",
+    "stopButton": "Stop træning",
+    "stopText": "Stop",
+    "pauseButton": "Sæt træning på pause",
+    "pauseText": "Pause",
+    "resumeButton": "Genoptag træning",
+    "resumeText": "Genoptag",
+    "roundIndicator": "Runde {{current}} af {{total}}",
+    "intervalIndicator": "Interval {{current}} af {{total}}",
+    "timeRemaining": "{{time}} tilbage"
+  },
+  "errors": {
+    "title": "Noget gik galt",
+    "tryAgain": "Prøv igen",
+    "workDurationMin": "Skal være ≥ 1s",
+    "restDurationMin": "Skal være ≥ 0",
+    "intervalsMin": "Skal være ≥ 1",
+    "roundsMin": "Skal være ≥ 1",
+    "restBetweenRoundsMin": "Skal være ≥ 0"
+  }
+}

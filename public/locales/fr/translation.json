@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "Navigation de l'application",
+    "muteSounds": "Couper le son",
+    "unmuteSounds": "Activer le son",
+    "switchToDark": "Passer en mode sombre",
+    "switchToLight": "Passer en mode clair",
+    "languageSwitcher": "Changer de langue"
+  },
+  "form": {
+    "workLabel": "Travail (s)",
+    "restLabel": "Repos (s)",
+    "intervalsLabel": "Intervalles / série",
+    "roundsLabel": "Séries",
+    "blockRestLabel": "Repos entre blocs (s)",
+    "startButton": "Démarrer",
+    "startButtonAria": "Démarrer l'entraînement",
+    "presetsGroup": "Préréglages d'entraînement",
+    "decreaseButton": "Diminuer",
+    "increaseButton": "Augmenter",
+    "minutes": "Minutes",
+    "seconds": "Secondes",
+    "workLabelShort": "Travail",
+    "restLabelShort": "Repos",
+    "blockRestLabelShort": "Repos de bloc",
+    "intervalsPerRound": "Intervalles par série",
+    "numberOfRounds": "Nombre de séries"
+  },
+  "presets": {
+    "custom": "Personnalisé",
+    "tabata": "Tabata",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "Minuteur d'entraînement",
+    "go": "PARTEZ !",
+    "goAria": "Partez",
+    "startingIn": "Départ dans {{count}}",
+    "getReady": "Préparez-vous",
+    "blockRestPhase": "REPOS DE BLOC",
+    "workPhase": "TRAVAIL",
+    "restPhase": "REPOS",
+    "completePhase": "TERMINÉ",
+    "completeMessage": "Entraînement terminé !",
+    "doneButton": "Terminé",
+    "returnToForm": "Retour au formulaire",
+    "stopButton": "Arrêter l'entraînement",
+    "stopText": "Arrêter",
+    "pauseButton": "Mettre en pause",
+    "pauseText": "Pause",
+    "resumeButton": "Reprendre l'entraînement",
+    "resumeText": "Reprendre",
+    "roundIndicator": "Série {{current}} sur {{total}}",
+    "intervalIndicator": "Intervalle {{current}} sur {{total}}",
+    "timeRemaining": "{{time}} restant"
+  },
+  "errors": {
+    "title": "Une erreur s'est produite",
+    "tryAgain": "Réessayer",
+    "workDurationMin": "Doit être ≥ 1s",
+    "restDurationMin": "Doit être ≥ 0",
+    "intervalsMin": "Doit être ≥ 1",
+    "roundsMin": "Doit être ≥ 1",
+    "restBetweenRoundsMin": "Doit être ≥ 0"
+  }
+}

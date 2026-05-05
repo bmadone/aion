@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "การนำทางแอป",
+    "muteSounds": "ปิดเสียง",
+    "unmuteSounds": "เปิดเสียง",
+    "switchToDark": "เปลี่ยนเป็นโหมดมืด",
+    "switchToLight": "เปลี่ยนเป็นโหมดสว่าง",
+    "languageSwitcher": "เปลี่ยนภาษา"
+  },
+  "form": {
+    "workLabel": "ออกกำลังกาย (วินาที)",
+    "restLabel": "พัก (วินาที)",
+    "intervalsLabel": "ช่วง / รอบ",
+    "roundsLabel": "รอบ",
+    "blockRestLabel": "พักระหว่างบล็อก (วินาที)",
+    "startButton": "เริ่ม",
+    "startButtonAria": "เริ่มการออกกำลังกาย",
+    "presetsGroup": "การตั้งค่าล่วงหน้า",
+    "decreaseButton": "ลด",
+    "increaseButton": "เพิ่ม",
+    "minutes": "นาที",
+    "seconds": "วินาที",
+    "workLabelShort": "ออกกำลังกาย",
+    "restLabelShort": "พัก",
+    "blockRestLabelShort": "พักบล็อก",
+    "intervalsPerRound": "ช่วงต่อรอบ",
+    "numberOfRounds": "จำนวนรอบ"
+  },
+  "presets": {
+    "custom": "กำหนดเอง",
+    "tabata": "ตาบาตะ",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "ตัวจับเวลาออกกำลังกาย",
+    "go": "เริ่ม!",
+    "goAria": "เริ่ม",
+    "startingIn": "เริ่มใน {{count}}",
+    "getReady": "เตรียมพร้อม",
+    "blockRestPhase": "พักบล็อก",
+    "workPhase": "ออกกำลังกาย",
+    "restPhase": "พัก",
+    "completePhase": "เสร็จสิ้น",
+    "completeMessage": "การออกกำลังกายเสร็จสิ้น!",
+    "doneButton": "เสร็จ",
+    "returnToForm": "กลับไปที่แบบฟอร์ม",
+    "stopButton": "หยุดออกกำลังกาย",
+    "stopText": "หยุด",
+    "pauseButton": "หยุดชั่วคราว",
+    "pauseText": "หยุดชั่วคราว",
+    "resumeButton": "ดำเนินการต่อ",
+    "resumeText": "ดำเนินการต่อ",
+    "roundIndicator": "รอบ {{current}} / {{total}}",
+    "intervalIndicator": "ช่วง {{current}} / {{total}}",
+    "timeRemaining": "เหลือ {{time}}"
+  },
+  "errors": {
+    "title": "เกิดข้อผิดพลาด",
+    "tryAgain": "ลองอีกครั้ง",
+    "workDurationMin": "ต้องเป็น ≥ 1 วินาที",
+    "restDurationMin": "ต้องเป็น ≥ 0",
+    "intervalsMin": "ต้องเป็น ≥ 1",
+    "roundsMin": "ต้องเป็น ≥ 1",
+    "restBetweenRoundsMin": "ต้องเป็น ≥ 0"
+  }
+}

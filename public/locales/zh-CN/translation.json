@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "ariaLabel": "应用导航",
+    "muteSounds": "静音",
+    "unmuteSounds": "取消静音",
+    "switchToDark": "切换到深色模式",
+    "switchToLight": "切换到浅色模式",
+    "languageSwitcher": "切换语言"
+  },
+  "form": {
+    "workLabel": "运动 (秒)",
+    "restLabel": "休息 (秒)",
+    "intervalsLabel": "间歇 / 组",
+    "roundsLabel": "组数",
+    "blockRestLabel": "组间休息 (秒)",
+    "startButton": "开始",
+    "startButtonAria": "开始锻炼",
+    "presetsGroup": "锻炼预设",
+    "decreaseButton": "减少",
+    "increaseButton": "增加",
+    "minutes": "分钟",
+    "seconds": "秒",
+    "workLabelShort": "运动",
+    "restLabelShort": "休息",
+    "blockRestLabelShort": "组间休息",
+    "intervalsPerRound": "每组间歇数",
+    "numberOfRounds": "组数"
+  },
+  "presets": {
+    "custom": "自定义",
+    "tabata": "塔巴塔",
+    "amrap": "AMRAP",
+    "emom": "EMOM"
+  },
+  "timer": {
+    "ariaLabel": "锻炼计时器",
+    "go": "开始！",
+    "goAria": "开始",
+    "startingIn": "{{count}} 秒后开始",
+    "getReady": "准备好",
+    "blockRestPhase": "组间休息",
+    "workPhase": "运动",
+    "restPhase": "休息",
+    "completePhase": "完成",
+    "completeMessage": "锻炼完成！",
+    "doneButton": "完成",
+    "returnToForm": "返回表单",
+    "stopButton": "停止锻炼",
+    "stopText": "停止",
+    "pauseButton": "暂停锻炼",
+    "pauseText": "暂停",
+    "resumeButton": "继续锻炼",
+    "resumeText": "继续",
+    "roundIndicator": "第 {{current}} 组 / 共 {{total}} 组",
+    "intervalIndicator": "第 {{current}} 个间歇 / 共 {{total}} 个",
+    "timeRemaining": "剩余 {{time}}"
+  },
+  "errors": {
+    "title": "出了点问题",
+    "tryAgain": "重试",
+    "workDurationMin": "必须 ≥ 1秒",
+    "restDurationMin": "必须 ≥ 0",
+    "intervalsMin": "必须 ≥ 1",
+    "roundsMin": "必须 ≥ 1",
+    "restBetweenRoundsMin": "必须 ≥ 0"
+  }
+}
