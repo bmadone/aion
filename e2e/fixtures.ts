@@ -1,39 +1,11 @@
 import { test as base, type Page } from '@playwright/test'
 
-/** Stub Web Audio API so tests don't fail on missing audio hardware */
+/** Stub HTMLMediaElement so audio calls are no-ops in headless Chromium */
 async function mockAudio(page: Page): Promise<void> {
   await page.addInitScript(() => {
-    class FakeAudioContext {
-      currentTime = 0
-      state = 'running'
-      createBufferSource() {
-        return {
-          buffer: null,
-          connect: () => {},
-          start: () => {},
-          stop: () => {},
-          disconnect: () => {},
-        }
-      }
-      createGain() {
-        return {
-          gain: { value: 1 },
-          connect: () => {},
-          disconnect: () => {},
-        }
-      }
-      decodeAudioData() {
-        // Reject so SoundManager's buffer stays null and ring() short-circuits
-        return Promise.reject(new Error('audio unavailable in tests'))
-      }
-      resume() { return Promise.resolve() }
-      close() { return Promise.resolve() }
-      destination = {}
-    }
-    // @ts-ignore
-    window.AudioContext = FakeAudioContext
-    // @ts-ignore
-    window.webkitAudioContext = FakeAudioContext
+    window.HTMLMediaElement.prototype.play  = () => Promise.resolve()
+    window.HTMLMediaElement.prototype.pause = () => undefined
+    window.HTMLMediaElement.prototype.load  = () => undefined
   })
 }
 
