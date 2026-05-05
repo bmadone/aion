@@ -1,33 +1,32 @@
-import { memo, useRef, useLayoutEffect, useEffect, useCallback } from 'react'
+import { memo, useRef, useLayoutEffect, useEffect, useCallback, type JSX } from 'react'
 
 export const ITEM_H  = 44
 const VISIBLE = 3
-const PAD     = Math.floor(VISIBLE / 2) // 1
+const PAD     = Math.floor(VISIBLE / 2)
 
 function indexOf(values: number[], v: number): number {
   return Math.max(values.indexOf(v), 0)
 }
 
 interface WheelPickerProperties {
-  values: number[]
-  value: number
-  onChange: (value: number) => void
-  format?: (n: number) => string
-  'aria-label'?: string
+  readonly values: number[]
+  readonly value: number
+  readonly onChange: (value: number) => void
+  readonly format?: (n: number) => string
+  readonly 'aria-label'?: string
 }
 
-export const WheelPicker = memo(function WheelPicker({
-  values,
-  value,
-  onChange,
-  format,
-  'aria-label': ariaLabel,
-}: WheelPickerProperties) {
-  const scrollRef        = useRef<HTMLDivElement>(null)
-  const timerRef      = useRef<ReturnType<typeof setTimeout> | null>(null)
+interface WheelPickerHook {
+  scrollRef: React.RefObject<HTMLDivElement | null>
+  handleScroll: () => void
+  handleKeyDown: (event_: React.KeyboardEvent) => void
+}
+
+function useWheelPicker(values: number[], value: number, onChange: (value: number) => void): WheelPickerHook {
+  const scrollRef      = useRef<HTMLDivElement>(null)
+  const timerRef       = useRef<ReturnType<typeof setTimeout> | null>(null)
   const initializedRef = useRef(false)
 
-  // Set scroll position before paint on mount — prevents flash at position 0
   useLayoutEffect(() => {
     const element = scrollRef.current
     if (!element) {return}
@@ -35,7 +34,6 @@ export const WheelPicker = memo(function WheelPicker({
     initializedRef.current = true
   }, [values, value])
 
-  // Smooth scroll when value changes externally (preset selection)
   useEffect(() => {
     const element = scrollRef.current
     if (!element || !initializedRef.current) {return}
@@ -57,52 +55,36 @@ export const WheelPicker = memo(function WheelPicker({
     }, 60)
   }, [values, value, onChange])
 
-  // Arrow key navigation
   const handleKeyDown = useCallback((event_: React.KeyboardEvent) => {
     const index = indexOf(values, value)
-    if (event_.key === 'ArrowUp') {
+    if (event_.key === 'ArrowUp' && index > 0) {
       event_.preventDefault()
       const previous = values[index - 1]
-      if (index > 0 && previous !== undefined) {onChange(previous)}
-    } else if (event_.key === 'ArrowDown') {
+      if (previous !== undefined) {onChange(previous)}
+    } else if (event_.key === 'ArrowDown' && index < values.length - 1) {
       event_.preventDefault()
       const next = values[index + 1]
-      if (index < values.length - 1 && next !== undefined) {onChange(next)}
+      if (next !== undefined) {onChange(next)}
     }
   }, [values, value, onChange])
 
+  return { scrollRef, handleScroll, handleKeyDown }
+}
+
+export const WheelPicker = memo(function WheelPicker({ values, value, onChange, format, 'aria-label': ariaLabel }: WheelPickerProperties): JSX.Element {
+  const { scrollRef, handleScroll, handleKeyDown } = useWheelPicker(values, value, onChange)
+
   return (
-    <div
-      className="wheel-wrap"
-      role="spinbutton"
-      aria-label={ariaLabel}
-      aria-valuenow={value}
-      aria-valuemin={values[0]}
-      aria-valuemax={values.at(-1)}
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
-    >
+    <div className="wheel-wrap" role="spinbutton" aria-label={ariaLabel} aria-valuenow={value} aria-valuemin={values[0]} aria-valuemax={values.at(-1)} tabIndex={0} onKeyDown={handleKeyDown}>
       <div className="wheel-highlight" aria-hidden="true" />
-      <div
-        ref={scrollRef}
-        className="wheel-scroll"
-        onScroll={handleScroll}
-        aria-hidden="true"
-      >
-        {Array.from({ length: PAD }, (_, index) => (
-          <div key={`top-${index}`} className="wheel-pad" />
-        ))}
+      <div ref={scrollRef} className="wheel-scroll" onScroll={handleScroll} aria-hidden="true">
+        {Array.from({ length: PAD }, (_, index) => <div key={`top-${index}`} className="wheel-pad" />)}
         {values.map((v) => (
-          <div
-            key={v}
-            className={`wheel-item${v === value ? ' wheel-item--sel' : ''}`}
-          >
+          <div key={v} className={`wheel-item${v === value ? ' wheel-item--sel' : ''}`}>
             {format ? format(v) : String(v).padStart(2, '0')}
           </div>
         ))}
-        {Array.from({ length: PAD }, (_, index) => (
-          <div key={`bot-${index}`} className="wheel-pad" />
-        ))}
+        {Array.from({ length: PAD }, (_, index) => <div key={`bot-${index}`} className="wheel-pad" />)}
       </div>
     </div>
   )

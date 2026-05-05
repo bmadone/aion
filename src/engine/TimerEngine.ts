@@ -7,6 +7,13 @@ interface TimerEngineCallbacks {
   onPhaseChange: (phase: Phase) => void
 }
 
+interface PhaseEntry {
+  phase: Phase
+  durationSeconds: number
+  round: number
+  interval: number
+}
+
 export class TimerEngine {
   private config: WorkoutConfig
   private callbacks: TimerEngineCallbacks
@@ -33,7 +40,7 @@ export class TimerEngine {
   start(): void {
     this.stopped = false
     this.paused = false
-    this.enterPhase('countdown', COUNTDOWN_SECONDS, 0, 0)
+    this.enterPhase({ phase: 'countdown', durationSeconds: COUNTDOWN_SECONDS, round: 0, interval: 0 })
     this.scheduleLoop()
   }
 
@@ -102,13 +109,13 @@ export class TimerEngine {
     const { workDuration, restDuration } = this.config
 
     if (phase === 'countdown') {
-      this.enterPhase('work', workDuration, 1, 1)
+      this.enterPhase({ phase: 'work', durationSeconds: workDuration, round: 1, interval: 1 })
       return
     }
 
     if (phase === 'work') {
       if (restDuration > 0) {
-        this.enterPhase('rest', restDuration, currentRound, currentInterval)
+        this.enterPhase({ phase: 'rest', durationSeconds: restDuration, round: currentRound, interval: currentInterval })
       } else {
         this.finishInterval()
       }
@@ -121,7 +128,7 @@ export class TimerEngine {
     }
 
     if (phase === 'rest-between-rounds') {
-      this.enterPhase('work', workDuration, currentRound + 1, 1)
+      this.enterPhase({ phase: 'work', durationSeconds: workDuration, round: currentRound + 1, interval: 1 })
     }
   }
 
@@ -133,22 +140,20 @@ export class TimerEngine {
     const isLastRound = currentRound >= rounds
 
     if (!isLastInterval) {
-      // Next interval in the same round
-      this.enterPhase('work', workDuration, currentRound, currentInterval + 1)
+      this.enterPhase({ phase: 'work', durationSeconds: workDuration, round: currentRound, interval: currentInterval + 1 })
       return
     }
 
-    // Last interval of this round
     if (isLastRound) {
-      this.enterPhase('complete', 0, currentRound, currentInterval)
+      this.enterPhase({ phase: 'complete', durationSeconds: 0, round: currentRound, interval: currentInterval })
     } else if (restBetweenRounds > 0) {
-      this.enterPhase('rest-between-rounds', restBetweenRounds, currentRound, currentInterval)
+      this.enterPhase({ phase: 'rest-between-rounds', durationSeconds: restBetweenRounds, round: currentRound, interval: currentInterval })
     } else {
-      this.enterPhase('work', workDuration, currentRound + 1, 1)
+      this.enterPhase({ phase: 'work', durationSeconds: workDuration, round: currentRound + 1, interval: 1 })
     }
   }
 
-  private enterPhase(phase: Phase, durationSeconds: number, round: number, interval: number): void {
+  private enterPhase({ phase, durationSeconds, round, interval }: PhaseEntry): void {
     const now = performance.now()
     this.phaseEndTime = now + durationSeconds * 1000
 

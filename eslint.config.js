@@ -65,6 +65,29 @@ export default defineConfig([
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
       '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
 
+      // ── Complexity ──────────────────────────────────────────────────────
+      complexity: ['error', 10],
+      'max-depth': ['error', 4],
+      'max-params': ['error', 3],
+      'max-lines-per-function': ['error', 80],
+
+      // ── Naming convention ────────────────────────────────────────────────
+      '@typescript-eslint/naming-convention': [
+        'error',
+        { selector: 'variable', format: ['camelCase', 'UPPER_CASE', 'PascalCase'] },
+        { selector: 'function', format: ['camelCase', 'PascalCase'] },
+        { selector: 'typeLike', format: ['PascalCase'] },
+        { selector: 'parameter', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+      ],
+
+      // ── Ban dangerous patterns ───────────────────────────────────────────
+      'no-restricted-syntax': [
+        'error',
+        { selector: 'ForInStatement', message: 'Use for...of or Object.entries() instead.' },
+        { selector: 'TSEnumDeclaration', message: 'Use const objects instead of enums.' },
+      ],
+      'no-restricted-globals': ['error', 'event', 'name', 'length', 'status'],
+
       // ── SonarJS overrides ────────────────────────────────────────────────
       'sonarjs/function-return-type': 'off', // redundant with @typescript-eslint/explicit-function-return-type
 
@@ -73,6 +96,14 @@ export default defineConfig([
       'unicorn/filename-case': ['error', { cases: { pascalCase: true, kebabCase: true } }],
       'unicorn/prevent-abbreviations': 'off', // Props/Ref/e are established React/TS patterns
       'unicorn/no-null': 'off',               // null is valid with DOM APIs and React error boundaries
+    },
+  },
+  {
+    files: ['**/*.test.{ts,tsx}'],
+    rules: {
+      'max-lines-per-function': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
     },
   },
 ])

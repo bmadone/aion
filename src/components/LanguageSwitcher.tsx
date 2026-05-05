@@ -36,6 +36,33 @@ const LOCALES = [
   { code: 'ar',    name: 'العربية' },
 ]
 
+interface DropdownProperties {
+  readonly filtered: typeof LOCALES
+  readonly currentCode: string
+  readonly searchRef: React.RefObject<HTMLInputElement | null>
+  readonly search: string
+  readonly label: string
+  readonly onSearch: (value: string) => void
+  readonly onSelect: (code: string) => void
+}
+
+function LanguageDropdown({ filtered, currentCode, searchRef, search, label, onSearch, onSelect }: DropdownProperties): JSX.Element {
+  return (
+    <div className="lang-dropdown" role="dialog" aria-label={label}>
+      <input ref={searchRef} className="lang-search" type="text" value={search} onChange={(e) => onSearch(e.target.value)} placeholder="Search…" aria-label="Search languages" />
+      <ul className="lang-list" role="listbox" aria-label={label}>
+        {filtered.map(locale => (
+          <li key={locale.code} role="option" aria-selected={locale.code === currentCode}>
+            <button className={`lang-option${locale.code === currentCode ? ' lang-option--active' : ''}`} onClick={() => onSelect(locale.code)} type="button">
+              {locale.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export function LanguageSwitcher(): JSX.Element {
   const { i18n, t } = useTranslation()
   const [open, setOpen] = useState(false)
@@ -44,8 +71,6 @@ export function LanguageSwitcher(): JSX.Element {
   const searchRef = useRef<HTMLInputElement>(null)
 
   const currentCode = i18n.language
-  const current = LOCALES.find(l => l.code === currentCode) ?? { code: 'en', name: 'English' }
-
   const filtered = search.trim()
     ? LOCALES.filter(l => l.name.toLowerCase().includes(search.toLowerCase()) || l.code.toLowerCase().includes(search.toLowerCase()))
     : LOCALES
@@ -63,8 +88,7 @@ export function LanguageSwitcher(): JSX.Element {
   useEffect(() => {
     function onOutsideClick(e: MouseEvent): void {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setOpen(false)
-        setSearch('')
+        setOpen(false); setSearch('')
       }
     }
     function onKeyDown(e: KeyboardEvent): void {
@@ -82,42 +106,10 @@ export function LanguageSwitcher(): JSX.Element {
 
   return (
     <div className="lang-switcher" ref={containerRef}>
-      <button
-        className="icon-btn"
-        onClick={() => setOpen(o => !o)}
-        aria-label={t('nav.languageSwitcher')}
-        aria-expanded={open}
-        aria-haspopup="listbox"
-      >
+      <button className="icon-btn" onClick={() => setOpen(o => !o)} aria-label={t('nav.languageSwitcher')} aria-expanded={open} aria-haspopup="listbox">
         <Globe2 size={18} aria-hidden="true" />
       </button>
-
-      {open && (
-        <div className="lang-dropdown" role="dialog" aria-label={t('nav.languageSwitcher')}>
-          <input
-            ref={searchRef}
-            className="lang-search"
-            type="text"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search…"
-            aria-label="Search languages"
-          />
-          <ul className="lang-list" role="listbox" aria-label={t('nav.languageSwitcher')}>
-            {filtered.map(locale => (
-              <li key={locale.code} role="option" aria-selected={locale.code === current.code}>
-                <button
-                  className={`lang-option${locale.code === current.code ? ' lang-option--active' : ''}`}
-                  onClick={() => handleSelect(locale.code)}
-                  type="button"
-                >
-                  {locale.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {open && <LanguageDropdown filtered={filtered} currentCode={currentCode} searchRef={searchRef} search={search} label={t('nav.languageSwitcher')} onSearch={setSearch} onSelect={handleSelect} />}
     </div>
   )
 }
