@@ -13,7 +13,7 @@ const DEFAULT_CONFIG: WorkoutConfig = {
 function getInitialTheme(): 'light' | 'dark' {
   try {
     const stored = localStorage.getItem('aion:theme') as 'light' | 'dark' | null
-    if (stored === 'dark' || stored === 'light') return stored
+    if (stored === 'dark' || stored === 'light') {return stored}
   } catch { /* ignore */ }
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
@@ -25,7 +25,7 @@ function getInitialMuted(): boolean {
 function loadLegacyConfig(): WorkoutConfig | null {
   try {
     const raw = localStorage.getItem('aion:lastWorkout')
-    if (raw !== null) return JSON.parse(raw) as WorkoutConfig
+    if (raw !== null) {return JSON.parse(raw) as WorkoutConfig}
   } catch { /* ignore */ }
   return null
 }
@@ -72,7 +72,7 @@ export const useStore = create<AionState>()(
           muted:  state.muted,
         }),
         onRehydrateStorage: () => (rehydrated, error) => {
-          if (error ?? rehydrated) return
+          if (error ?? rehydrated) {return}
           // No existing aion:store — migrate from legacy individual keys
           const legacyConfig = loadLegacyConfig()
           if (legacyConfig !== null) {

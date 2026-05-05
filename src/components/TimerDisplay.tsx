@@ -23,10 +23,10 @@ function formatTime(seconds: number): string {
 }
 
 function getPhaseDuration(phase: Phase, config: WorkoutConfig): number {
-  if (phase === 'work') return config.workDuration
-  if (phase === 'rest') return config.restDuration
-  if (phase === 'rest-between-rounds') return config.restBetweenRounds
-  if (phase === 'countdown') return COUNTDOWN_SECONDS
+  if (phase === 'work') {return config.workDuration}
+  if (phase === 'rest') {return config.restDuration}
+  if (phase === 'rest-between-rounds') {return config.restBetweenRounds}
+  if (phase === 'countdown') {return COUNTDOWN_SECONDS}
   return 0
 }
 
@@ -65,9 +65,9 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
     const engine = new TimerEngine(config, {
       onTick: (s) => setState({ ...s }),
       onPhaseChange: (p) => {
-        if (p === 'work') soundManager.playWork()
-        else if (p === 'rest' || p === 'rest-between-rounds') soundManager.playRest()
-        else if (p === 'complete') soundManager.playComplete()
+        if (p === 'work') {soundManager.playWork()}
+        else if (p === 'rest' || p === 'rest-between-rounds') {soundManager.playRest()}
+        else if (p === 'complete') {soundManager.playComplete()}
       },
     })
     engineRef.current = engine
@@ -84,7 +84,7 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
 
   const handlePauseResume = useCallback(() => {
     const engine = engineRef.current
-    if (!engine) return
+    if (!engine) {return}
     if (paused) { engine.resume(); setPaused(false) }
     else        { engine.pause();  setPaused(true)  }
   }, [paused])
@@ -95,14 +95,14 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent): void => {
-      if (e.target instanceof HTMLButtonElement) return
+      if (e.target instanceof HTMLButtonElement) {return}
       if (e.code === 'Space') {
         e.preventDefault()
-        if (!isComplete && !isCountdown) handlePauseResume()
+        if (!isComplete && !isCountdown) {handlePauseResume()}
       } else if (e.key === 's' || e.key === 'S') {
         handleStop()
       } else if (e.key === 'ArrowRight') {
-        if (!isComplete) handleSkip()
+        if (!isComplete) {handleSkip()}
       }
     }
     window.addEventListener('keydown', onKeyDown)
@@ -111,10 +111,10 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
 
 
   let bgClass = 'timer-display'
-  if (isWork)      bgClass += ' timer-display--work'
-  else if (isRest) bgClass += ' timer-display--rest'
-  else if (isBlockRest) bgClass += ' timer-display--block-rest'
-  else if (isComplete)  bgClass += ' timer-display--complete'
+  if (isWork)      {bgClass += ' timer-display--work'}
+  else if (isRest) {bgClass += ' timer-display--rest'}
+  else if (isBlockRest) {bgClass += ' timer-display--block-rest'}
+  else if (isComplete)  {bgClass += ' timer-display--complete'}
 
   const phaseLabel = isBlockRest
     ? t('timer.blockRestPhase')
@@ -129,9 +129,8 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
       aria-label={t('timer.ariaLabel')}
       style={{ '--intensity': intensity } as React.CSSProperties}
     >
-      {isCountdown ? (
-        <CountdownOverlay count={timeRemaining} />
-      ) : isComplete ? (
+      {isCountdown && <CountdownOverlay count={timeRemaining} />}
+      {isComplete && (
         <div className="timer-complete">
           <div className="complete-icon" aria-hidden="true">🏆</div>
           <div className="complete-text">{t('timer.completeMessage')}</div>
@@ -139,7 +138,8 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
             {t('timer.doneButton')}
           </button>
         </div>
-      ) : (
+      )}
+      {!isCountdown && !isComplete && (
         <>
           <div className="timer-top">
             <div className="timer-header-row">

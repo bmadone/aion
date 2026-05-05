@@ -29,7 +29,7 @@ export default function App(): JSX.Element {
 
   // Return focus to Start button when navigating back to the form
   useEffect(() => {
-    if (view === 'form') startBtnRef.current?.focus()
+    if (view === 'form') {startBtnRef.current?.focus()}
   }, [view])
 
   return (

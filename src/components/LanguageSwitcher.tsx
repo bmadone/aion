@@ -57,7 +57,7 @@ export function LanguageSwitcher(): JSX.Element {
   }, [i18n])
 
   useEffect(() => {
-    if (open) searchRef.current?.focus()
+    if (open) {searchRef.current?.focus()}
   }, [open])
 
   useEffect(() => {

@@ -17,7 +17,7 @@ function shoot(): void {
 
 export function useConfetti(active: boolean): void {
   useEffect(() => {
-    if (!active) return
+    if (!active) {return}
     shoot()
     const t1 = setTimeout(shoot, 100)
     const t2 = setTimeout(shoot, 200)

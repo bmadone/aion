@@ -31,7 +31,7 @@ export const WheelPicker = memo(function WheelPicker({
   // Set scroll position before paint on mount — prevents flash at position 0
   useLayoutEffect(() => {
     const el = ref.current
-    if (!el) return
+    if (!el) {return}
     el.scrollTop = idxOf(value) * ITEM_H
     initialized.current = true
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -39,7 +39,7 @@ export const WheelPicker = memo(function WheelPicker({
   // Smooth scroll when value changes externally (preset selection)
   useEffect(() => {
     const el = ref.current
-    if (!el || !initialized.current) return
+    if (!el || !initialized.current) {return}
     const target = idxOf(value) * ITEM_H
     if (Math.abs(el.scrollTop - target) > 4) {
       el.scrollTo({ top: target, behavior: 'smooth' })
@@ -47,14 +47,14 @@ export const WheelPicker = memo(function WheelPicker({
   }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleScroll = useCallback(() => {
-    if (timer.current !== null) clearTimeout(timer.current)
+    if (timer.current !== null) {clearTimeout(timer.current)}
     timer.current = setTimeout(() => {
       const el = ref.current
-      if (!el) return
+      if (!el) {return}
       const i = Math.round(el.scrollTop / ITEM_H)
       const clamped = Math.max(0, Math.min(values.length - 1, i))
       const picked = values[clamped]
-      if (picked !== undefined && picked !== value) onChange(picked)
+      if (picked !== undefined && picked !== value) {onChange(picked)}
     }, 60)
   }, [values, value, onChange])
 
@@ -64,11 +64,11 @@ export const WheelPicker = memo(function WheelPicker({
     if (e.key === 'ArrowUp') {
       e.preventDefault()
       const prev = values[idx - 1]
-      if (idx > 0 && prev !== undefined) onChange(prev)
+      if (idx > 0 && prev !== undefined) {onChange(prev)}
     } else if (e.key === 'ArrowDown') {
       e.preventDefault()
       const next = values[idx + 1]
-      if (idx < values.length - 1 && next !== undefined) onChange(next)
+      if (idx < values.length - 1 && next !== undefined) {onChange(next)}
     }
   }, [values, value, onChange]) // eslint-disable-line react-hooks/exhaustive-deps
 

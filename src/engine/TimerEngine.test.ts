@@ -126,14 +126,14 @@ describe('TimerEngine', () => {
 
     engine.pause()
     const atPauseTick = ticks[ticks.length - 1]
-    if (!atPauseTick) throw new Error('Expected tick at pause')
+    if (!atPauseTick) {throw new Error('Expected tick at pause')}
     const atPause = { ...atPauseTick }
     advance(30000)
     engine.resume()
     advance(16)
 
     const afterResume = ticks[ticks.length - 1]
-    if (!afterResume) throw new Error('Expected tick after resume')
+    if (!afterResume) {throw new Error('Expected tick after resume')}
     expect(afterResume.timeRemaining).toBeCloseTo(atPause.timeRemaining, 0)
   })
 

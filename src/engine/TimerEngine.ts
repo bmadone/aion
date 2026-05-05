@@ -38,7 +38,7 @@ export class TimerEngine {
   }
 
   pause(): void {
-    if (this.state.phase === 'complete' || this.stopped || this.paused) return
+    if (this.state.phase === 'complete' || this.stopped || this.paused) {return}
     this.paused = true
     this.remainingOnPause = this.phaseEndTime - performance.now()
     if (this.rafId !== null) {
@@ -48,14 +48,14 @@ export class TimerEngine {
   }
 
   resume(): void {
-    if (!this.paused || this.stopped) return
+    if (!this.paused || this.stopped) {return}
     this.paused = false
     this.phaseEndTime = performance.now() + this.remainingOnPause
     this.scheduleLoop()
   }
 
   skip(): void {
-    if (this.stopped) return
+    if (this.stopped) {return}
     this.advance()
   }
 
@@ -73,12 +73,12 @@ export class TimerEngine {
   }
 
   private scheduleLoop(): void {
-    if (this.rafId !== null) cancelAnimationFrame(this.rafId)
+    if (this.rafId !== null) {cancelAnimationFrame(this.rafId)}
     this.rafId = requestAnimationFrame(this.tick)
   }
 
   private tick = (timestamp: number): void => {
-    if (this.stopped || this.paused) return
+    if (this.stopped || this.paused) {return}
 
     const remaining = this.phaseEndTime - timestamp
 
@@ -96,7 +96,7 @@ export class TimerEngine {
   }
 
   private advance(): void {
-    if (this.stopped) return
+    if (this.stopped) {return}
 
     const { phase, currentRound, currentInterval } = this.state
     const { workDuration, restDuration } = this.config
@@ -170,6 +170,6 @@ export class TimerEngine {
     this.callbacks.onPhaseChange(phase)
     this.callbacks.onTick({ ...this.state })
 
-    if (!this.stopped && phase !== 'complete') this.scheduleLoop()
+    if (!this.stopped && phase !== 'complete') {this.scheduleLoop()}
   }
 }

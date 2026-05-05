@@ -51,6 +51,12 @@ export default defineConfig([
       '@typescript-eslint/no-misused-promises': 'error',
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
       '@typescript-eslint/prefer-optional-chain': 'error',
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
+      '@typescript-eslint/no-shadow': 'error',
+      '@typescript-eslint/promise-function-async': 'error',
+      '@typescript-eslint/return-await': ['error', 'in-try-catch'],
+      'no-nested-ternary': 'error',
+      'curly': ['error', 'all'],
     },
   },
 ])
