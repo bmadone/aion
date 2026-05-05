@@ -94,7 +94,7 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
   }, [])
 
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
+    const onKeyDown = (e: KeyboardEvent): void => {
       if (e.target instanceof HTMLButtonElement) return
       if (e.code === 'Space') {
         e.preventDefault()
