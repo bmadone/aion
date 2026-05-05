@@ -53,7 +53,9 @@
     "resumeText": "继续",
     "roundIndicator": "第 {{current}} 组 / 共 {{total}} 组",
     "intervalIndicator": "第 {{current}} 个间歇 / 共 {{total}} 个",
-    "timeRemaining": "剩余 {{time}}"
+    "timeRemaining": "剩余 {{time}}",
+    "skipButton": "跳过阶段",
+    "skipText": "跳过"
   },
   "errors": {
     "title": "出了点问题",

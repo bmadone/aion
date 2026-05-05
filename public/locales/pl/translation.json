@@ -53,7 +53,9 @@
     "resumeText": "Wznów",
     "roundIndicator": "Seria {{current}} z {{total}}",
     "intervalIndicator": "Interwał {{current}} z {{total}}",
-    "timeRemaining": "{{time}} pozostało"
+    "timeRemaining": "{{time}} pozostało",
+    "skipButton": "Pomiń fazę",
+    "skipText": "Pomiń"
   },
   "errors": {
     "title": "Coś poszło nie tak",

@@ -53,7 +53,9 @@
     "resumeText": "Genoptag",
     "roundIndicator": "Runde {{current}} af {{total}}",
     "intervalIndicator": "Interval {{current}} af {{total}}",
-    "timeRemaining": "{{time}} tilbage"
+    "timeRemaining": "{{time}} tilbage",
+    "skipButton": "Spring fase over",
+    "skipText": "Spring over"
   },
   "errors": {
     "title": "Noget gik galt",

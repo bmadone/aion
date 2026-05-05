@@ -53,7 +53,9 @@
     "resumeText": "Folytatás",
     "roundIndicator": "{{current}}. kör / {{total}}",
     "intervalIndicator": "{{current}}. intervallum / {{total}}",
-    "timeRemaining": "{{time}} van hátra"
+    "timeRemaining": "{{time}} van hátra",
+    "skipButton": "Fázis kihagyása",
+    "skipText": "Kihagyás"
   },
   "errors": {
     "title": "Valami hiba történt",

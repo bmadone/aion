@@ -53,7 +53,9 @@
     "resumeText": "Reluare",
     "roundIndicator": "Runda {{current}} din {{total}}",
     "intervalIndicator": "Intervalul {{current}} din {{total}}",
-    "timeRemaining": "{{time}} rămase"
+    "timeRemaining": "{{time}} rămase",
+    "skipButton": "Sari peste fază",
+    "skipText": "Sari"
   },
   "errors": {
     "title": "Ceva a mers prost",

@@ -53,7 +53,9 @@
     "resumeText": "Jatka",
     "roundIndicator": "Kierros {{current}} / {{total}}",
     "intervalIndicator": "Intervalli {{current}} / {{total}}",
-    "timeRemaining": "{{time}} jäljellä"
+    "timeRemaining": "{{time}} jäljellä",
+    "skipButton": "Ohita vaihe",
+    "skipText": "Ohita"
   },
   "errors": {
     "title": "Jotain meni pieleen",

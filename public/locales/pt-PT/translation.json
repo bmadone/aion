@@ -53,7 +53,9 @@
     "resumeText": "Retomar",
     "roundIndicator": "Série {{current}} de {{total}}",
     "intervalIndicator": "Intervalo {{current}} de {{total}}",
-    "timeRemaining": "{{time}} restante"
+    "timeRemaining": "{{time}} restante",
+    "skipButton": "Saltar fase",
+    "skipText": "Saltar"
   },
   "errors": {
     "title": "Ocorreu um erro",

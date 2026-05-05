@@ -53,7 +53,9 @@
     "resumeText": "再開",
     "roundIndicator": "ラウンド {{current}} / {{total}}",
     "intervalIndicator": "インターバル {{current}} / {{total}}",
-    "timeRemaining": "残り {{time}}"
+    "timeRemaining": "残り {{time}}",
+    "skipButton": "フェーズをスキップ",
+    "skipText": "スキップ"
   },
   "errors": {
     "title": "エラーが発生しました",

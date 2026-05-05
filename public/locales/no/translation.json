@@ -53,7 +53,9 @@
     "resumeText": "Fortsett",
     "roundIndicator": "Runde {{current}} av {{total}}",
     "intervalIndicator": "Intervall {{current}} av {{total}}",
-    "timeRemaining": "{{time}} igjen"
+    "timeRemaining": "{{time}} igjen",
+    "skipButton": "Hopp over fase",
+    "skipText": "Hopp over"
   },
   "errors": {
     "title": "Noe gikk galt",

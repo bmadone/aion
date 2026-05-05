@@ -53,7 +53,9 @@
     "resumeText": "ดำเนินการต่อ",
     "roundIndicator": "รอบ {{current}} / {{total}}",
     "intervalIndicator": "ช่วง {{current}} / {{total}}",
-    "timeRemaining": "เหลือ {{time}}"
+    "timeRemaining": "เหลือ {{time}}",
+    "skipButton": "ข้ามขั้นตอน",
+    "skipText": "ข้าม"
   },
   "errors": {
     "title": "เกิดข้อผิดพลาด",

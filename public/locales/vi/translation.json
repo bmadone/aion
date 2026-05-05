@@ -53,7 +53,9 @@
     "resumeText": "Tiếp tục",
     "roundIndicator": "Vòng {{current}} / {{total}}",
     "intervalIndicator": "Khoảng {{current}} / {{total}}",
-    "timeRemaining": "Còn {{time}}"
+    "timeRemaining": "Còn {{time}}",
+    "skipButton": "Bỏ qua giai đoạn",
+    "skipText": "Bỏ qua"
   },
   "errors": {
     "title": "Đã xảy ra lỗi",

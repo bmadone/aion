@@ -89,6 +89,26 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
     else        { engine.pause();  setPaused(true)  }
   }, [paused])
 
+  const handleSkip = useCallback(() => {
+    engineRef.current?.skip()
+  }, [])
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLButtonElement) return
+      if (e.code === 'Space') {
+        e.preventDefault()
+        if (!isComplete && !isCountdown) handlePauseResume()
+      } else if (e.key === 's' || e.key === 'S') {
+        handleStop()
+      } else if (e.key === 'ArrowRight') {
+        if (!isComplete) handleSkip()
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isComplete, isCountdown, handlePauseResume, handleStop, handleSkip])
+
 
   let bgClass = 'timer-display'
   if (isWork)      bgClass += ' timer-display--work'
@@ -164,6 +184,9 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
                 aria-pressed={paused}
               >
                 {paused ? t('timer.resumeText') : t('timer.pauseText')}
+              </button>
+              <button className="btn-secondary" onClick={handleSkip} aria-label={t('timer.skipButton')}>
+                {t('timer.skipText')}
               </button>
             </div>
           </div>

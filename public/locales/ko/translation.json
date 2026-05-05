@@ -53,7 +53,9 @@
     "resumeText": "재개",
     "roundIndicator": "라운드 {{current}} / {{total}}",
     "intervalIndicator": "인터벌 {{current}} / {{total}}",
-    "timeRemaining": "{{time}} 남음"
+    "timeRemaining": "{{time}} 남음",
+    "skipButton": "단계 건너뛰기",
+    "skipText": "건너뛰기"
   },
   "errors": {
     "title": "오류가 발생했습니다",

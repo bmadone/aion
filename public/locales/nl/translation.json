@@ -53,7 +53,9 @@
     "resumeText": "Hervatten",
     "roundIndicator": "Ronde {{current}} van {{total}}",
     "intervalIndicator": "Interval {{current}} van {{total}}",
-    "timeRemaining": "{{time}} resterend"
+    "timeRemaining": "{{time}} resterend",
+    "skipButton": "Fase overslaan",
+    "skipText": "Overslaan"
   },
   "errors": {
     "title": "Er is iets misgegaan",

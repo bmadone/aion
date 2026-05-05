@@ -53,7 +53,9 @@
     "resumeText": "Συνέχεια",
     "roundIndicator": "Γύρος {{current}} από {{total}}",
     "intervalIndicator": "Διάστημα {{current}} από {{total}}",
-    "timeRemaining": "{{time}} απομένουν"
+    "timeRemaining": "{{time}} απομένουν",
+    "skipButton": "Παράλειψη φάσης",
+    "skipText": "Παράλειψη"
   },
   "errors": {
     "title": "Κάτι πήγε στραβά",

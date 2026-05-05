@@ -53,7 +53,9 @@
     "resumeText": "Продовжити",
     "roundIndicator": "Серія {{current}} з {{total}}",
     "intervalIndicator": "Інтервал {{current}} з {{total}}",
-    "timeRemaining": "Залишилось {{time}}"
+    "timeRemaining": "Залишилось {{time}}",
+    "skipButton": "Пропустити фазу",
+    "skipText": "Пропустити"
   },
   "errors": {
     "title": "Щось пішло не так",

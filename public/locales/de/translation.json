@@ -53,7 +53,9 @@
     "resumeText": "Fortsetzen",
     "roundIndicator": "Runde {{current}} von {{total}}",
     "intervalIndicator": "Intervall {{current}} von {{total}}",
-    "timeRemaining": "{{time}} verbleibend"
+    "timeRemaining": "{{time}} verbleibend",
+    "skipButton": "Phase überspringen",
+    "skipText": "Überspringen"
   },
   "errors": {
     "title": "Etwas ist schiefgelaufen",

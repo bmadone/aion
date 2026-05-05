@@ -53,7 +53,9 @@
     "resumeText": "Lanjutkan",
     "roundIndicator": "Putaran {{current}} dari {{total}}",
     "intervalIndicator": "Interval {{current}} dari {{total}}",
-    "timeRemaining": "{{time}} tersisa"
+    "timeRemaining": "{{time}} tersisa",
+    "skipButton": "Lewati fase",
+    "skipText": "Lewati"
   },
   "errors": {
     "title": "Terjadi kesalahan",

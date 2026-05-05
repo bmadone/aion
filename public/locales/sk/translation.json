@@ -53,7 +53,9 @@
     "resumeText": "Obnoviť",
     "roundIndicator": "Séria {{current}} z {{total}}",
     "intervalIndicator": "Interval {{current}} z {{total}}",
-    "timeRemaining": "{{time}} zostáva"
+    "timeRemaining": "{{time}} zostáva",
+    "skipButton": "Preskočiť fázu",
+    "skipText": "Preskočiť"
   },
   "errors": {
     "title": "Niečo sa pokazilo",

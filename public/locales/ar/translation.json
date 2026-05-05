@@ -53,7 +53,9 @@
     "resumeText": "استئناف",
     "roundIndicator": "الجولة {{current}} من {{total}}",
     "intervalIndicator": "الفترة {{current}} من {{total}}",
-    "timeRemaining": "{{time}} متبقية"
+    "timeRemaining": "{{time}} متبقية",
+    "skipButton": "تخطي المرحلة",
+    "skipText": "تخطي"
   },
   "errors": {
     "title": "حدث خطأ ما",
