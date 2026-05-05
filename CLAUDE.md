@@ -2,8 +2,17 @@
 
 ## Commit conventions
 
-Use conventional commits for all commit messages:
+Use [Conventional Commits](https://www.conventionalcommits.org/):
 
-- `fix:` — bug fixes
-- `feat:` — new features
-- `lint:` — linting/formatting fixes with no logic changes
+- `feat:` — new feature
+- `fix:` — bug fix
+- `docs:` — documentation only
+- `style:` — formatting, linting, no logic change
+- `refactor:` — code change that is neither a fix nor a feature
+- `test:` — adding or updating tests
+- `chore:` — build process, dependencies, tooling
+- `ci:` — CI/CD configuration
+- `perf:` — performance improvement
+- `revert:` — revert a previous commit
+
+Breaking changes: append `!` after the type, e.g. `feat!:`, or add `BREAKING CHANGE:` in the footer.
