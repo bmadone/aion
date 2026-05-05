@@ -46,11 +46,9 @@ class SoundManager {
     ])
   }
 
-  private ring(volume = 1, playbackRate = 1, times = 1, interval = 0.22): void {
+  private async ring(volume = 1, playbackRate = 1, times = 1, interval = 0.22): Promise<void> {
     if (this._muted || !this.buffer) return
-    const ctx = this.getCtx()
-    // Resume in case context was suspended after preload (can happen on iOS)
-    if (ctx.state === 'suspended') { void ctx.resume() }
+    const ctx = await this.resumeCtx()
     for (let i = 0; i < times; i++) {
       const src  = ctx.createBufferSource()
       const gain = ctx.createGain()
@@ -63,19 +61,20 @@ class SoundManager {
     }
   }
 
-  playWork(): void  { this.ring(1.0, 1.0,  3, 0.22) }
-  playRest(): void  { this.ring(0.7, 0.85, 1) }
+  playWork(): void  { void this.ring(1.0, 1.0,  3, 0.22) }
+  playRest(): void  { void this.ring(0.7, 0.85, 1) }
 
   playComplete(): void {
     if (this._muted || !this.celebrateBuffer) return
-    const ctx  = this.getCtx()
-    const src  = ctx.createBufferSource()
-    const gain = ctx.createGain()
-    src.buffer      = this.celebrateBuffer
-    gain.gain.value = 1.0
-    src.connect(gain)
-    gain.connect(ctx.destination)
-    src.start()
+    void this.resumeCtx().then(ctx => {
+      const src  = ctx.createBufferSource()
+      const gain = ctx.createGain()
+      src.buffer      = this.celebrateBuffer!
+      gain.gain.value = 1.0
+      src.connect(gain)
+      gain.connect(ctx.destination)
+      src.start()
+    })
   }
 }
 
