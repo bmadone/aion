@@ -27,7 +27,7 @@ class SoundManager {
     }
   }
 
-  private play(audio: HTMLAudioElement, times: number, gapMs = 100): void {
+  private play(audio: HTMLAudioElement, times: number, gapMs = 300): void {
     if (this._muted) return
     let i = 0
     const next = () => {
