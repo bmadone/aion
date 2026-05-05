@@ -1,11 +1,11 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-interface StepperProps {
+interface StepperProperties {
   value: number
   min?: number
   max?: number
-  onChange: (val: number) => void
+  onChange: (value: number) => void
   'aria-label'?: string
 }
 
@@ -15,7 +15,7 @@ export const Stepper = memo(function Stepper({
   max = 99,
   onChange,
   'aria-label': ariaLabel,
-}: StepperProps) {
+}: StepperProperties) {
   const { t } = useTranslation()
 
   return (

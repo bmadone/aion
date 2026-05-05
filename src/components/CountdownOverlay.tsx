@@ -1,11 +1,11 @@
 import type { JSX } from 'react'
 import { useTranslation } from 'react-i18next'
 
-interface CountdownOverlayProps {
+interface CountdownOverlayProperties {
   count: number
 }
 
-export function CountdownOverlay({ count }: CountdownOverlayProps): JSX.Element {
+export function CountdownOverlay({ count }: CountdownOverlayProperties): JSX.Element {
   const { t } = useTranslation()
   const display = count <= 0 ? t('timer.go') : String(Math.ceil(count))
 

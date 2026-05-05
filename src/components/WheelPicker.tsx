@@ -4,10 +4,10 @@ export const ITEM_H  = 44
 const VISIBLE = 3
 const PAD     = Math.floor(VISIBLE / 2) // 1
 
-interface WheelPickerProps {
+interface WheelPickerProperties {
   values: number[]
   value: number
-  onChange: (val: number) => void
+  onChange: (value: number) => void
   format?: (n: number) => string
   'aria-label'?: string
 }
@@ -18,41 +18,41 @@ export const WheelPicker = memo(function WheelPicker({
   onChange,
   format,
   'aria-label': ariaLabel,
-}: WheelPickerProps) {
-  const ref        = useRef<HTMLDivElement>(null)
+}: WheelPickerProperties) {
+  const reference        = useRef<HTMLDivElement>(null)
   const timer      = useRef<ReturnType<typeof setTimeout> | null>(null)
   const initialized = useRef(false)
 
-  const idxOf = (v: number): number => {
-    const i = values.indexOf(v)
-    return i < 0 ? 0 : i
+  const indexOf = (v: number): number => {
+    const index = values.indexOf(v)
+    return Math.max(index, 0)
   }
 
   // Set scroll position before paint on mount — prevents flash at position 0
   useLayoutEffect(() => {
-    const el = ref.current
-    if (!el) {return}
-    el.scrollTop = idxOf(value) * ITEM_H
+    const element = reference.current
+    if (!element) {return}
+    element.scrollTop = indexOf(value) * ITEM_H
     initialized.current = true
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Smooth scroll when value changes externally (preset selection)
   useEffect(() => {
-    const el = ref.current
-    if (!el || !initialized.current) {return}
-    const target = idxOf(value) * ITEM_H
-    if (Math.abs(el.scrollTop - target) > 4) {
-      el.scrollTo({ top: target, behavior: 'smooth' })
+    const element = reference.current
+    if (!element || !initialized.current) {return}
+    const target = indexOf(value) * ITEM_H
+    if (Math.abs(element.scrollTop - target) > 4) {
+      element.scrollTo({ top: target, behavior: 'smooth' })
     }
   }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleScroll = useCallback(() => {
     if (timer.current !== null) {clearTimeout(timer.current)}
     timer.current = setTimeout(() => {
-      const el = ref.current
-      if (!el) {return}
-      const i = Math.round(el.scrollTop / ITEM_H)
-      const clamped = Math.max(0, Math.min(values.length - 1, i))
+      const element = reference.current
+      if (!element) {return}
+      const index = Math.round(element.scrollTop / ITEM_H)
+      const clamped = Math.max(0, Math.min(values.length - 1, index))
       const picked = values[clamped]
       if (picked !== undefined && picked !== value) {onChange(picked)}
     }, 60)
@@ -60,15 +60,15 @@ export const WheelPicker = memo(function WheelPicker({
 
   // Arrow key navigation
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    const idx = idxOf(value)
+    const index = indexOf(value)
     if (e.key === 'ArrowUp') {
       e.preventDefault()
-      const prev = values[idx - 1]
-      if (idx > 0 && prev !== undefined) {onChange(prev)}
+      const previous = values[index - 1]
+      if (index > 0 && previous !== undefined) {onChange(previous)}
     } else if (e.key === 'ArrowDown') {
       e.preventDefault()
-      const next = values[idx + 1]
-      if (idx < values.length - 1 && next !== undefined) {onChange(next)}
+      const next = values[index + 1]
+      if (index < values.length - 1 && next !== undefined) {onChange(next)}
     }
   }, [values, value, onChange]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -79,19 +79,19 @@ export const WheelPicker = memo(function WheelPicker({
       aria-label={ariaLabel}
       aria-valuenow={value}
       aria-valuemin={values[0]}
-      aria-valuemax={values[values.length - 1]}
+      aria-valuemax={values.at(-1)}
       tabIndex={0}
       onKeyDown={handleKeyDown}
     >
       <div className="wheel-highlight" aria-hidden="true" />
       <div
-        ref={ref}
+        ref={reference}
         className="wheel-scroll"
         onScroll={handleScroll}
         aria-hidden="true"
       >
-        {Array.from({ length: PAD }, (_, i) => (
-          <div key={`top-${i}`} className="wheel-pad" />
+        {Array.from({ length: PAD }, (_, index) => (
+          <div key={`top-${index}`} className="wheel-pad" />
         ))}
         {values.map((v) => (
           <div
@@ -101,8 +101,8 @@ export const WheelPicker = memo(function WheelPicker({
             {format ? format(v) : String(v).padStart(2, '0')}
           </div>
         ))}
-        {Array.from({ length: PAD }, (_, i) => (
-          <div key={`bot-${i}`} className="wheel-pad" />
+        {Array.from({ length: PAD }, (_, index) => (
+          <div key={`bot-${index}`} className="wheel-pad" />
         ))}
       </div>
     </div>

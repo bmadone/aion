@@ -12,18 +12,18 @@ import { Button } from './ui/button'
 import { Card, CardContent } from './ui/card'
 import type { Preset } from '../types'
 
-interface Props {
+interface Properties {
   startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
-export function WorkoutFormDesktop({ startBtnRef }: Props): JSX.Element {
+export function WorkoutFormDesktop({ startBtnRef }: Properties): JSX.Element {
   const { t } = useTranslation()
   const storeConfig = useConfig()
   const setConfig   = useStore((s) => s.setConfig)
   const setView     = useStore((s) => s.setView)
 
   const [preset, setPreset] = useState<Preset>('custom')
-  const customRef = useRef<WorkoutConfig>(storeConfig)
+  const customReference = useRef<WorkoutConfig>(storeConfig)
 
   const {
     register,
@@ -40,9 +40,9 @@ export function WorkoutFormDesktop({ startBtnRef }: Props): JSX.Element {
   useEffect(() => { reset(storeConfig) }, [storeConfig, reset])
 
   function handlePresetSelect(p: Preset, presetConfig: WorkoutConfig | null): void {
-    if (p !== 'custom') {customRef.current = getValues()}
+    if (p !== 'custom') {customReference.current = getValues()}
     setPreset(p)
-    reset(p === 'custom' ? customRef.current : (presetConfig ?? customRef.current))
+    reset(p === 'custom' ? customReference.current : (presetConfig ?? customReference.current))
   }
 
   function onSubmit(data: WorkoutConfig): void {
@@ -59,12 +59,12 @@ export function WorkoutFormDesktop({ startBtnRef }: Props): JSX.Element {
         <CardContent className="p-0">
           <DesktopField
             id="workDuration" label={t('form.workLabel')}
-            error={errors.workDuration?.message !== undefined ? t(errors.workDuration.message) : undefined}
+            error={errors.workDuration?.message === undefined ? undefined : t(errors.workDuration.message)}
             registration={register('workDuration', { valueAsNumber: true })}
           />
           <DesktopField
             id="restDuration" label={t('form.restLabel')}
-            error={errors.restDuration?.message !== undefined ? t(errors.restDuration.message) : undefined}
+            error={errors.restDuration?.message === undefined ? undefined : t(errors.restDuration.message)}
             registration={register('restDuration', { valueAsNumber: true })}
             sep
           />
@@ -75,12 +75,12 @@ export function WorkoutFormDesktop({ startBtnRef }: Props): JSX.Element {
         <CardContent className="p-0">
           <DesktopField
             id="intervals" label={t('form.intervalsLabel')}
-            error={errors.intervals?.message !== undefined ? t(errors.intervals.message) : undefined}
+            error={errors.intervals?.message === undefined ? undefined : t(errors.intervals.message)}
             registration={register('intervals', { valueAsNumber: true })}
           />
           <DesktopField
             id="rounds" label={t('form.roundsLabel')}
-            error={errors.rounds?.message !== undefined ? t(errors.rounds.message) : undefined}
+            error={errors.rounds?.message === undefined ? undefined : t(errors.rounds.message)}
             registration={register('rounds', { valueAsNumber: true })}
             sep
           />
@@ -91,7 +91,7 @@ export function WorkoutFormDesktop({ startBtnRef }: Props): JSX.Element {
         <CardContent className="p-0">
           <DesktopField
             id="restBetweenRounds" label={t('form.blockRestLabel')}
-            error={errors.restBetweenRounds?.message !== undefined ? t(errors.restBetweenRounds.message) : undefined}
+            error={errors.restBetweenRounds?.message === undefined ? undefined : t(errors.restBetweenRounds.message)}
             registration={register('restBetweenRounds', { valueAsNumber: true })}
           />
         </CardContent>
@@ -110,7 +110,7 @@ export function WorkoutFormDesktop({ startBtnRef }: Props): JSX.Element {
 
 type Registration = ReturnType<ReturnType<typeof useForm<WorkoutConfig>>['register']>
 
-interface FieldProps {
+interface FieldProperties {
   id: string
   label: string
   error?: string | undefined
@@ -118,9 +118,9 @@ interface FieldProps {
   sep?: boolean | undefined
 }
 
-function DesktopField({ id, label, error, registration, sep = false }: FieldProps): JSX.Element {
+function DesktopField({ id, label, error, registration, sep: separator = false }: FieldProperties): JSX.Element {
   return (
-    <div className={`field${error !== undefined ? ' field--error' : ''}${sep ? ' border-t border-[var(--border)]' : ''}`}>
+    <div className={`field${error === undefined ? '' : ' field--error'}${separator ? ' border-t border-[var(--border)]' : ''}`}>
       <Label
         htmlFor={id}
         className="flex-1 text-[0.9375rem] font-medium text-[var(--text-2)] whitespace-nowrap tracking-[-0.01em]"
@@ -133,7 +133,7 @@ function DesktopField({ id, label, error, registration, sep = false }: FieldProp
           type="number"
           inputMode="numeric"
           aria-invalid={error !== undefined}
-          aria-describedby={error !== undefined ? `${id}-err` : undefined}
+          aria-describedby={error === undefined ? undefined : `${id}-err`}
           className="w-24 h-8 px-[10px] py-[6px] border-[var(--border)] bg-[var(--surface)] text-[var(--text)] font-medium text-right text-[0.9375rem] rounded-[7px] focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-[var(--accent)] focus-visible:bg-[var(--accent-glow-2)] [appearance:textfield] [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           {...registration}
         />

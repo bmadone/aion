@@ -3,6 +3,7 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import unicorn from 'eslint-plugin-unicorn'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
@@ -15,6 +16,7 @@ export default defineConfig([
       tseslint.configs.stylisticTypeChecked,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
+      unicorn.configs.recommended,
     ],
     languageOptions: {
       globals: globals.browser,
@@ -57,6 +59,13 @@ export default defineConfig([
       '@typescript-eslint/return-await': ['error', 'in-try-catch'],
       'no-nested-ternary': 'error',
       'curly': ['error', 'all'],
+
+      // Disabled: PascalCase filenames are React convention for components
+      'unicorn/filename-case': 'off',
+      // Disabled: Props/Ref/e are universal React/TS shorthands
+      'unicorn/prevent-abbreviations': 'off',
+      // Disabled: null has valid uses with DOM APIs and React error boundaries
+      'unicorn/no-null': 'off',
     },
   },
 ])

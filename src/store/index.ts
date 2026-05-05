@@ -15,7 +15,7 @@ function getInitialTheme(): 'light' | 'dark' {
     const stored = localStorage.getItem('aion:theme') as 'light' | 'dark' | null
     if (stored === 'dark' || stored === 'light') {return stored}
   } catch { /* ignore */ }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
 function getInitialMuted(): boolean {
@@ -50,6 +50,15 @@ interface AionState {
   toggleMuted: () => void
 }
 
+function onRehydrate(rehydrated: AionState | undefined, error: unknown): void {
+  if (error !== undefined || rehydrated !== undefined) {return}
+  const legacyConfig = loadLegacyConfig()
+  if (legacyConfig !== null) {
+    useStore.setState((s) => ({ ...s, config: legacyConfig }))
+  }
+  removeLegacyKeys()
+}
+
 export const useStore = create<AionState>()(
   subscribeWithSelector(
     persist(
@@ -71,15 +80,7 @@ export const useStore = create<AionState>()(
           theme:  state.theme,
           muted:  state.muted,
         }),
-        onRehydrateStorage: () => (rehydrated, error) => {
-          if (error ?? rehydrated) {return}
-          // No existing aion:store — migrate from legacy individual keys
-          const legacyConfig = loadLegacyConfig()
-          if (legacyConfig !== null) {
-            useStore.setState((s) => ({ ...s, config: legacyConfig }))
-          }
-          removeLegacyKeys()
-        },
+        onRehydrateStorage: () => onRehydrate,
       }
     )
   )

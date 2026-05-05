@@ -2,15 +2,15 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { WheelPicker } from './WheelPicker'
 
-const MINS = Array.from({ length: 60 }, (_, i) => i)
-const SECS = Array.from({ length: 60 }, (_, i) => i)
+const MINS = Array.from({ length: 60 }, (_, index) => index)
+const SECS = Array.from({ length: 60 }, (_, index) => index)
 
-interface DurationPickerProps {
+interface DurationPickerProperties {
   value: number  // total seconds
   onChange: (seconds: number) => void
 }
 
-export const DurationPicker = memo(function DurationPicker({ value, onChange }: DurationPickerProps) {
+export const DurationPicker = memo(function DurationPicker({ value, onChange }: DurationPickerProperties) {
   const { t } = useTranslation()
   const mins = Math.min(59, Math.floor(value / 60))
   const secs = value % 60

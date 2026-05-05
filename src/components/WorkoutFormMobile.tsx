@@ -10,18 +10,18 @@ import { DurationPicker } from './DurationPicker'
 import { Stepper } from './Stepper'
 import type { Preset } from '../types'
 
-interface Props {
+interface Properties {
   startBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
-export function WorkoutFormMobile({ startBtnRef }: Props): JSX.Element {
+export function WorkoutFormMobile({ startBtnRef }: Properties): JSX.Element {
   const { t } = useTranslation()
   const storeConfig = useConfig()
   const setConfig   = useStore((s) => s.setConfig)
   const setView     = useStore((s) => s.setView)
 
   const [preset, setPreset] = useState<Preset>('custom')
-  const customRef = useRef<WorkoutConfig>(storeConfig)
+  const customReference = useRef<WorkoutConfig>(storeConfig)
 
   const {
     handleSubmit,
@@ -38,9 +38,9 @@ export function WorkoutFormMobile({ startBtnRef }: Props): JSX.Element {
   useEffect(() => { reset(storeConfig) }, [storeConfig, reset])
 
   function handlePresetSelect(p: Preset, presetConfig: WorkoutConfig | null): void {
-    if (p !== 'custom') {customRef.current = getValues()}
+    if (p !== 'custom') {customReference.current = getValues()}
     setPreset(p)
-    reset(p === 'custom' ? customRef.current : (presetConfig ?? customRef.current))
+    reset(p === 'custom' ? customReference.current : (presetConfig ?? customReference.current))
   }
 
   function onSubmit(data: WorkoutConfig): void {

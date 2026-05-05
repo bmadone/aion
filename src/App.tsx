@@ -11,8 +11,8 @@ export default function App(): JSX.Element {
   const view  = useView()
   const theme = useTheme()
   useI18nDirection()
-  const startBtnRef = useRef<HTMLButtonElement>(null)
-  const stopBtnRef  = useRef<HTMLButtonElement>(null)
+  const startButtonReference = useRef<HTMLButtonElement>(null)
+  const stopButtonReference  = useRef<HTMLButtonElement>(null)
 
   // Sync theme to DOM
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function App(): JSX.Element {
 
   // Return focus to Start button when navigating back to the form
   useEffect(() => {
-    if (view === 'form') {startBtnRef.current?.focus()}
+    if (view === 'form') {startButtonReference.current?.focus()}
   }, [view])
 
   return (
@@ -37,11 +37,11 @@ export default function App(): JSX.Element {
       <NavBar />
       <main className="main-content">
         {view === 'form' && (
-          <WorkoutForm startBtnRef={startBtnRef} />
+          <WorkoutForm startBtnRef={startButtonReference} />
         )}
         {view === 'timer' && (
           <ErrorBoundary>
-            <TimerDisplay stopBtnRef={stopBtnRef} />
+            <TimerDisplay stopBtnRef={stopButtonReference} />
           </ErrorBoundary>
         )}
       </main>

@@ -31,11 +31,11 @@ class SoundManager {
 
   private play(audio: HTMLAudioElement, times: number, gapMs = 200): void {
     if (this._muted) {return}
-    let i = 0
+    let index = 0
     const next = (): void => {
       audio.currentTime = 0
       void audio.play().catch(noop)
-      if (++i < times) {setTimeout(next, gapMs)}
+      if (++index < times) {setTimeout(next, gapMs)}
     }
     next()
   }

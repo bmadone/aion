@@ -21,7 +21,7 @@ import sk from '../public/locales/sk/translation.json'
 import hu from '../public/locales/hu/translation.json'
 import ro from '../public/locales/ro/translation.json'
 import bg from '../public/locales/bg/translation.json'
-import el from '../public/locales/el/translation.json'
+import element from '../public/locales/el/translation.json'
 import uk from '../public/locales/uk/translation.json'
 import hr from '../public/locales/hr/translation.json'
 import ja from '../public/locales/ja/translation.json'
@@ -58,7 +58,7 @@ void i18n
       hu:     { translation: hu },
       ro:     { translation: ro },
       bg:     { translation: bg },
-      el:     { translation: el },
+      el:     { translation: element },
       uk:     { translation: uk },
       hr:     { translation: hr },
       ja:     { translation: ja },
@@ -80,4 +80,6 @@ void i18n
     interpolation: { escapeValue: false },
   })
 
-export default i18n
+
+
+export {default} from 'i18next'

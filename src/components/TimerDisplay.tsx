@@ -9,7 +9,7 @@ import { useConfig, useStore } from '../store'
 
 const COUNTDOWN_SECONDS = 3
 
-interface TimerDisplayProps {
+interface TimerDisplayProperties {
   stopBtnRef: React.RefObject<HTMLButtonElement | null>
 }
 
@@ -31,7 +31,7 @@ function getPhaseDuration(phase: Phase, config: WorkoutConfig): number {
 }
 
 
-export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
+export function TimerDisplay({ stopBtnRef }: TimerDisplayProperties): JSX.Element {
   const { t } = useTranslation()
   const config  = useConfig()
   const setView = useStore((s) => s.setView)
@@ -44,8 +44,8 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
     timeRemaining: 0,
   })
   const [paused, setPaused] = useState(false)
-  const engineRef  = useRef<TimerEngine | null>(null)
-  const displayRef = useRef<HTMLDivElement | null>(null)
+  const engineReference  = useRef<TimerEngine | null>(null)
+  const displayReference = useRef<HTMLDivElement | null>(null)
 
   const { phase, currentRound, totalRounds, currentInterval, totalIntervals, timeRemaining } = state
 
@@ -65,48 +65,62 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
     const engine = new TimerEngine(config, {
       onTick: (s) => setState({ ...s }),
       onPhaseChange: (p) => {
-        if (p === 'work') {soundManager.playWork()}
-        else if (p === 'rest' || p === 'rest-between-rounds') {soundManager.playRest()}
-        else if (p === 'complete') {soundManager.playComplete()}
+        switch (p) {
+          case 'work': {
+            soundManager.playWork()
+            break
+          }
+          case 'rest':
+          case 'rest-between-rounds': {
+            soundManager.playRest()
+            break
+          }
+          case 'complete': {
+            soundManager.playComplete()
+            break
+          }
+          case 'idle':
+          case 'countdown': {
+            break
+          }
+        }
       },
     })
-    engineRef.current = engine
+    engineReference.current = engine
     engine.start()
     // Move focus to timer so keyboard controls work immediately
-    displayRef.current?.focus()
+    displayReference.current?.focus()
     return () => engine.stop()
   }, [config])
 
   const handleStop = useCallback(() => {
-    engineRef.current?.stop()
+    engineReference.current?.stop()
     setView('form')
   }, [setView])
 
   const handlePauseResume = useCallback(() => {
-    const engine = engineRef.current
+    const engine = engineReference.current
     if (!engine) {return}
     if (paused) { engine.resume(); setPaused(false) }
     else        { engine.pause();  setPaused(true)  }
   }, [paused])
 
   const handleSkip = useCallback(() => {
-    engineRef.current?.skip()
+    engineReference.current?.skip()
   }, [])
 
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent): void => {
-      if (e.target instanceof HTMLButtonElement) {return}
-      if (e.code === 'Space') {
-        e.preventDefault()
+    const onKeyDown = (event_: KeyboardEvent): void => {
+      if (event_.target instanceof HTMLButtonElement) {return}
+      if (event_.code === 'Space') {
+        event_.preventDefault()
         if (!isComplete && !isCountdown) {handlePauseResume()}
-      } else if (e.key === 's' || e.key === 'S') {
+      } else if (event_.key === 's' || event_.key === 'S') {
         handleStop()
-      } else if (e.key === 'ArrowRight') {
-        if (!isComplete) {handleSkip()}
-      }
+      } else if (event_.key === 'ArrowRight' && !isComplete) {handleSkip()}
     }
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
+    globalThis.addEventListener('keydown', onKeyDown)
+    return () => globalThis.removeEventListener('keydown', onKeyDown)
   }, [isComplete, isCountdown, handlePauseResume, handleStop, handleSkip])
 
 
@@ -122,7 +136,7 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProps): JSX.Element {
 
   return (
     <div
-      ref={displayRef}
+      ref={displayReference}
       className={bgClass}
       role="timer"
       tabIndex={-1}

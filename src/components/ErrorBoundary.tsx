@@ -2,10 +2,10 @@ import { Component, type ReactNode } from 'react'
 import i18n from '../i18n'
 
 
-interface Props { children: ReactNode }
+interface Properties { children: ReactNode }
 interface State { error: Error | null }
 
-export class ErrorBoundary extends Component<Props, State> {
+export class ErrorBoundary extends Component<Properties, State> {
   state: State = { error: null }
 
   static getDerivedStateFromError(error: Error): State {

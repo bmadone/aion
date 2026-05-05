@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next'
 import type { Preset, WorkoutConfig } from '../types'
 import { PRESETS } from '../types'
 
-interface PresetSelectorProps {
+interface PresetSelectorProperties {
   selected: Preset
   onSelect: (preset: Preset, config: WorkoutConfig | null) => void
 }
 
-export const PresetSelector = memo(function PresetSelector({ selected, onSelect }: PresetSelectorProps) {
+export const PresetSelector = memo(function PresetSelector({ selected, onSelect }: PresetSelectorProperties) {
   const { t } = useTranslation()
 
   const PRESET_LABELS: Record<Preset, string> = {

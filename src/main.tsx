@@ -8,9 +8,9 @@ import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import App from './App.tsx'
 
-const rootEl = document.getElementById('root')
-if (!rootEl) {throw new Error('Root element not found')}
-createRoot(rootEl).render(
+const rootElement = document.querySelector('#root')
+if (!rootElement) {throw new Error('Root element not found')}
+createRoot(rootElement).render(
   <StrictMode>
     <App />
     <Analytics />
