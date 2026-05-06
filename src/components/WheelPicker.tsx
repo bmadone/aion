@@ -29,7 +29,7 @@ function useWheelPicker(values: number[], value: number, onChange: (value: numbe
 
   useLayoutEffect(() => {
     const element = scrollRef.current
-    if (!element) {return}
+    if (!element || initializedRef.current) {return}
     element.scrollTop = indexOf(values, value) * ITEM_H
     initializedRef.current = true
   }, [values, value])

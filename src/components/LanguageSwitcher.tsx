@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback, type JSX } from 'react'
+import { useState, useRef, useEffect, useCallback, type JSX, type CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Globe2 } from 'lucide-react'
 
@@ -36,19 +36,24 @@ const LOCALES = [
   { code: 'ar',    name: 'العربية' },
 ]
 
+const DROPDOWN_WIDTH = 220
+const DROPDOWN_GAP = 6
+const SCREEN_MARGIN = 8
+
 interface DropdownProperties {
   readonly filtered: typeof LOCALES
   readonly currentCode: string
   readonly searchRef: React.RefObject<HTMLInputElement | null>
   readonly search: string
   readonly label: string
+  readonly style: CSSProperties
   readonly onSearch: (value: string) => void
   readonly onSelect: (code: string) => void
 }
 
-function LanguageDropdown({ filtered, currentCode, searchRef, search, label, onSearch, onSelect }: DropdownProperties): JSX.Element {
+function LanguageDropdown({ filtered, currentCode, searchRef, search, label, style, onSearch, onSelect }: DropdownProperties): JSX.Element {
   return (
-    <div className="lang-dropdown" role="dialog" aria-label={label}>
+    <div className="lang-dropdown" role="dialog" aria-label={label} style={style}>
       <input ref={searchRef} className="lang-search" type="text" value={search} onChange={(e) => onSearch(e.target.value)} placeholder="Search…" aria-label="Search languages" />
       <ul className="lang-list" role="listbox" aria-label={label}>
         {filtered.map(locale => (
@@ -63,11 +68,35 @@ function LanguageDropdown({ filtered, currentCode, searchRef, search, label, onS
   )
 }
 
+function computeDropdownStyle(trigger: HTMLElement): CSSProperties {
+  const rect = trigger.getBoundingClientRect()
+  const vw = window.innerWidth
+  const vh = window.innerHeight
+
+  // Horizontal: align right edge with button right; clamp to viewport
+  let left = rect.right - DROPDOWN_WIDTH
+  left = Math.max(SCREEN_MARGIN, Math.min(left, vw - DROPDOWN_WIDTH - SCREEN_MARGIN))
+
+  // Vertical: prefer below, flip above if not enough space
+  const spaceBelow = vh - rect.bottom - DROPDOWN_GAP - SCREEN_MARGIN
+  const spaceAbove = rect.top - DROPDOWN_GAP - SCREEN_MARGIN
+  const openBelow = spaceBelow >= 120 || spaceBelow >= spaceAbove
+
+  if (openBelow) {
+    const maxHeight = Math.min(320, spaceBelow)
+    return { top: rect.bottom + DROPDOWN_GAP, left, maxHeight }
+  }
+  const maxHeight = Math.min(320, spaceAbove)
+  return { top: rect.top - DROPDOWN_GAP - maxHeight, left, maxHeight }
+}
+
 export function LanguageSwitcher(): JSX.Element {
   const { i18n, t } = useTranslation()
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
+  const [dropdownStyle, setDropdownStyle] = useState<CSSProperties>({})
   const containerRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
   const searchRef = useRef<HTMLInputElement>(null)
 
   const currentCode = i18n.language
@@ -80,6 +109,15 @@ export function LanguageSwitcher(): JSX.Element {
     setOpen(false)
     setSearch('')
   }, [i18n])
+
+  const handleToggle = useCallback(() => {
+    setOpen(o => {
+      if (!o && triggerRef.current) {
+        setDropdownStyle(computeDropdownStyle(triggerRef.current))
+      }
+      return !o
+    })
+  }, [])
 
   useEffect(() => {
     if (open) {searchRef.current?.focus()}
@@ -106,10 +144,10 @@ export function LanguageSwitcher(): JSX.Element {
 
   return (
     <div className="lang-switcher" ref={containerRef}>
-      <button className="icon-btn" onClick={() => setOpen(o => !o)} aria-label={t('nav.languageSwitcher')} aria-expanded={open} aria-haspopup="listbox">
+      <button ref={triggerRef} className="icon-btn" onClick={handleToggle} aria-label={t('nav.languageSwitcher')} aria-expanded={open} aria-haspopup="listbox">
         <Globe2 size={18} aria-hidden="true" />
       </button>
-      {open && <LanguageDropdown filtered={filtered} currentCode={currentCode} searchRef={searchRef} search={search} label={t('nav.languageSwitcher')} onSearch={setSearch} onSelect={handleSelect} />}
+      {open && <LanguageDropdown filtered={filtered} currentCode={currentCode} searchRef={searchRef} search={search} label={t('nav.languageSwitcher')} style={dropdownStyle} onSearch={setSearch} onSelect={handleSelect} />}
     </div>
   )
 }

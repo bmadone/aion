@@ -114,7 +114,11 @@ export class TimerEngine {
     }
 
     if (phase === 'work') {
-      if (restDuration > 0) {
+      const isLastInterval = currentInterval >= this.config.intervals
+      const isLastRound = currentRound >= this.config.rounds
+      const skipRestForBlockRest = isLastInterval && !isLastRound && this.config.restBetweenRounds > 0
+
+      if (restDuration > 0 && !skipRestForBlockRest) {
         this.enterPhase({ phase: 'rest', durationSeconds: restDuration, round: currentRound, interval: currentInterval })
       } else {
         this.finishInterval()

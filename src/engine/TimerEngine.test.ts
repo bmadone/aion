@@ -229,6 +229,41 @@ describe('TimerEngine', () => {
     expect(workCount).toBe(2)
   })
 
+  it('last interval of non-last round skips rest and uses rest-between-rounds', () => {
+    const config: WorkoutConfig = { workDuration: 10, restDuration: 5, intervals: 2, rounds: 2, restBetweenRounds: 30 }
+    const { engine, phases, ticks } = createEngine(config)
+    engine.start()
+    advance(3100)  // countdown
+
+    // interval 1: work → rest (not last interval, normal rest applies)
+    advance(10_100) // work interval 1
+    expect(phases).toContain('rest')
+
+    advance(5100)  // rest interval 1 → work interval 2
+
+    // interval 2 is last in round 1 — rest should be skipped, rest-between-rounds should fire
+    const restCountBeforeLastWork = phases.filter(p => p === 'rest').length
+    advance(10_100) // work interval 2 (last in round 1)
+
+    expect(phases.filter(p => p === 'rest').length).toBe(restCountBeforeLastWork)
+    expect(phases).toContain('rest-between-rounds')
+
+    const rbrTick = ticks.find(t => t.phase === 'rest-between-rounds')
+    expect(rbrTick?.timeRemaining).toBeCloseTo(30, 0)
+  })
+
+  it('mid-round intervals still get normal rest when restBetweenRounds > 0', () => {
+    const config: WorkoutConfig = { workDuration: 10, restDuration: 5, intervals: 3, rounds: 2, restBetweenRounds: 30 }
+    const { engine, phases } = createEngine(config)
+    engine.start()
+    advance(3100)   // countdown
+    advance(10_100) // work interval 1 → rest
+    expect(phases).toContain('rest')
+    advance(5100)   // rest → work interval 2
+    advance(10_100) // work interval 2 → rest (still mid-round)
+    expect(phases.filter(p => p === 'rest').length).toBe(2)
+  })
+
   it('pause during rest-between-rounds does not advance', () => {
     const config: WorkoutConfig = { workDuration: 10, restDuration: 0, intervals: 1, rounds: 2, restBetweenRounds: 30 }
     const { engine, ticks } = createEngine(config)
