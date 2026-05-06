@@ -57,6 +57,21 @@
     "skipButton": "Skip phase",
     "skipText": "Skip"
   },
+  "bluetooth": {
+    "modalTitle": "Heart Rate Monitor",
+    "connect": "Connect",
+    "connectDevice": "Connect heart rate monitor",
+    "connectHint": "Pair a heart rate monitor to display your BPM during workouts.",
+    "disconnect": "Disconnect",
+    "connecting": "Connecting…",
+    "addDevice": "Add device",
+    "notSupported": "Web Bluetooth is not supported in this browser.",
+    "closeModal": "Close heart rate monitor",
+    "navIdle": "Connect heart rate monitor",
+    "navConnected": "Heart rate monitor connected",
+    "navDisconnected": "Heart rate monitor disconnected",
+    "bpmAria": "{{bpm}} beats per minute"
+  },
   "errors": {
     "title": "Something went wrong",
     "tryAgain": "Try again",

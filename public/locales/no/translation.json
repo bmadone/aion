@@ -57,6 +57,21 @@
     "skipButton": "Hopp over fase",
     "skipText": "Hopp over"
   },
+  "bluetooth": {
+    "modalTitle": "Pulsmåler",
+    "connect": "Koble til",
+    "connectDevice": "Koble til pulsmåler",
+    "connectHint": "Par en pulsmåler for å vise pulsen din under treningen.",
+    "disconnect": "Koble fra",
+    "connecting": "Kobler til…",
+    "addDevice": "Legg til enhet",
+    "notSupported": "Web Bluetooth støttes ikke i denne nettleseren.",
+    "closeModal": "Lukk pulsmåler",
+    "navIdle": "Koble til pulsmåler",
+    "navConnected": "Pulsmåler tilkoblet",
+    "navDisconnected": "Pulsmåler frakoblet",
+    "bpmAria": "{{bpm}} slag per minutt"
+  },
   "errors": {
     "title": "Noe gikk galt",
     "tryAgain": "Prøv igjen",

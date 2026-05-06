@@ -57,6 +57,21 @@
     "skipButton": "Salta fase",
     "skipText": "Salta"
   },
+  "bluetooth": {
+    "modalTitle": "Cardiofrequenzimetro",
+    "connect": "Connetti",
+    "connectDevice": "Connetti cardiofrequenzimetro",
+    "connectHint": "Abbina un cardiofrequenzimetro per visualizzare i BPM durante gli allenamenti.",
+    "disconnect": "Disconnetti",
+    "connecting": "Connessione…",
+    "addDevice": "Aggiungi dispositivo",
+    "notSupported": "Web Bluetooth non è supportato in questo browser.",
+    "closeModal": "Chiudi cardiofrequenzimetro",
+    "navIdle": "Connetti cardiofrequenzimetro",
+    "navConnected": "Cardiofrequenzimetro connesso",
+    "navDisconnected": "Cardiofrequenzimetro disconnesso",
+    "bpmAria": "{{bpm}} battiti al minuto"
+  },
   "errors": {
     "title": "Qualcosa è andato storto",
     "tryAgain": "Riprova",

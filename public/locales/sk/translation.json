@@ -57,6 +57,21 @@
     "skipButton": "Preskočiť fázu",
     "skipText": "Preskočiť"
   },
+  "bluetooth": {
+    "modalTitle": "Monitor srdcovej frekvencie",
+    "connect": "Pripojiť",
+    "connectDevice": "Pripojiť monitor srdcovej frekvencie",
+    "connectHint": "Spárujte monitor srdcovej frekvencie, aby sa vám počas cvičenia zobrazoval tep.",
+    "disconnect": "Odpojiť",
+    "connecting": "Pripájanie…",
+    "addDevice": "Pridať zariadenie",
+    "notSupported": "Web Bluetooth nie je v tomto prehliadači podporovaný.",
+    "closeModal": "Zatvoriť monitor srdcovej frekvencie",
+    "navIdle": "Pripojiť monitor srdcovej frekvencie",
+    "navConnected": "Monitor srdcovej frekvencie je pripojený",
+    "navDisconnected": "Monitor srdcovej frekvencie je odpojený",
+    "bpmAria": "{{bpm}} úderov za minútu"
+  },
   "errors": {
     "title": "Niečo sa pokazilo",
     "tryAgain": "Skúsiť znova",

@@ -57,6 +57,21 @@
     "skipButton": "Pomiń fazę",
     "skipText": "Pomiń"
   },
+  "bluetooth": {
+    "modalTitle": "Monitor tętna",
+    "connect": "Połącz",
+    "connectDevice": "Połącz monitor tętna",
+    "connectHint": "Sparuj monitor tętna, aby wyświetlać tętno podczas ćwiczeń.",
+    "disconnect": "Rozłącz",
+    "connecting": "Łączenie…",
+    "addDevice": "Dodaj urządzenie",
+    "notSupported": "Web Bluetooth nie jest obsługiwany w tej przeglądarce.",
+    "closeModal": "Zamknij monitor tętna",
+    "navIdle": "Połącz monitor tętna",
+    "navConnected": "Monitor tętna połączony",
+    "navDisconnected": "Monitor tętna rozłączony",
+    "bpmAria": "{{bpm}} uderzeń na minutę"
+  },
   "errors": {
     "title": "Coś poszło nie tak",
     "tryAgain": "Spróbuj ponownie",

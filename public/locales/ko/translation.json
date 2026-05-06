@@ -57,6 +57,21 @@
     "skipButton": "단계 건너뛰기",
     "skipText": "건너뛰기"
   },
+  "bluetooth": {
+    "modalTitle": "심박수 모니터",
+    "connect": "연결",
+    "connectDevice": "심박수 모니터 연결",
+    "connectHint": "심박수 모니터를 페어링하여 운동 중 BPM을 확인하세요.",
+    "disconnect": "연결 해제",
+    "connecting": "연결 중…",
+    "addDevice": "기기 추가",
+    "notSupported": "이 브라우저는 Web Bluetooth를 지원하지 않습니다.",
+    "closeModal": "심박수 모니터 닫기",
+    "navIdle": "심박수 모니터 연결",
+    "navConnected": "심박수 모니터 연결됨",
+    "navDisconnected": "심박수 모니터 연결 해제됨",
+    "bpmAria": "분당 {{bpm}}회"
+  },
   "errors": {
     "title": "오류가 발생했습니다",
     "tryAgain": "다시 시도",

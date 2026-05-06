@@ -57,6 +57,21 @@
     "skipButton": "Fázis kihagyása",
     "skipText": "Kihagyás"
   },
+  "bluetooth": {
+    "modalTitle": "Pulzusmérő",
+    "connect": "Csatlakozás",
+    "connectDevice": "Pulzusmérő csatlakoztatása",
+    "connectHint": "Párosítson egy pulzusmérőt, hogy edzés közben lássa a szívritmusát.",
+    "disconnect": "Lecsatlakozás",
+    "connecting": "Csatlakozás…",
+    "addDevice": "Eszköz hozzáadása",
+    "notSupported": "A Web Bluetooth nem támogatott ebben a böngészőben.",
+    "closeModal": "Pulzusmérő bezárása",
+    "navIdle": "Pulzusmérő csatlakoztatása",
+    "navConnected": "Pulzusmérő csatlakoztatva",
+    "navDisconnected": "Pulzusmérő lecsatlakoztatva",
+    "bpmAria": "Percenkénti {{bpm}} szívdobbanás"
+  },
   "errors": {
     "title": "Valami hiba történt",
     "tryAgain": "Próbáld újra",

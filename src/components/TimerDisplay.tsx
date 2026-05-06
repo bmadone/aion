@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback, type JSX } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Heart } from 'lucide-react'
 import type { Phase, TimerState, WorkoutConfig } from '../types'
+import type { HrStatus } from '../hooks/use-heart-rate'
 import { TimerEngine } from '../engine/TimerEngine'
 import { soundManager } from '../sound/SoundManager'
 import { CountdownOverlay } from './CountdownOverlay'
@@ -11,6 +13,7 @@ const COUNTDOWN_SECONDS = 3
 
 interface TimerDisplayProperties {
   readonly stopBtnRef: React.RefObject<HTMLButtonElement | null>
+  readonly heartRate: { readonly status: HrStatus; readonly bpm: number | null }
 }
 
 function formatTime(seconds: number): string {
@@ -72,12 +75,14 @@ interface ActiveViewProperties {
   readonly paused: boolean
   readonly stopBtnRef: React.RefObject<HTMLButtonElement | null>
   readonly phaseLabel: string
+  readonly bpm: number | null
+  readonly hrConnected: boolean
   readonly onStop: () => void
   readonly onPauseResume: () => void
   readonly onSkip: () => void
 }
 
-function TimerActiveView({ state, paused, stopBtnRef, phaseLabel, onStop, onPauseResume, onSkip }: ActiveViewProperties): JSX.Element {
+function TimerActiveView({ state, paused, stopBtnRef, phaseLabel, bpm, hrConnected, onStop, onPauseResume, onSkip }: ActiveViewProperties): JSX.Element {
   const { t } = useTranslation()
   const { currentRound, totalRounds, currentInterval, totalIntervals, timeRemaining } = state
   return (
@@ -98,6 +103,12 @@ function TimerActiveView({ state, paused, stopBtnRef, phaseLabel, onStop, onPaus
         {formatTime(timeRemaining)}
       </div>
       <div className="timer-bottom">
+        {hrConnected && bpm !== null && (
+          <div className="hr-display" aria-label={`${bpm} bpm`}>
+            <Heart size={18} fill="currentColor" aria-hidden="true" />
+            <span>{bpm}</span>
+          </div>
+        )}
         <div className="phase-label" aria-hidden="true">{phaseLabel}</div>
         <div className="timer-controls">
           <button className="btn-secondary" onClick={onStop} ref={stopBtnRef} aria-label={t('timer.stopButton')}>
@@ -115,7 +126,7 @@ function TimerActiveView({ state, paused, stopBtnRef, phaseLabel, onStop, onPaus
   )
 }
 
-export function TimerDisplay({ stopBtnRef }: TimerDisplayProperties): JSX.Element {
+export function TimerDisplay({ stopBtnRef, heartRate }: TimerDisplayProperties): JSX.Element {
   const { t } = useTranslation()
   const config  = useConfig()
   const setView = useStore((s) => s.setView)
@@ -172,7 +183,7 @@ export function TimerDisplay({ stopBtnRef }: TimerDisplayProperties): JSX.Elemen
       {isCountdown && <CountdownOverlay count={timeRemaining} />}
       {isComplete && <TimerCompleteView onStop={handleStop} />}
       {!isCountdown && !isComplete && (
-        <TimerActiveView state={state} paused={paused} stopBtnRef={stopBtnRef} phaseLabel={phaseLabel} onStop={handleStop} onPauseResume={handlePauseResume} onSkip={handleSkip} />
+        <TimerActiveView state={state} paused={paused} stopBtnRef={stopBtnRef} phaseLabel={phaseLabel} bpm={heartRate.bpm} hrConnected={heartRate.status === 'connected'} onStop={handleStop} onPauseResume={handlePauseResume} onSkip={handleSkip} />
       )}
     </div>
   )

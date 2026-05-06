@@ -1,6 +1,7 @@
 import { useRef, useEffect, type JSX } from 'react'
 import { useStore, useView, useTheme } from './store'
 import { useI18nDirection } from './hooks/use-i18n-direction'
+import { useHeartRate } from './hooks/use-heart-rate'
 import { soundManager } from './sound/SoundManager'
 import { NavBar } from './components/NavBar'
 import { WorkoutForm } from './components/WorkoutForm'
@@ -11,6 +12,7 @@ export default function App(): JSX.Element {
   const view  = useView()
   const theme = useTheme()
   useI18nDirection()
+  const heartRate   = useHeartRate()
   const startBtnRef = useRef<HTMLButtonElement>(null)
   const stopBtnRef  = useRef<HTMLButtonElement>(null)
 
@@ -34,14 +36,14 @@ export default function App(): JSX.Element {
 
   return (
     <ErrorBoundary>
-      <NavBar />
+      <NavBar heartRate={heartRate} />
       <main className="main-content">
         {view === 'form' && (
           <WorkoutForm startBtnRef={startBtnRef} />
         )}
         {view === 'timer' && (
           <ErrorBoundary>
-            <TimerDisplay stopBtnRef={stopBtnRef} />
+            <TimerDisplay stopBtnRef={stopBtnRef} heartRate={heartRate} />
           </ErrorBoundary>
         )}
       </main>

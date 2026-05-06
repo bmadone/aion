@@ -57,6 +57,21 @@
     "skipButton": "跳过阶段",
     "skipText": "跳过"
   },
+  "bluetooth": {
+    "modalTitle": "心率监测仪",
+    "connect": "连接",
+    "connectDevice": "连接心率监测仪",
+    "connectHint": "配对心率监测仪，在锻炼时实时显示心率。",
+    "disconnect": "断开连接",
+    "connecting": "连接中…",
+    "addDevice": "添加设备",
+    "notSupported": "此浏览器不支持 Web 蓝牙。",
+    "closeModal": "关闭心率监测仪",
+    "navIdle": "连接心率监测仪",
+    "navConnected": "心率监测仪已连接",
+    "navDisconnected": "心率监测仪已断开",
+    "bpmAria": "每分钟 {{bpm}} 次心跳"
+  },
   "errors": {
     "title": "出了点问题",
     "tryAgain": "重试",

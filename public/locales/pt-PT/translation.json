@@ -57,6 +57,21 @@
     "skipButton": "Saltar fase",
     "skipText": "Saltar"
   },
+  "bluetooth": {
+    "modalTitle": "Monitor de frequência cardíaca",
+    "connect": "Ligar",
+    "connectDevice": "Ligar monitor de frequência cardíaca",
+    "connectHint": "Emparelhe um monitor de frequência cardíaca para ver os seus BPM durante os treinos.",
+    "disconnect": "Desligar",
+    "connecting": "A ligar…",
+    "addDevice": "Adicionar dispositivo",
+    "notSupported": "O Web Bluetooth não é suportado neste browser.",
+    "closeModal": "Fechar monitor de frequência cardíaca",
+    "navIdle": "Ligar monitor de frequência cardíaca",
+    "navConnected": "Monitor de frequência cardíaca ligado",
+    "navDisconnected": "Monitor de frequência cardíaca desligado",
+    "bpmAria": "{{bpm}} batimentos por minuto"
+  },
   "errors": {
     "title": "Ocorreu um erro",
     "tryAgain": "Tentar novamente",

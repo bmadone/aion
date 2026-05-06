@@ -57,6 +57,21 @@
     "skipButton": "Přeskočit fázi",
     "skipText": "Přeskočit"
   },
+  "bluetooth": {
+    "modalTitle": "Monitor srdečního tepu",
+    "connect": "Připojit",
+    "connectDevice": "Připojit monitor srdečního tepu",
+    "connectHint": "Spárujte monitor srdečního tepu, aby se vám během cvičení zobrazoval tep.",
+    "disconnect": "Odpojit",
+    "connecting": "Připojování…",
+    "addDevice": "Přidat zařízení",
+    "notSupported": "Web Bluetooth není v tomto prohlížeči podporován.",
+    "closeModal": "Zavřít monitor srdečního tepu",
+    "navIdle": "Připojit monitor srdečního tepu",
+    "navConnected": "Monitor srdečního tepu je připojen",
+    "navDisconnected": "Monitor srdečního tepu byl odpojen",
+    "bpmAria": "{{bpm}} tepů za minutu"
+  },
   "errors": {
     "title": "Něco se pokazilo",
     "tryAgain": "Zkusit znovu",

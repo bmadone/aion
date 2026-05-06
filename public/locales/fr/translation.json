@@ -57,6 +57,21 @@
     "skipButton": "Passer la phase",
     "skipText": "Passer"
   },
+  "bluetooth": {
+    "modalTitle": "Moniteur de fréquence cardiaque",
+    "connect": "Connecter",
+    "connectDevice": "Connecter le moniteur de fréquence cardiaque",
+    "connectHint": "Associez un moniteur de fréquence cardiaque pour afficher votre BPM pendant l'entraînement.",
+    "disconnect": "Déconnecter",
+    "connecting": "Connexion…",
+    "addDevice": "Ajouter un appareil",
+    "notSupported": "Web Bluetooth n'est pas pris en charge dans ce navigateur.",
+    "closeModal": "Fermer le moniteur de fréquence cardiaque",
+    "navIdle": "Connecter le moniteur de fréquence cardiaque",
+    "navConnected": "Moniteur de fréquence cardiaque connecté",
+    "navDisconnected": "Moniteur de fréquence cardiaque déconnecté",
+    "bpmAria": "{{bpm}} battements par minute"
+  },
   "errors": {
     "title": "Une erreur s'est produite",
     "tryAgain": "Réessayer",

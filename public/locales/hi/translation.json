@@ -57,6 +57,21 @@
     "skipButton": "चरण छोड़ें",
     "skipText": "छोड़ें"
   },
+  "bluetooth": {
+    "modalTitle": "हृदय गति मॉनिटर",
+    "connect": "कनेक्ट करें",
+    "connectDevice": "हृदय गति मॉनिटर कनेक्ट करें",
+    "connectHint": "वर्कआउट के दौरान BPM देखने के लिए हृदय गति मॉनिटर जोड़ें।",
+    "disconnect": "डिस्कनेक्ट करें",
+    "connecting": "कनेक्ट हो रहा है…",
+    "addDevice": "डिवाइस जोड़ें",
+    "notSupported": "इस ब्राउज़र में Web Bluetooth समर्थित नहीं है।",
+    "closeModal": "हृदय गति मॉनिटर बंद करें",
+    "navIdle": "हृदय गति मॉनिटर कनेक्ट करें",
+    "navConnected": "हृदय गति मॉनिटर कनेक्ट है",
+    "navDisconnected": "हृदय गति मॉनिटर डिस्कनेक्ट हो गया",
+    "bpmAria": "प्रति मिनट {{bpm}} धड़कन"
+  },
   "errors": {
     "title": "कुछ गलत हो गया",
     "tryAgain": "फिर कोशिश करें",

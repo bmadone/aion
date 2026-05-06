@@ -57,6 +57,21 @@
     "skipButton": "Hoppa över fas",
     "skipText": "Hoppa över"
   },
+  "bluetooth": {
+    "modalTitle": "Pulsmätare",
+    "connect": "Anslut",
+    "connectDevice": "Anslut pulsmätare",
+    "connectHint": "Parkoppla en pulsmätare för att visa din puls under träningen.",
+    "disconnect": "Koppla från",
+    "connecting": "Ansluter…",
+    "addDevice": "Lägg till enhet",
+    "notSupported": "Web Bluetooth stöds inte i den här webbläsaren.",
+    "closeModal": "Stäng pulsmätare",
+    "navIdle": "Anslut pulsmätare",
+    "navConnected": "Pulsmätare ansluten",
+    "navDisconnected": "Pulsmätare frånkopplad",
+    "bpmAria": "{{bpm}} slag per minut"
+  },
   "errors": {
     "title": "Något gick fel",
     "tryAgain": "Försök igen",

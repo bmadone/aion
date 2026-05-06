@@ -57,6 +57,21 @@
     "skipButton": "Preskoči fazu",
     "skipText": "Preskoči"
   },
+  "bluetooth": {
+    "modalTitle": "Monitor otkucaja srca",
+    "connect": "Poveži",
+    "connectDevice": "Poveži monitor otkucaja srca",
+    "connectHint": "Upari monitor otkucaja srca kako bi prikazivao BPM tijekom vježbanja.",
+    "disconnect": "Odspoji",
+    "connecting": "Spajanje…",
+    "addDevice": "Dodaj uređaj",
+    "notSupported": "Web Bluetooth nije podržan u ovom pregledniku.",
+    "closeModal": "Zatvori monitor otkucaja srca",
+    "navIdle": "Poveži monitor otkucaja srca",
+    "navConnected": "Monitor otkucaja srca spojen",
+    "navDisconnected": "Monitor otkucaja srca odspojen",
+    "bpmAria": "{{bpm}} otkucaja u minuti"
+  },
   "errors": {
     "title": "Nešto je pošlo po krivu",
     "tryAgain": "Pokušaj ponovo",

@@ -57,6 +57,21 @@
     "skipButton": "跳過階段",
     "skipText": "跳過"
   },
+  "bluetooth": {
+    "modalTitle": "心率監測儀",
+    "connect": "連線",
+    "connectDevice": "連線心率監測儀",
+    "connectHint": "配對心率監測儀，在運動時即時顯示心率。",
+    "disconnect": "中斷連線",
+    "connecting": "連線中…",
+    "addDevice": "新增裝置",
+    "notSupported": "此瀏覽器不支援 Web 藍牙。",
+    "closeModal": "關閉心率監測儀",
+    "navIdle": "連線心率監測儀",
+    "navConnected": "心率監測儀已連線",
+    "navDisconnected": "心率監測儀已中斷連線",
+    "bpmAria": "每分鐘 {{bpm}} 下心跳"
+  },
   "errors": {
     "title": "發生錯誤",
     "tryAgain": "重試",

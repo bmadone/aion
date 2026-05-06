@@ -57,6 +57,21 @@
     "skipButton": "Bỏ qua giai đoạn",
     "skipText": "Bỏ qua"
   },
+  "bluetooth": {
+    "modalTitle": "Máy đo nhịp tim",
+    "connect": "Kết nối",
+    "connectDevice": "Kết nối máy đo nhịp tim",
+    "connectHint": "Ghép nối máy đo nhịp tim để hiển thị BPM trong khi tập luyện.",
+    "disconnect": "Ngắt kết nối",
+    "connecting": "Đang kết nối…",
+    "addDevice": "Thêm thiết bị",
+    "notSupported": "Trình duyệt này không hỗ trợ Web Bluetooth.",
+    "closeModal": "Đóng máy đo nhịp tim",
+    "navIdle": "Kết nối máy đo nhịp tim",
+    "navConnected": "Đã kết nối máy đo nhịp tim",
+    "navDisconnected": "Đã ngắt kết nối máy đo nhịp tim",
+    "bpmAria": "{{bpm}} nhịp mỗi phút"
+  },
   "errors": {
     "title": "Đã xảy ra lỗi",
     "tryAgain": "Thử lại",

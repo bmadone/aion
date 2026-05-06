@@ -57,6 +57,21 @@
     "skipButton": "Phase überspringen",
     "skipText": "Überspringen"
   },
+  "bluetooth": {
+    "modalTitle": "Herzfrequenzmesser",
+    "connect": "Verbinden",
+    "connectDevice": "Herzfrequenzmesser verbinden",
+    "connectHint": "Koppeln Sie einen Herzfrequenzmesser, um Ihren Puls während des Trainings anzuzeigen.",
+    "disconnect": "Trennen",
+    "connecting": "Verbindung wird hergestellt…",
+    "addDevice": "Gerät hinzufügen",
+    "notSupported": "Web Bluetooth wird in diesem Browser nicht unterstützt.",
+    "closeModal": "Herzfrequenzmesser schließen",
+    "navIdle": "Herzfrequenzmesser verbinden",
+    "navConnected": "Herzfrequenzmesser verbunden",
+    "navDisconnected": "Herzfrequenzmesser getrennt",
+    "bpmAria": "{{bpm}} Schläge pro Minute"
+  },
   "errors": {
     "title": "Etwas ist schiefgelaufen",
     "tryAgain": "Erneut versuchen",

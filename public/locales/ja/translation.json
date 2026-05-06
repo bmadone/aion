@@ -57,6 +57,21 @@
     "skipButton": "フェーズをスキップ",
     "skipText": "スキップ"
   },
+  "bluetooth": {
+    "modalTitle": "心拍数モニター",
+    "connect": "接続",
+    "connectDevice": "心拍数モニターを接続",
+    "connectHint": "心拍数モニターをペアリングして、トレーニング中のBPMを表示しましょう。",
+    "disconnect": "切断",
+    "connecting": "接続中…",
+    "addDevice": "デバイスを追加",
+    "notSupported": "このブラウザはWeb Bluetoothに対応していません。",
+    "closeModal": "心拍数モニターを閉じる",
+    "navIdle": "心拍数モニターを接続",
+    "navConnected": "心拍数モニターが接続されました",
+    "navDisconnected": "心拍数モニターが切断されました",
+    "bpmAria": "毎分{{bpm}}拍"
+  },
   "errors": {
     "title": "エラーが発生しました",
     "tryAgain": "もう一度試す",

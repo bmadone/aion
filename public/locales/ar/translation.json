@@ -57,6 +57,21 @@
     "skipButton": "تخطي المرحلة",
     "skipText": "تخطي"
   },
+  "bluetooth": {
+    "modalTitle": "جهاز قياس معدل ضربات القلب",
+    "connect": "اتصال",
+    "connectDevice": "توصيل جهاز قياس معدل ضربات القلب",
+    "connectHint": "اقرن جهاز قياس معدل ضربات القلب لعرض BPM أثناء التمرين.",
+    "disconnect": "قطع الاتصال",
+    "connecting": "جارٍ الاتصال…",
+    "addDevice": "إضافة جهاز",
+    "notSupported": "Web Bluetooth غير مدعوم في هذا المتصفح.",
+    "closeModal": "إغلاق جهاز قياس معدل ضربات القلب",
+    "navIdle": "توصيل جهاز قياس معدل ضربات القلب",
+    "navConnected": "تم توصيل جهاز قياس معدل ضربات القلب",
+    "navDisconnected": "تم قطع اتصال جهاز قياس معدل ضربات القلب",
+    "bpmAria": "{{bpm}} نبضة في الدقيقة"
+  },
   "errors": {
     "title": "حدث خطأ ما",
     "tryAgain": "حاول مرة أخرى",

@@ -60,6 +60,10 @@ html:not([data-theme]) {
 
   /* navbar */
   --navbar-bg: rgba(0, 0, 0, 0.8);
+
+  /* dropdown */
+  --dropdown-bg: #1c1c1e;
+  --dropdown-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
 html[data-theme="light"] {
@@ -87,6 +91,10 @@ html[data-theme="light"] {
   --bg-block-rest: #001a06;
 
   --navbar-bg: rgba(255, 255, 255, 0.85);
+
+  /* dropdown */
+  --dropdown-bg: #ffffff;
+  --dropdown-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
 }
 
 /* ─── Reset ─── */
@@ -866,15 +874,15 @@ html[data-theme="light"] .btn-pause {
 }
 
 .lang-dropdown {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  z-index: 100;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  position: fixed;
+  z-index: 1000;
+  background: var(--dropdown-bg);
+  border: 1px solid var(--border-2);
   border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--dropdown-shadow);
   width: 220px;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -883,7 +891,7 @@ html[data-theme="light"] .btn-pause {
   padding: 8px 12px;
   border: none;
   border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  background: transparent;
   color: var(--text);
   font-size: 0.875rem;
   outline: none;
@@ -895,8 +903,9 @@ html[data-theme="light"] .btn-pause {
   list-style: none;
   margin: 0;
   padding: 4px 0;
-  max-height: 280px;
+  flex: 1 1 auto;
   overflow-y: auto;
+  min-height: 0;
 }
 
 .lang-list li { margin: 0; padding: 0; }
@@ -922,10 +931,23 @@ html[data-theme="light"] .btn-pause {
   font-weight: 600;
 }
 
+/* ─── Theme transition ─── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms;
+  }
+}
+
 /* ─── RTL Support ─── */
 [dir="rtl"] .navbar { flex-direction: row-reverse; }
 [dir="rtl"] .navbar-controls { flex-direction: row-reverse; }
-[dir="rtl"] .lang-dropdown { right: auto; left: 0; }
 [dir="rtl"] .lang-option { text-align: right; }
 [dir="rtl"] .field { flex-direction: row-reverse; }
 [dir="rtl"] .field-right { flex-direction: row-reverse; }
@@ -933,3 +955,121 @@ html[data-theme="light"] .btn-pause {
 [dir="rtl"] .picker-row { flex-direction: row-reverse; }
 [dir="rtl"] .preset-selector { flex-direction: row-reverse; }
 [dir="rtl"] .timer-controls { flex-direction: row-reverse; }
+
+/* ─── Heart Rate NavBar icon states ─── */
+@keyframes hr-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.hr-icon--connected {
+  color: #e53e3e;
+  animation: hr-pulse 1.6s ease-in-out infinite;
+}
+
+.hr-icon--disconnected { color: var(--text-muted, #888); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hr-icon--connected { animation: none; }
+}
+
+/* ─── Heart Rate BPM display (timer) ─── */
+.hr-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #e53e3e;
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Heart Rate Modal ─── */
+dialog.hr-modal {
+  background: var(--modal-bg, var(--bg-secondary, #1a1a2e));
+  color: var(--text, #f0f0f0);
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  border-radius: 16px;
+  padding: 0;
+  width: min(420px, 90vw);
+  margin: auto;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+dialog.hr-modal::backdrop {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+
+html[data-theme="light"] dialog.hr-modal {
+  background: var(--bg-secondary, #fff);
+  color: var(--text, #111);
+  border-color: var(--border, rgba(0,0,0,0.12));
+}
+
+.hr-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border, rgba(255,255,255,0.1));
+}
+
+.hr-modal-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hr-modal-bpm {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #e53e3e;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.hr-modal-msg {
+  padding: 24px;
+  margin: 0;
+  opacity: 0.7;
+  font-size: 0.9375rem;
+}
+
+.hr-device-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 24px 24px;
+}
+
+.hr-device-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hr-device-name {
+  flex: 1;
+  font-size: 0.9375rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hr-single-connect {
+  padding: 16px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hr-single-hint {
+  margin: 0;
+  font-size: 0.875rem;
+  opacity: 0.65;
+  line-height: 1.5;
+}

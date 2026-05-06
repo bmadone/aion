@@ -57,6 +57,21 @@
     "skipButton": "Sari peste fază",
     "skipText": "Sari"
   },
+  "bluetooth": {
+    "modalTitle": "Monitor de ritm cardiac",
+    "connect": "Conectează",
+    "connectDevice": "Conectează monitorul de ritm cardiac",
+    "connectHint": "Asociază un monitor de ritm cardiac pentru a afișa BPM-ul în timpul antrenamentelor.",
+    "disconnect": "Deconectează",
+    "connecting": "Se conectează…",
+    "addDevice": "Adaugă dispozitiv",
+    "notSupported": "Web Bluetooth nu este acceptat în acest browser.",
+    "closeModal": "Închide monitorul de ritm cardiac",
+    "navIdle": "Conectează monitorul de ritm cardiac",
+    "navConnected": "Monitor de ritm cardiac conectat",
+    "navDisconnected": "Monitor de ritm cardiac deconectat",
+    "bpmAria": "{{bpm}} bătăi pe minut"
+  },
   "errors": {
     "title": "Ceva a mers prost",
     "tryAgain": "Încearcă din nou",

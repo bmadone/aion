@@ -57,6 +57,21 @@
     "skipButton": "Ohita vaihe",
     "skipText": "Ohita"
   },
+  "bluetooth": {
+    "modalTitle": "Sykemittari",
+    "connect": "Yhdistä",
+    "connectDevice": "Yhdistä sykemittari",
+    "connectHint": "Paranna sykemittari näyttämään BPM-arvo treenin aikana.",
+    "disconnect": "Katkaise yhteys",
+    "connecting": "Yhdistetään…",
+    "addDevice": "Lisää laite",
+    "notSupported": "Web Bluetooth ei ole tuettu tässä selaimessa.",
+    "closeModal": "Sulje sykemittari",
+    "navIdle": "Yhdistä sykemittari",
+    "navConnected": "Sykemittari yhdistetty",
+    "navDisconnected": "Sykemittarin yhteys katkaistu",
+    "bpmAria": "{{bpm}} lyöntiä minuutissa"
+  },
   "errors": {
     "title": "Jotain meni pieleen",
     "tryAgain": "Yritä uudelleen",

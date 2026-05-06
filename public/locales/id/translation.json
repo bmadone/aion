@@ -57,6 +57,21 @@
     "skipButton": "Lewati fase",
     "skipText": "Lewati"
   },
+  "bluetooth": {
+    "modalTitle": "Monitor detak jantung",
+    "connect": "Hubungkan",
+    "connectDevice": "Hubungkan monitor detak jantung",
+    "connectHint": "Pasangkan monitor detak jantung untuk menampilkan BPM saat berolahraga.",
+    "disconnect": "Putuskan",
+    "connecting": "Menghubungkan…",
+    "addDevice": "Tambah perangkat",
+    "notSupported": "Web Bluetooth tidak didukung di browser ini.",
+    "closeModal": "Tutup monitor detak jantung",
+    "navIdle": "Hubungkan monitor detak jantung",
+    "navConnected": "Monitor detak jantung terhubung",
+    "navDisconnected": "Monitor detak jantung terputus",
+    "bpmAria": "{{bpm}} detak per menit"
+  },
   "errors": {
     "title": "Terjadi kesalahan",
     "tryAgain": "Coba lagi",
