@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Prilagođeno",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Štoperica",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Tajmer za trening",
@@ -80,5 +81,12 @@
     "intervalsMin": "Mora biti ≥ 1",
     "roundsMin": "Mora biti ≥ 1",
     "restBetweenRoundsMin": "Mora biti ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Štoperica",
+    "lap": "Krug",
+    "reset": "Resetiraj",
+    "lapLabel": "Krug {{number}}",
+    "lapsLabel": "Krugovi"
   }
 }

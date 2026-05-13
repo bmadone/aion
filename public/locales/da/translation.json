@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Brugerdefineret",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stopur",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Træningsur",
@@ -80,5 +81,12 @@
     "intervalsMin": "Skal være ≥ 1",
     "roundsMin": "Skal være ≥ 1",
     "restBetweenRoundsMin": "Skal være ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stopur",
+    "lap": "Omgang",
+    "reset": "Nulstil",
+    "lapLabel": "Omgang {{number}}",
+    "lapsLabel": "Omgange"
   }
 }

@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Власний",
     "tabata": "Табата",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Секундомір",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Таймер тренування",
@@ -80,5 +81,12 @@
     "intervalsMin": "Має бути ≥ 1",
     "roundsMin": "Має бути ≥ 1",
     "restBetweenRoundsMin": "Має бути ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Секундомір",
+    "lap": "Коло",
+    "reset": "Скинути",
+    "lapLabel": "Коло {{number}}",
+    "lapsLabel": "Кола"
   }
 }

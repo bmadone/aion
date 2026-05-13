@@ -29,8 +29,9 @@
   "presets": {
     "custom": "กำหนดเอง",
     "tabata": "ตาบาตะ",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "จับเวลา",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "ตัวจับเวลาออกกำลังกาย",
@@ -80,5 +81,12 @@
     "intervalsMin": "ต้องเป็น ≥ 1",
     "roundsMin": "ต้องเป็น ≥ 1",
     "restBetweenRoundsMin": "ต้องเป็น ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "จับเวลา",
+    "lap": "รอบ",
+    "reset": "รีเซ็ต",
+    "lapLabel": "รอบ {{number}}",
+    "lapsLabel": "รอบ"
   }
 }

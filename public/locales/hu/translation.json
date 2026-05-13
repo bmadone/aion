@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Egyéni",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stopperóra",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Edzés időzítő",
@@ -80,5 +81,12 @@
     "intervalsMin": "Legalább ≥ 1 kell",
     "roundsMin": "Legalább ≥ 1 kell",
     "restBetweenRoundsMin": "Legalább ≥ 0 kell"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stopperóra",
+    "lap": "Kör",
+    "reset": "Visszaállítás",
+    "lapLabel": "{{number}}. kör",
+    "lapsLabel": "Körök"
   }
 }

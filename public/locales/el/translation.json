@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Προσαρμοσμένο",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Χρονόμετρο",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Χρονόμετρο προπόνησης",
@@ -80,5 +81,12 @@
     "intervalsMin": "Πρέπει να είναι ≥ 1",
     "roundsMin": "Πρέπει να είναι ≥ 1",
     "restBetweenRoundsMin": "Πρέπει να είναι ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Χρονόμετρο",
+    "lap": "Γύρος",
+    "reset": "Επαναφορά",
+    "lapLabel": "Γύρος {{number}}",
+    "lapsLabel": "Γύροι"
   }
 }

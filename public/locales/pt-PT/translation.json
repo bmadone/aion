@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Personalizado",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Cronómetro",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Temporizador de treino",
@@ -80,5 +81,12 @@
     "intervalsMin": "Deve ser ≥ 1",
     "roundsMin": "Deve ser ≥ 1",
     "restBetweenRoundsMin": "Deve ser ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Cronómetro",
+    "lap": "Volta",
+    "reset": "Repor",
+    "lapLabel": "Volta {{number}}",
+    "lapsLabel": "Voltas"
   }
 }

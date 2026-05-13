@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Personnalisé",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Chronomètre",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Minuteur d'entraînement",
@@ -80,5 +81,12 @@
     "intervalsMin": "Doit être ≥ 1",
     "roundsMin": "Doit être ≥ 1",
     "restBetweenRoundsMin": "Doit être ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Chronomètre",
+    "lap": "Tour",
+    "reset": "Réinitialiser",
+    "lapLabel": "Tour {{number}}",
+    "lapsLabel": "Tours"
   }
 }

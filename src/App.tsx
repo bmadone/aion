@@ -1,16 +1,18 @@
 import { useRef, useEffect, type JSX } from 'react'
-import { useStore, useView, useTheme } from './store'
+import { useStore, useView, useTheme, usePreset } from './store'
 import { useI18nDirection } from './hooks/use-i18n-direction'
 import { useHeartRate } from './hooks/use-heart-rate'
 import { soundManager } from './sound/SoundManager'
 import { NavBar } from './components/NavBar'
 import { WorkoutForm } from './components/WorkoutForm'
 import { TimerDisplay } from './components/TimerDisplay'
+import { StopwatchDisplay } from './components/StopwatchDisplay'
 import { ErrorBoundary } from './components/ErrorBoundary'
 
 export default function App(): JSX.Element {
-  const view  = useView()
-  const theme = useTheme()
+  const view   = useView()
+  const preset = usePreset()
+  const theme  = useTheme()
   useI18nDirection()
   const heartRate   = useHeartRate()
   const startBtnRef = useRef<HTMLButtonElement>(null)
@@ -43,7 +45,10 @@ export default function App(): JSX.Element {
         )}
         {view === 'timer' && (
           <ErrorBoundary>
-            <TimerDisplay stopBtnRef={stopBtnRef} heartRate={heartRate} />
+            {preset === 'stopwatch'
+              ? <StopwatchDisplay stopBtnRef={stopBtnRef} />
+              : <TimerDisplay stopBtnRef={stopBtnRef} heartRate={heartRate} />
+            }
           </ErrorBoundary>
         )}
       </main>

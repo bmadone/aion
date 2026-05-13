@@ -5,6 +5,12 @@ const STORAGE_KEY = 'aion:muted'
 
 function noop(): void { /* intentional no-op */ }
 
+// Tell iOS Safari to mix with other audio (e.g. background music) rather than
+// silencing it. navigator.audioSession is a WebKit-only API (Safari 17+).
+if ('audioSession' in navigator) {
+  (navigator as unknown as { audioSession: { type: string } }).audioSession.type = 'ambient'
+}
+
 class SoundManager {
   private _muted: boolean
   private bell = new Audio(bellUrl)

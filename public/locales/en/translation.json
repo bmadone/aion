@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Custom",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stopwatch",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Workout timer",
@@ -80,5 +81,12 @@
     "intervalsMin": "Must be ≥ 1",
     "roundsMin": "Must be ≥ 1",
     "restBetweenRoundsMin": "Must be ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stopwatch",
+    "lap": "Lap",
+    "reset": "Reset",
+    "lapLabel": "Lap {{number}}",
+    "lapsLabel": "Laps"
   }
 }

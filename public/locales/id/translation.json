@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Kustom",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stopwatch",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Penghitung waktu latihan",
@@ -80,5 +81,12 @@
     "intervalsMin": "Harus ≥ 1",
     "roundsMin": "Harus ≥ 1",
     "restBetweenRoundsMin": "Harus ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stopwatch",
+    "lap": "Putaran",
+    "reset": "Setel ulang",
+    "lapLabel": "Putaran {{number}}",
+    "lapsLabel": "Putaran"
   }
 }

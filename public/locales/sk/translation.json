@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Vlastné",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stopky",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Tréningový časovač",
@@ -80,5 +81,12 @@
     "intervalsMin": "Musí byť ≥ 1",
     "roundsMin": "Musí byť ≥ 1",
     "restBetweenRoundsMin": "Musí byť ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stopky",
+    "lap": "Kolo",
+    "reset": "Resetovať",
+    "lapLabel": "Kolo {{number}}",
+    "lapsLabel": "Kolá"
   }
 }

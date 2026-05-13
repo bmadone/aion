@@ -12,10 +12,11 @@ export const PresetSelector = memo(function PresetSelector({ selected, onSelect 
   const { t } = useTranslation()
 
   const PRESET_LABELS: Record<Preset, string> = {
-    custom: t('presets.custom'),
-    tabata: t('presets.tabata'),
-    amrap:  t('presets.amrap'),
-    emom:   t('presets.emom'),
+    custom:    t('presets.custom'),
+    tabata:    t('presets.tabata'),
+    hiit:      t('presets.hiit'),
+    emom:      t('presets.emom'),
+    stopwatch: t('presets.stopwatch'),
   }
 
   return (

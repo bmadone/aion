@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Aangepast",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stopwatch",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Trainingstimer",
@@ -80,5 +81,12 @@
     "intervalsMin": "Moet ≥ 1 zijn",
     "roundsMin": "Moet ≥ 1 zijn",
     "restBetweenRoundsMin": "Moet ≥ 0 zijn"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stopwatch",
+    "lap": "Ronde",
+    "reset": "Resetten",
+    "lapLabel": "Ronde {{number}}",
+    "lapsLabel": "Rondes"
   }
 }

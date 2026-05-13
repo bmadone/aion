@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Tùy chỉnh",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Bấm giờ",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Đồng hồ bấm giờ",
@@ -80,5 +81,12 @@
     "intervalsMin": "Phải ≥ 1",
     "roundsMin": "Phải ≥ 1",
     "restBetweenRoundsMin": "Phải ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Bấm giờ",
+    "lap": "Vòng",
+    "reset": "Đặt lại",
+    "lapLabel": "Vòng {{number}}",
+    "lapsLabel": "Vòng"
   }
 }

@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist, subscribeWithSelector } from 'zustand/middleware'
 import type { WorkoutConfig } from '../schemas/workout'
+import type { Preset } from '../types'
 
 const DEFAULT_CONFIG: WorkoutConfig = {
   workDuration: 30,
@@ -40,11 +41,13 @@ function removeLegacyKeys(): void {
 
 interface AionState {
   config: WorkoutConfig
+  preset: Preset
   view: 'form' | 'timer'
   theme: 'light' | 'dark'
   muted: boolean
 
   setConfig: (config: WorkoutConfig) => void
+  setPreset: (preset: Preset) => void
   setView: (view: 'form' | 'timer') => void
   toggleTheme: () => void
   toggleMuted: () => void
@@ -64,12 +67,14 @@ export const useStore = create<AionState>()(
     persist(
       (set) => ({
         config: DEFAULT_CONFIG,
+        preset: 'custom',
         view: 'form' as const,
         theme: getInitialTheme(),
         muted: getInitialMuted(),
 
-        setConfig: (config) => set({ config }),
-        setView:   (view)   => set({ view }),
+        setConfig:  (config)  => set({ config }),
+        setPreset:  (preset)  => set({ preset }),
+        setView:    (view)    => set({ view }),
         toggleTheme: () => set((s) => ({ theme: s.theme === 'dark' ? 'light' : 'dark' })),
         toggleMuted: () => set((s) => ({ muted: !s.muted })),
       }),
@@ -77,6 +82,7 @@ export const useStore = create<AionState>()(
         name: 'aion:store',
         partialize: (state) => ({
           config: state.config,
+          preset: state.preset,
           theme:  state.theme,
           muted:  state.muted,
         }),
@@ -87,6 +93,7 @@ export const useStore = create<AionState>()(
 )
 
 export const useConfig = (): WorkoutConfig   => useStore((s) => s.config)
+export const usePreset = (): Preset          => useStore((s) => s.preset)
 export const useView   = (): 'form' | 'timer' => useStore((s) => s.view)
 export const useTheme  = (): 'light' | 'dark' => useStore((s) => s.theme)
 export const useMuted  = (): boolean          => useStore((s) => s.muted)

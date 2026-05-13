@@ -29,8 +29,9 @@
   "presets": {
     "custom": "カスタム",
     "tabata": "タバタ",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "ストップウォッチ",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "トレーニングタイマー",
@@ -80,5 +81,12 @@
     "intervalsMin": "≥ 1必要",
     "roundsMin": "≥ 1必要",
     "restBetweenRoundsMin": "≥ 0必要"
+  },
+  "stopwatch": {
+    "ariaLabel": "ストップウォッチ",
+    "lap": "ラップ",
+    "reset": "リセット",
+    "lapLabel": "ラップ{{number}}",
+    "lapsLabel": "ラップ"
   }
 }

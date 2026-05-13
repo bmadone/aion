@@ -29,8 +29,9 @@
   "presets": {
     "custom": "自訂",
     "tabata": "塔巴塔",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "碼錶",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "鍛鍊計時器",
@@ -80,5 +81,12 @@
     "intervalsMin": "必須 ≥ 1",
     "roundsMin": "必須 ≥ 1",
     "restBetweenRoundsMin": "必須 ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "碼錶",
+    "lap": "計次",
+    "reset": "重置",
+    "lapLabel": "第{{number}}次",
+    "lapsLabel": "計次"
   }
 }

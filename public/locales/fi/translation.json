@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Mukautettu",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Sekuntikello",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Harjoitusajastin",
@@ -80,5 +81,12 @@
     "intervalsMin": "Täytyy olla ≥ 1",
     "roundsMin": "Täytyy olla ≥ 1",
     "restBetweenRoundsMin": "Täytyy olla ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Sekuntikello",
+    "lap": "Kierros",
+    "reset": "Nollaa",
+    "lapLabel": "Kierros {{number}}",
+    "lapsLabel": "Kierrokset"
   }
 }

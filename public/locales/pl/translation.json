@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Własny",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stoper",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Timer treningowy",
@@ -80,5 +81,12 @@
     "intervalsMin": "Musi być ≥ 1",
     "roundsMin": "Musi być ≥ 1",
     "restBetweenRoundsMin": "Musi być ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stoper",
+    "lap": "Okrążenie",
+    "reset": "Resetuj",
+    "lapLabel": "Okrążenie {{number}}",
+    "lapsLabel": "Okrążenia"
   }
 }

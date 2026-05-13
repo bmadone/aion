@@ -29,8 +29,9 @@
   "presets": {
     "custom": "कस्टम",
     "tabata": "तबाता",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "स्टॉपवॉच",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "वर्कआउट टाइमर",
@@ -80,5 +81,12 @@
     "intervalsMin": "≥ 1 होना चाहिए",
     "roundsMin": "≥ 1 होना चाहिए",
     "restBetweenRoundsMin": "≥ 0 होना चाहिए"
+  },
+  "stopwatch": {
+    "ariaLabel": "स्टॉपवॉच",
+    "lap": "लैप",
+    "reset": "रीसेट",
+    "lapLabel": "लैप {{number}}",
+    "lapsLabel": "लैप"
   }
 }

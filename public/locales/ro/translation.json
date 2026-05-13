@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Personalizat",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Cronometru",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Cronometru antrenament",
@@ -80,5 +81,12 @@
     "intervalsMin": "Trebuie să fie ≥ 1",
     "roundsMin": "Trebuie să fie ≥ 1",
     "restBetweenRoundsMin": "Trebuie să fie ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Cronometru",
+    "lap": "Tur",
+    "reset": "Resetare",
+    "lapLabel": "Tur {{number}}",
+    "lapsLabel": "Tururi"
   }
 }

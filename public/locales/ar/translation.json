@@ -29,8 +29,9 @@
   "presets": {
     "custom": "مخصص",
     "tabata": "تاباتا",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "موقف",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "مؤقت التمرين",
@@ -80,5 +81,12 @@
     "intervalsMin": "يجب أن يكون ≥ 1",
     "roundsMin": "يجب أن يكون ≥ 1",
     "restBetweenRoundsMin": "يجب أن يكون ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "ساعة إيقاف",
+    "lap": "لفة",
+    "reset": "إعادة تعيين",
+    "lapLabel": "لفة {{number}}",
+    "lapsLabel": "لفات"
   }
 }

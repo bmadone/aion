@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Benutzerdefiniert",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stoppuhr",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Trainingstimer",
@@ -80,5 +81,12 @@
     "intervalsMin": "Muss ≥ 1 sein",
     "roundsMin": "Muss ≥ 1 sein",
     "restBetweenRoundsMin": "Muss ≥ 0 sein"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stoppuhr",
+    "lap": "Runde",
+    "reset": "Zurücksetzen",
+    "lapLabel": "Runde {{number}}",
+    "lapsLabel": "Runden"
   }
 }

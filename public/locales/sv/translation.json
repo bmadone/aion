@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Anpassad",
     "tabata": "Tabata",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Stoppur",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Träningsklocka",
@@ -80,5 +81,12 @@
     "intervalsMin": "Måste vara ≥ 1",
     "roundsMin": "Måste vara ≥ 1",
     "restBetweenRoundsMin": "Måste vara ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Stoppur",
+    "lap": "Varv",
+    "reset": "Återställ",
+    "lapLabel": "Varv {{number}}",
+    "lapsLabel": "Varv"
   }
 }

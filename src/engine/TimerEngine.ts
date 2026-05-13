@@ -105,34 +105,34 @@ export class TimerEngine {
   private advance(): void {
     if (this.stopped) {return}
 
-    const { phase, currentRound, currentInterval } = this.state
-    const { workDuration, restDuration } = this.config
+    const { phase, currentRound } = this.state
+    const { workDuration } = this.config
 
     if (phase === 'countdown') {
       this.enterPhase({ phase: 'work', durationSeconds: workDuration, round: 1, interval: 1 })
       return
     }
 
-    if (phase === 'work') {
-      const isLastInterval = currentInterval >= this.config.intervals
-      const isLastRound = currentRound >= this.config.rounds
-      const skipRestForBlockRest = isLastInterval && !isLastRound && this.config.restBetweenRounds > 0
-
-      if (restDuration > 0 && !skipRestForBlockRest) {
-        this.enterPhase({ phase: 'rest', durationSeconds: restDuration, round: currentRound, interval: currentInterval })
-      } else {
-        this.finishInterval()
-      }
-      return
-    }
-
-    if (phase === 'rest') {
-      this.finishInterval()
-      return
-    }
-
+    if (phase === 'work')              { this.advanceWork(); return }
+    if (phase === 'rest')              { this.finishInterval(); return }
     if (phase === 'rest-between-rounds') {
       this.enterPhase({ phase: 'work', durationSeconds: workDuration, round: currentRound + 1, interval: 1 })
+    }
+  }
+
+  private advanceWork(): void {
+    const { currentRound, currentInterval } = this.state
+    const { restDuration } = this.config
+
+    const isLastInterval = currentInterval >= this.config.intervals
+    const isLastRound = currentRound >= this.config.rounds
+    const skipRestForBlockRest = isLastInterval && !isLastRound && this.config.restBetweenRounds > 0
+    const skipLastRest = isLastInterval && isLastRound
+
+    if (restDuration > 0 && !skipRestForBlockRest && !skipLastRest) {
+      this.enterPhase({ phase: 'rest', durationSeconds: restDuration, round: currentRound, interval: currentInterval })
+    } else {
+      this.finishInterval()
     }
   }
 

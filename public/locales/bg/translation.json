@@ -29,8 +29,9 @@
   "presets": {
     "custom": "Персонализиран",
     "tabata": "Табата",
-    "amrap": "AMRAP",
-    "emom": "EMOM"
+    "emom": "EMOM",
+    "stopwatch": "Хронометър",
+    "hiit": "HIIT"
   },
   "timer": {
     "ariaLabel": "Таймер за тренировка",
@@ -80,5 +81,12 @@
     "intervalsMin": "Трябва да е ≥ 1",
     "roundsMin": "Трябва да е ≥ 1",
     "restBetweenRoundsMin": "Трябва да е ≥ 0"
+  },
+  "stopwatch": {
+    "ariaLabel": "Хронометър",
+    "lap": "Обиколка",
+    "reset": "Нулиране",
+    "lapLabel": "Обиколка {{number}}",
+    "lapsLabel": "Обиколки"
   }
 }
