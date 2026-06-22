@@ -252,6 +252,68 @@ describe('TimerEngine', () => {
     expect(rbrTick?.timeRemaining).toBeCloseTo(30, 0)
   })
 
+  // Bug: skip() while paused didn't update remainingOnPause, so resume() overwrote
+  // the new phase's phaseEndTime with the stale value from before the skip.
+  // it.fails: the body asserts the stale (wrong) value — it now fails → it.fails passes.
+  it.fails('BUG: skip while paused carries over stale remainingOnPause to resume', () => {
+    const { engine, ticks } = createEngine(basicConfig())
+    engine.start()
+    advance(3100)  // countdown
+    advance(5000)  // 5s into 20s work → ~15s remaining
+    engine.pause()
+    engine.skip()  // enter rest (10s), still paused
+    advance(5000)  // 5s elapses while paused
+    engine.resume()
+    advance(16)
+
+    const afterResume = ticks.at(-1)
+    if (!afterResume) {throw new Error('Expected tick after resume')}
+    // stale remainingOnPause (~15s) — the wrong value the bug produced
+    expect(afterResume.timeRemaining).toBeCloseTo(15, 0)
+  })
+
+  it('skip while paused: new phase starts from full duration', () => {
+    const { engine, ticks } = createEngine(basicConfig())
+    engine.start()
+    advance(3100)  // countdown
+    advance(5000)  // 5s into 20s work → ~15s remaining
+    engine.pause()
+    engine.skip()  // enter rest (10s) — timer starts immediately
+    advance(16)
+
+    const afterSkip = ticks.at(-1)
+    if (!afterSkip) {throw new Error('Expected tick after skip')}
+    expect(afterSkip.phase).toBe('rest')
+    expect(afterSkip.timeRemaining).toBeCloseTo(10, 0)
+  })
+
+  it.fails('BUG: skip while paused leaves timer paused instead of starting it', () => {
+    const { engine, ticks } = createEngine(basicConfig())
+    engine.start()
+    advance(3100)  // countdown
+    advance(5000)  // into work
+    engine.pause()
+    engine.skip()  // skip to rest — should start running
+    const countAfterSkip = ticks.length
+    advance(500)   // BUG: no ticks because timer stayed paused
+    expect(ticks.length).toBe(countAfterSkip)  // asserts the broken behavior
+  })
+
+  it('skip while paused starts the timer on the new phase', () => {
+    const { engine, ticks } = createEngine(basicConfig())
+    engine.start()
+    advance(3100)  // countdown
+    advance(5000)  // into work
+    engine.pause()
+    engine.skip()  // skip to rest — timer should start immediately
+    const countAfterSkip = ticks.length
+    advance(500)   // timer should be running now
+    expect(ticks.length).toBeGreaterThan(countAfterSkip)
+    const latest = ticks.at(-1)
+    if (!latest) {throw new Error('Expected tick')}
+    expect(latest.phase).toBe('rest')
+  })
+
   it('mid-round intervals still get normal rest when restBetweenRounds > 0', () => {
     const config: WorkoutConfig = { workDuration: 10, restDuration: 5, intervals: 3, rounds: 2, restBetweenRounds: 30 }
     const { engine, phases } = createEngine(config)

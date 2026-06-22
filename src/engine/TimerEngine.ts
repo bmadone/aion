@@ -63,6 +63,7 @@ export class TimerEngine {
 
   skip(): void {
     if (this.stopped) {return}
+    this.paused = false
     this.advance()
   }
 
@@ -161,6 +162,10 @@ export class TimerEngine {
     const now = performance.now()
     this.phaseEndTime = now + durationSeconds * 1000
 
+    if (this.paused) {
+      this.remainingOnPause = durationSeconds * 1000
+    }
+
     this.state = {
       phase,
       currentRound: round,
@@ -178,6 +183,6 @@ export class TimerEngine {
     this.callbacks.onPhaseChange(phase)
     this.callbacks.onTick({ ...this.state })
 
-    if (!this.stopped && phase !== 'complete') {this.scheduleLoop()}
+    if (!this.stopped && !this.paused && phase !== 'complete') {this.scheduleLoop()}
   }
 }
